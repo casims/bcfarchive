@@ -27,7 +27,7 @@ const siteController = {
                 return;
             };
         };
-        if (capturedURL.includes('https://bcfarchive.ca/terminal/')) {
+        if (capturedURL.includes('https://bcfarchive.ca/terminals/' || 'https://bcfarchive.ca/terminals')) {
             let capturedTerminalID = capturedURL.substring(31);
             if (capturedTerminalID.includes('/')) {
                 capturedTerminalID = capturedTerminalID.slice(0, -1);
