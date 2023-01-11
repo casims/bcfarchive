@@ -1,6 +1,7 @@
 'use strict';
 
 const siteController = {
+    htmlBuffer: '',
     validFerryIDs: [],
     validTerminalIDs: [],
     htmlWriteTarget: document.querySelector('main#main'),
@@ -45,5 +46,27 @@ const siteController = {
             };
         }
     },
+    createMainPage: function() {
+        this.htmlWriteTarget.innerHTML = '';
+        this.htmlBuffer = `
+            <div id="search-container">
+                <form action="" method="get" id="search-form">
+                    <input type="text" placeholder="search">
+                    <button type="submit">
+                        
+                    </button>
+                </form>
+            </div>
+            <section id="home-category-section">
+                <a href="/ferries/">
+                    Ferries
+                    <img src="media/ferries-thumbnail.jpg" alt="">
+                </a>
+                <a href="/terminals/">
+                    Terminals
+                    <img src="media/terminalss-thumbnail.jpg" alt="">
+                </a>
+            </section>`;
+    }
 
 };
