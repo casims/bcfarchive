@@ -5,45 +5,28 @@ const siteController = {
     validFerryIDs: [],
     validTerminalIDs: [],
     htmlWriteTarget: document.querySelector('main#main'),
+    onSiteCheck: null,
     router: function() {
-        const capturedURL = window.location.href;
-        if (capturedURL === 'https://bcfarchive.ca/') {
-            createMainPage();
-            return;
-        };
-        if (capturedURL.includes('https://bcfarchive.ca/ferries/' || 'https://bcfarchive.ca/ferries')) {
-            let capturedFerryID = capturedURL.substring(30);
-            if (capturedFerryID.includes('/')) {
-                capturedFerryID = capturedFerryID.slice(0, -1);
-            };
-            if (capturedFerryID === '') {
-                createFerriesPage();
+        let capturedURL = window.location.href;
+        if (capturedURL.includes('#')) {
+            let urlHashPosition = capturedURL.indexOf('#')+1;
+            let capturedPageID = capturedURL.substring(urlHashPosition);
+            if (this.onSiteCheck === true) {
                 return;
+            } else if (capturedPageID.includes('ferries')) {
+                this.createFerriesPage();
+                this.onSiteCheck = false;
+            } else if (capturedPageID.includes('terminals')) {
+                this.createTerminalsPage();
+                this.onSiteCheck = false;
+            } else if (this.onSiteCheck === false || this.onSiteCheck === null) {
+                this.createMainPage();
+                this.onSiteCheck = true;
             };
-            if (this.validFerryIDs.includes(capturedFerryID)) {
-                createSingleFerryPage(capturedFerryID);
-                return;
-            } else {
-                create404Page();
-                return;
-            };
-        };
-        if (capturedURL.includes('https://bcfarchive.ca/terminals/' || 'https://bcfarchive.ca/terminals')) {
-            let capturedTerminalID = capturedURL.substring(31);
-            if (capturedTerminalID.includes('/')) {
-                capturedTerminalID = capturedTerminalID.slice(0, -1);
-            };
-            if (capturedTerminalID === '') {
-                createTerminalsPage();
-                return;
-            };
-            if (this.validTerminalIDs.includes(capturedTerminalID)) {
-                createSingleTerminalPage(capturedTerminalID);
-                return;
-            } else {
-                create404Page();
-                return;
-            };
+        } else {
+            scroll(0,0);
+            this.createMainPage();
+            this.onSiteCheck = true;
         }
     },
     createMainPage: function() {
