@@ -13,10 +13,20 @@ const siteController = {
             let capturedPageID = capturedURL.substring(urlHashPosition);
             if (this.onSiteCheck === true) {
                 return;
-            } else if (capturedPageID.includes('ferries')) {
+            } else if (capturedPageID.substring(0,7) === 'ferries') {
+                if (capturedPageID.substring(8).includes('f')) {
+                    let capturedSingleFerryPageID = capturedPageID.substring(8);
+                    this.createSingleFerryPage(capturedSingleFerryPageID);
+                    this.onSiteCheck = false;
+                }
                 this.createFerriesPage();
                 this.onSiteCheck = false;
-            } else if (capturedPageID.includes('terminals')) {
+            } else if (capturedPageID.substring(0,9) === 'terminals') {
+                if (capturedPageID.substring(9).includes('t')) {
+                    let capturedSingleTerminalPageID = capturedPageID.substring(9);
+                    this.createSingleTerminalPage(capturedSingleTerminalPageID);
+                    this.onsiteCheck = false;
+                }
                 this.createTerminalsPage();
                 this.onSiteCheck = false;
             } else if (this.onSiteCheck === false || this.onSiteCheck === null) {
