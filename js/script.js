@@ -156,3 +156,11 @@ const siteController = {
             <p>(terminalJSON.history)</p>`;
     }
 };
+
+window.onload = function() {
+    siteController.router();
+};
+
+window.onhashchange = function() {
+    siteController.router();
+};
