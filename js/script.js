@@ -6,6 +6,15 @@ const siteController = {
     validTerminalIDs: [],
     htmlWriteTarget: document.querySelector('main#main'),
     onSiteCheck: null,
+    captureValidFerryIDs: function () {
+        let validFerryIDsQuery = new XMLHttpRequest();
+        validFerryIDsQuery.onreadystatechange = function () {
+            if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+                this.validFerryIDs = req.responseText;
+            }
+        }
+    validFerryIDsQuery.open("GET", "./valid_ferry_ids.php", true);
+    },
     router: function() {
         let capturedURL = window.location.href;
         if (capturedURL.includes('#')) {
