@@ -10,7 +10,7 @@ const siteController = {
         let validFerryIDsQuery = new XMLHttpRequest();
         validFerryIDsQuery.onreadystatechange = function () {
             if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
-                this.validFerryIDs = req.responseText;
+                this.validFerryIDs = validFerryIDsQuery.responseText;
             }
         }
     validFerryIDsQuery.open("GET", "./valid_ferry_ids.php", true);
