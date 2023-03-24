@@ -2,14 +2,16 @@
 
 const siteController = {
     htmlBuffer: '',
-    validFerryIDs: [],
+    validFerryIDs: null,
     validTerminalIDs: [],
     htmlWriteTarget: document.querySelector('main#main'),
     onSiteCheck: null,
-    captureValidFerryIDs: async function () {
-        let validFerryIDsQuery = await fetch('valid-ferry-ids.php');
-        let validFerryIDsQueryResponse = validFerryIDsQuery.text();
-        this.validFerryIDs = validFerryIDsQueryResponse;
+    captureValidFerryIDs: function () {
+        fetch('./valid-ferry-ids.php')
+            .then((response) => response.json())
+            .then((responseJSON) => {
+                this.validFerryIDs = responseJSON;
+            });
     },
     router: function() {
         let capturedURL = window.location.href;
