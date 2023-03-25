@@ -3,7 +3,7 @@
 const siteController = {
     htmlBuffer: '',
     validFerryIDs: null,
-    validTerminalIDs: [],
+    validTerminalIDs: null,
     htmlWriteTarget: document.querySelector('main#main'),
     onSiteCheck: null,
     captureValidFerryIDs: function () {
@@ -12,6 +12,13 @@ const siteController = {
             .then((responseJSON) => {
                 this.validFerryIDs = responseJSON;
             });
+    },
+    captureValidTerminalIDs: function() {
+        fetch('./valid-terminal-ids.php')
+        .then((response) => response.json())
+        .then((responseJSON) => {
+            this.validTerminalIDs = responseJSON;
+        });
     },
     router: function() {
         let capturedURL = window.location.href;
