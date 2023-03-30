@@ -75,14 +75,17 @@ const siteController = {
                 </a>
             </section>`;
     },
-    captureSingleFerryObject: function() {
-        fetch('./single-ferry-data.php')
+    captureSingleFerryObject: function(pageID) {
+        fetch('./single-ferry-data.php'), {
+            method: "POST",
+            body: pageID,
+        }
             .then((response) => response.json())
             .then((responseJSON) => {
-                singleFerryObject = responseJSON;
+                let singleFerryObject = responseJSON;
             })
     },
-    createSingleFerryPage: function() {
+    createSingleFerryPage: function(pageID) {
         this.htmlWriteTarget.innerHTML = '';
         this.htmlBuffer = `
             <table>
@@ -149,7 +152,7 @@ const siteController = {
             </table>
             <p>(ferryJSON.history)</p>`;
     },
-    createSingleTerminalPage: function() {
+    createSingleTerminalPage: function(pageID) {
         this.htmlWriteTarget.innerHTML= '';
         this.htmlBuffer = `
             <table>
