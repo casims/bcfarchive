@@ -75,6 +75,13 @@ const siteController = {
                 </a>
             </section>`;
     },
+    captureSingleFerryObject: function() {
+        fetch('./single-ferry-data.php')
+            .then((response) => response.json())
+            .then((responseJSON) => {
+                singleFerryObject = responseJSON;
+            })
+    },
     createSingleFerryPage: function() {
         this.htmlWriteTarget.innerHTML = '';
         this.htmlBuffer = `
