@@ -6,6 +6,8 @@ const siteController = {
     validTerminalIDs: null,
     htmlWriteTarget: document.querySelector('main#main'),
     onSiteCheck: null,
+    singleFerryObject: null,
+    testString: 'Ping!',
     captureValidFerryIDs: function () {
         fetch('./valid-ferry-ids.php')
             .then((response) => response.json())
@@ -15,10 +17,10 @@ const siteController = {
     },
     captureValidTerminalIDs: function() {
         fetch('./valid-terminal-ids.php')
-        .then((response) => response.json())
-        .then((responseJSON) => {
-            this.validTerminalIDs = responseJSON;
-        });
+            .then((response) => response.json())
+            .then((responseJSON) => {
+                this.validTerminalIDs = responseJSON;
+            });
     },
     router: function() {
         let capturedURL = window.location.href;
@@ -76,14 +78,14 @@ const siteController = {
             </section>`;
     },
     captureSingleFerryObject: function(pageID) {
-        fetch('./single-ferry-data.php'), {
+        fetch('./single-ferry-data.php', {
             method: "POST",
-            body: pageID,
-        }
+            body: JSON.stringify(pageID),
+        })
             .then((response) => response.json())
             .then((responseJSON) => {
-                let singleFerryObject = responseJSON;
-            })
+                this.singleFerryObject = responseJSON;
+            });
     },
     createSingleFerryPage: function(pageID) {
         this.htmlWriteTarget.innerHTML = '';
