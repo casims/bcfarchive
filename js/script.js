@@ -7,7 +7,7 @@ const siteController = {
     htmlWriteTarget: document.querySelector('main#main'),
     onSiteCheck: null,
     singleFerryObject: null,
-    testString: 'Ping!',
+    testString: 'f000',
     captureValidFerryIDs: function () {
         fetch('./valid-ferry-ids.php')
             .then((response) => response.json())
@@ -88,71 +88,73 @@ const siteController = {
             });
     },
     createSingleFerryPage: function(pageID) {
+        this.captureSingleFerryObject(pageID);
         this.htmlWriteTarget.innerHTML = '';
         this.htmlBuffer = `
             <table>
                 <tr>
                     <th>Name</th>
-                    <td>(ferryJSON.name)</td>
+                    <td>${this.singleFerryObject.name}</td>
                 </tr>
                 <tr>
                     <th>Picture</th>
-                    <td> <img src="(ferryJSON.picture)" alt=""></td>
+                    <td> <img src="${this.singleFerryObject.thumbnail}" alt="${this.singleFerryObject.thumbnail_alt}"></td>
                 </tr>
                 <tr>
                     <th>Class</th>
-                    <td>(ferryJSON.class)</td>
+                    <td>${this.singleFerryObject.class}</td>
                 </tr>
                 <tr>
                     <th>Status</th>
-                    <td>(ferryJSON.status)</td>
+                    <td>${this.singleFerryObject.status}</td>
                 </tr>
                 <tr>
                     <th>Years Active</th>
-                    <td>(ferryJSON.years_active_start) - (ferryJSON.years_active_end</td>
+                    <td>${this.singleFerryObject.years_active_start} - ${this.singleFerryObject.years_active_end}</td>
                 </tr>
                 <tr>
                     <th>Home Terminal</th>
-                    <td>(ferryJSON.home_terminal)</td>
+                    <td>${this.singleFerryObject.home_terminal}</td>
                 </tr>
                 <tr>
                     <th>Current Route</th>
-                    <td>(ferryJSON.current_route)</td>
+                    <td>${this.singleFerryObject.current_route}</td>
                 </tr>
                 <tr>
                     <th>Place of Origin</th>
-                    <td>(ferryJSON.origin)</td>
+                    <td>${this.singleFerryObject.origin}</td>
                 </tr>
                 <tr>
                     <th>Engines</th>
-                    <td>(ferryJSON.engines)</td>
+                    <td>${this.singleFerryObject.engines}</td>
                 </tr>
                 <tr>
                     <th>Horsepower</th>
-                    <td>(ferryJSON.horsepower)</td>
+                    <td>${this.singleFerryObject.horsepower}</td>
                 </tr>
                 <tr>
                     <th>Max Speed</th>
-                    <td>(ferryJSON.max_speed)</td>
+                    <td>${this.singleFerryObject.max_speed}</td>
                 </tr>
                 <tr>
                     <th>Length</th>
-                    <td>(ferryJSON.length)</td>
+                    <td>${this.singleFerryObject.length}</td>
                 </tr>
                 <tr>
                     <th>Displacement</th>
-                    <td>(ferryJSON.displacement)</td>
+                    <td>${this.singleFerryObject.displacement}</td>
                 </tr>
                 <tr>
                     <th>Vehicle Capacity</th>
-                    <td>(ferryJSON.vehicle_capacity)</td>
+                    <td>${this.singleFerryObject.vehicle_capacity}</td>
                 </tr>
                 <tr>
                     <th>Passenger Capacity</th>
-                    <td>(ferryJSON.passenger_capacity)</td>
+                    <td>${this.singleFerryObject.passenger_capacity}</td>
                 </tr>
             </table>
-            <p>(ferryJSON.history)</p>`;
+            <p>${this.singleFerryObject.history}</p>`;
+        this.htmlWriteTarget.innerHTML = this.htmlBuffer;
     },
     createSingleTerminalPage: function(pageID) {
         this.htmlWriteTarget.innerHTML= '';
