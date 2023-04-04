@@ -77,8 +77,8 @@ const siteController = {
                 </a>
             </section>`;
     },
-    captureSingleFerryObject: function(pageID) {
-        fetch('./single-ferry-data.php', {
+    captureSingleFerryObject: async function(pageID) {
+        await fetch('./single-ferry-data.php', {
             method: "POST",
             body: JSON.stringify(pageID),
         })
@@ -87,8 +87,8 @@ const siteController = {
                 this.singleFerryObject = responseJSON;
             });
     },
-    createSingleFerryPage: function(pageID) {
-        this.captureSingleFerryObject(pageID);
+    createSingleFerryPage: async function(pageID) {
+        await this.captureSingleFerryObject(pageID);
         this.htmlWriteTarget.innerHTML = '';
         this.htmlBuffer = `
             <table>
