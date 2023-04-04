@@ -174,26 +174,26 @@ const siteController = {
             <table>
                 <tr>
                     <th>Name</th>
-                    <td>(terminalJSON.name)</td>
+                    <td>${this.singleTerminalObject.name}</td>
                 </tr>
                 <tr>
                     <th>Picture</th>
-                    <td> <img src="(terminalJSON.picture)" alt=""></td>
+                    <td> <img src="${this.singleTerminalObject.picture}" alt=""></td>
                 </tr>
                 <tr>
                     <th>Address</th>
-                    <td>(terminalJSON.class)</td>
+                    <td>${this.singleTerminalObject.address}</td>
                 </tr>
                 <tr>
                     <th>Opened</th>
-                    <td>(terminalJSON.status)</td>
+                    <td>${this.singleTerminalObject.opened}</td>
                 </tr>
                 <tr>
                     <th>Routes</th>
-                    <td>(terminalJSON.status)</td>
+                    <td>${this.singleTerminalObject.routes}</td>
                 </tr>
             </table>
-            <p>(terminalJSON.history)</p>`;
+            <p>${this.singleTerminalObject.history}</p>`;
     }
 };
 
