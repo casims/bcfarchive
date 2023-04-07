@@ -8,6 +8,7 @@ const siteController = {
     onSiteCheck: null,
     ferriesArray: null,
     terminalsArray: null,
+    terminalsArray: null,
     singleFerryObject: null,
     singleTerminalObject: null,
     testString: 'f000',
@@ -98,6 +99,24 @@ const siteController = {
             });
         };
         
+    },
+    captureTerminalsArray: async function(sortType) {
+        if (sortType) {
+            await fetch('./terminals-data.php', {
+                method: "POST",
+                body: JSON.stringify(sortType)
+            })
+            .then((response) => response.json())
+            .then((responseJSON) => {
+                this.terminalsArray = responseJSON;
+            });
+        } else {
+            await fetch('./terminals-data.php')
+                .then((response) => response.json())
+                .then((responseJSON) => {
+                    this.terminalsArray = responseJSON;
+            });
+        };
     },
     createFerriesPage: function() {
 
