@@ -118,8 +118,32 @@ const siteController = {
             });
         };
     },
-    createFerriesPage: function() {
-
+    createFerriesPage: async function(sortType) {
+        this.htmlWriteTarget.innerHTML = '';
+        await this.captureFerriesArray(sortType);
+        this.htmlBuffer = '';
+        this.ferriesArray.forEach((ferry) => {
+            this.htmlBuffer += `
+                <div class="single-ferry-card">
+                    <a href="#/ferries/${ferry.page_id}">
+                        <p class="single-ferry-card-name">${ferry.name}</p>
+                        <p class="single-ferry-card-class">${ferry.class}</p>
+                        <p class="single-ferry-card-status">${ferry.status}</p>
+                        <p class="single-ferry-card-years-active-start">${ferry.years_active_start}</p>
+                        <p class="single-ferry-card-years-active-end">${ferry.years_active_end}</p>
+                        <p class="single-ferry-card-current-route">${ferry.current_route}</p>
+                        <p class="single-ferry-card-horsepower">${ferry.horsepower}</p>
+                        <p class="single-ferry-card-max-speed">${ferry.max_speed}</p>
+                        <p class="single-ferry-card-length">${ferry.length}</p>
+                        <p class="single-ferry-card-displacement">${ferry.displacement}</p>
+                        <p class="single-ferry-card-vehicle-capacity">${ferry.vehicle_capacity}</p>
+                        <p class="single-ferry-card-passenger-capacity">${ferry.passenger_capacity}</p>
+                        <img class="single-ferry-card-image" src="${ferry.thumbnail}" alt="${ferry.thumbnail_alt}">
+                    </a>
+                </div>
+            `;
+        this.htmlWriteTarget.innerHTML = this.htmlBuffer;
+        });
     },
     captureSingleFerryObject: async function(pageID) {
         await fetch('./single-ferry-data.php', {
