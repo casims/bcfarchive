@@ -142,8 +142,26 @@ const siteController = {
                     </a>
                 </div>
             `;
-        this.htmlWriteTarget.innerHTML = this.htmlBuffer;
         });
+        this.htmlWriteTarget.innerHTML = this.htmlBuffer;
+    },
+    createTerminalsPage: async function(sortType) {
+        this.htmlWriteTarget.innerHTML = '';
+        await this.captureTerminalsArray(sortType);
+        this.htmlBuffer = '';
+        this.terminalsArray.forEach((terminal) => {
+            this.htmlBuffer += `
+                <div class="single-terminal-card">
+                    <a href="#/terminals/${terminal.page_id}">
+                        <p class="single-terminal-card-name">${terminal.name}</p>
+                        <p class="single-terminal-card-opened">${terminal.opened}</p>
+                        <p class="single-terminal-card-address">${terminal.address}</p>
+                        <img class="single-terminal-card-image" src="${terminal.picture}" alt="${terminal.picture_alt}">
+                    </a>
+                </div>
+            `;
+        });
+        this.htmlWriteTarget.innerHTML = this.htmlBuffer;
     },
     captureSingleFerryObject: async function(pageID) {
         await fetch('./single-ferry-data.php', {
