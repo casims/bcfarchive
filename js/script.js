@@ -120,8 +120,38 @@ const siteController = {
     },
     createFerriesPage: async function(sortType) {
         this.htmlWriteTarget.innerHTML = '';
+        this.htmlBuffer = `
+            <div class="radio-sort">
+                <p>Sort By:</p>
+                <input type="radio" id="name" name="ferry-sort" value="name">
+                <label for="name">Name</label>
+                <input type="radio" id="class" name="ferry-sort" value="class">
+                <label for="class">Class</label>
+                <input type="radio" id="years-active-start" name="ferry-sort" value="years-active-start" checked>
+                <label for="years-active-start">Year Deployed</label>
+                <input type="radio" id="years-active-end" name="ferry-sort" value="years-active-end">
+                <label for="years-active-end">Year Retired</label>
+                <input type="radio" id="horsepower" name="ferry-sort" value="horsepower">
+                <label for="horsepower">Horsepower</label>
+                <input type="radio" id="max-speed" name="ferry-sort" value="max-speed">
+                <label for="max-speed">Max Speed</label>
+                <input type="radio" id="length" name="ferry-sort" value="length">
+                <label for="length">Length</label>
+                <input type="radio" id="displacement" name="ferry-sort" value="displacement">
+                <label for="displacement">Displacement</label>
+                <input type="radio" id="vehicle-capacity" name="ferry-sort" value="vehicle-capacity">
+                <label for="vehicle-capacity">Vehicle Capacity</label>
+                <input type="radio" id="passenger-capacity" name="ferry-sort" value="passenger-capacity">
+                <label for="passenger-capacity">Passenger Capacity</label>
+
+                <p>Sort Order:</p>
+                <input type="radio" id="ascending" name="ferry-sort-type" value="ascending">
+                <label for="ascending">Ascending</label>
+                <input type="radio" id="descending" name="ferry-sort-type" value="descending" checked>
+                <label for="descending">Descending</label>
+            </div>
+        `;
         await this.captureFerriesArray(sortType);
-        this.htmlBuffer = '';
         this.ferriesArray.forEach((ferry) => {
             this.htmlBuffer += `
                 <div class="single-ferry-card">
@@ -147,8 +177,22 @@ const siteController = {
     },
     createTerminalsPage: async function(sortType) {
         this.htmlWriteTarget.innerHTML = '';
+        this.htmlBuffer = `
+            <div class="radio-sort">
+                <p>Sort By:</p>
+                <input type="radio" id="name" name="terminal-sort" value="name">
+                <label for="name">Name</label>
+                <input type="radio" id="opened" name="terminal-sort" value="opened" checked>
+                <label for="opened">Opened</label>
+
+                <p>Sort Order:</p>
+                <input type="radio" id="ascending" name="terminal-sort-type" value="ascending">
+                <label for="ascending">Ascending</label>
+                <input type="radio" id="descending" name="terminal-sort-type" value="descending" checked>
+                <label for="descending">Descending</label>
+            </div>
+        `;
         await this.captureTerminalsArray(sortType);
-        this.htmlBuffer = '';
         this.terminalsArray.forEach((terminal) => {
             this.htmlBuffer += `
                 <div class="single-terminal-card">
