@@ -121,10 +121,34 @@ const siteController = {
                     ferrySortData[1] = event.target.value;
                     prevOrderRadioValue = event.target.value;
                     this.captureFerriesArray(ferrySortData);
+                };
+            });
+        };
+    },
+    terminalSortFunctionality: function() {
+        let terminalSortData = [null, "desc"];
+        let terminalSortButtons = document.terminalSortRadio.terminalSort;
+        let prevSortRadioValue = null;
+        let terminalOrderButtons = document.terminalSortOrderRadio.terminalSortOrder;
+        let prevOrderRadioValue = "desc";
+        for (let i =0; i < terminalSortButtons.length; i++) {
+            terminalSortButtons[i].addEventListener('change', function(event) {
+                if (event.target.value !== prevSortRadioValue) {
+                    terminalSortData[0] = event.target.value;
+                    prevSortRadioValue = event.target.value;
+                    this.captureTerminalsArray(terminalSortData);
                 }
-            })
-        }
-
+            });
+        };
+        for (let i =0; i < terminalOrderButtons.length; i++) {
+            terminalOrderButtons[i].addEventListener('change', function(event) {
+                if (event.target.value !== prevOrderRadioValue) {
+                    terminalSortData[0] = event.target.value;
+                    prevOrderRadioValue = event.target.value;
+                    this.captureTerminalsArray(terminalSortData);
+                }
+            });
+        };
     },
     captureTerminalsArray: async function(sortType) {
         if (sortType) {
@@ -210,17 +234,21 @@ const siteController = {
         this.htmlWriteTarget.innerHTML = '';
         this.htmlBuffer = `
             <div class="radio-sort">
-                <p>Sort By:</p>
-                <input type="radio" id="name" name="terminal-sort" value="name">
-                <label for="name">Name</label>
-                <input type="radio" id="opened" name="terminal-sort" value="opened" checked>
-                <label for="opened">Opened</label>
+                <form name="terminalSortRadio">
+                    <p>Sort By:</p>
+                    <input type="radio" id="name" name="terminalSort" value="name">
+                    <label for="name">Name</label>
+                    <input type="radio" id="opened" name="terminalSort" value="opened" checked>
+                    <label for="opened">Opened</label>
+                </form>
 
-                <p>Sort Order:</p>
-                <input type="radio" id="ascending" name="terminal-sort-type" value="ascending">
-                <label for="ascending">Ascending</label>
-                <input type="radio" id="descending" name="terminal-sort-type" value="descending" checked>
-                <label for="descending">Descending</label>
+                <form name="terminalSortOrderRadio">
+                    <p>Sort Order:</p>
+                    <input type="radio" id="ascending" name="terminalSortOrder" value="ascending">
+                    <label for="ascending">Ascending</label>
+                    <input type="radio" id="descending" name="terminalSortOrder" value="descending" checked>
+                    <label for="descending">Descending</label>
+                </form>
             </div>
         `;
         await this.captureTerminalsArray(sortType);
