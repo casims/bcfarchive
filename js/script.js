@@ -11,7 +11,7 @@ const siteController = {
     terminalsArray: null,
     singleFerryObject: null,
     singleTerminalObject: null,
-    testString: 'f000',
+    testArray: ['Ping 1', 'Ping 2'],
     captureValidFerryIDs: function () {
         fetch('./valid-ferry-ids.php')
             .then((response) => response.json())
@@ -98,7 +98,6 @@ const siteController = {
                     this.ferriesArray = responseJSON;
             });
         };
-        
     },
     ferrySortFunctionality: function() {
         let ferrySortData = [null, "desc"];
@@ -174,33 +173,33 @@ const siteController = {
             <div class="radio-sort">
                 <form name="ferrySortRadio">
                     <p>Sort By:</p>
-                    <input type="radio" id="name" name="ferrySort" value="name">
+                    <input type="radio" id="name" name="ferrySort" value="0">
                     <label for="name">Name</label>
-                    <input type="radio" id="class" name="ferrySort" value="class">
+                    <input type="radio" id="class" name="ferrySort" value="1">
                     <label for="class">Class</label>
-                    <input type="radio" id="years-active-start" name="ferrySort" value="years-active-start" checked>
+                    <input type="radio" id="years-active-start" name="ferrySort" value="2" checked>
                     <label for="years-active-start">Year Deployed</label>
-                    <input type="radio" id="years-active-end" name="ferrySort" value="years-active-end">
+                    <input type="radio" id="years-active-end" name="ferrySort" value="3">
                     <label for="years-active-end">Year Retired</label>
-                    <input type="radio" id="horsepower" name="ferrySort" value="horsepower">
+                    <input type="radio" id="horsepower" name="ferrySort" value="4">
                     <label for="horsepower">Horsepower</label>
-                    <input type="radio" id="max-speed" name="ferrySort" value="max-speed">
+                    <input type="radio" id="max-speed" name="ferrySort" value="5">
                     <label for="max-speed">Max Speed</label>
-                    <input type="radio" id="length" name="ferrySort" value="length">
+                    <input type="radio" id="length" name="ferrySort" value="6">
                     <label for="length">Length</label>
-                    <input type="radio" id="displacement" name="ferrySort" value="displacement">
+                    <input type="radio" id="displacement" name="ferrySort" value="7">
                     <label for="displacement">Displacement</label>
-                    <input type="radio" id="vehicle-capacity" name="ferrySort" value="vehicle-capacity">
+                    <input type="radio" id="vehicle-capacity" name="ferrySort" value="8">
                     <label for="vehicle-capacity">Vehicle Capacity</label>
-                    <input type="radio" id="passenger-capacity" name="ferrySort" value="passenger-capacity">
+                    <input type="radio" id="passenger-capacity" name="ferrySort" value="9">
                     <label for="passenger-capacity">Passenger Capacity</label>
                 </form>
 
                 <form name="ferrySortOrderRadio">
                     <p>Sort Order:</p>
-                    <input type="radio" id="ascending" name="ferrySortOrder" value="asc">
+                    <input type="radio" id="ascending" name="ferrySortOrder" value="1">
                     <label for="ascending">Ascending</label>
-                    <input type="radio" id="descending" name="ferrySortOrder" value="desc" checked>
+                    <input type="radio" id="descending" name="ferrySortOrder" value="0" checked>
                     <label for="descending">Descending</label>
                 </form>
             </div>
