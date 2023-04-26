@@ -8,47 +8,57 @@ const siteController = {
     onSiteCheck: null,
     ferriesArray: null,
     terminalsArray: null,
-    terminalsArray: null,
     singleFerryObject: null,
     singleTerminalObject: null,
-    testArray: ['Ping 1', 'Ping 2'],
-    captureValidFerryIDs: function () {
-        fetch('./valid-ferry-ids.php')
+    captureValidFerryIDs: async function () {
+        await fetch('./valid-ferry-ids.php')
             .then((response) => response.json())
             .then((responseJSON) => {
                 this.validFerryIDs = responseJSON;
             });
     },
-    captureValidTerminalIDs: function() {
-        fetch('./valid-terminal-ids.php')
+    captureValidTerminalIDs: async function() {
+        await fetch('./valid-terminal-ids.php')
             .then((response) => response.json())
             .then((responseJSON) => {
                 this.validTerminalIDs = responseJSON;
             });
     },
-    router: function() {
+    router: async function() {
         let capturedURL = window.location.href;
         if (capturedURL.includes('#')) {
-            let urlHashPosition = capturedURL.indexOf('#')+1;
+            let urlHashPosition = capturedURL.indexOf('#')+2;
             let capturedPageID = capturedURL.substring(urlHashPosition);
             if (this.onSiteCheck === true) {
                 return;
             } else if (capturedPageID.substring(0,7) === 'ferries') {
                 if (capturedPageID.substring(8).includes('f')) {
+                    this.captureValidFerryIDs();
                     let capturedSingleFerryPageID = capturedPageID.substring(8);
-                    this.createSingleFerryPage(capturedSingleFerryPageID);
+                    if (this.validFerryIDs.includes(capturedSingleFerryPageID)) {
+                        this.createSingleFerryPage(capturedSingleFerryPageID);
+                        this.onSiteCheck = false;
+                    } else {
+                        this.create404();
+                    }
+                } else {
+                    this.createFerriesPage();
                     this.onSiteCheck = false;
                 }
-                this.createFerriesPage();
-                this.onSiteCheck = false;
             } else if (capturedPageID.substring(0,9) === 'terminals') {
                 if (capturedPageID.substring(9).includes('t')) {
+                    this.captureValidTerminalIDs();
                     let capturedSingleTerminalPageID = capturedPageID.substring(9);
-                    this.createSingleTerminalPage(capturedSingleTerminalPageID);
-                    this.onsiteCheck = false;
+                    if (this.validTerminalIDs.includes(capturedSingleTerminalPageID)) {
+                        this.createSingleTerminalPage(capturedSingleTerminalPageID);
+                        this.onsiteCheck = false;
+                    } else {
+                        this.create404();
+                    }
+                } else {
+                    this.createTerminalsPage();
+                    this.onSiteCheck = false;
                 }
-                this.createTerminalsPage();
-                this.onSiteCheck = false;
             } else if (this.onSiteCheck === false || this.onSiteCheck === null) {
                 this.createMainPage();
                 this.onSiteCheck = true;
@@ -100,11 +110,11 @@ const siteController = {
         };
     },
     ferrySortFunctionality: function() {
-        let ferrySortData = [null, "desc"];
+        let ferrySortData = [null, 0];
         let ferrySortButtons = document.ferrySortRadio.ferrySort;
         let prevSortRadioValue = null;
         let ferryOrderButtons = document.ferrySortOrderRadio.ferrySortOrder;
-        let prevOrderRadioValue = "desc";
+        let prevOrderRadioValue = 0;
         for (let i = 0; i < ferrySortButtons.length; i++) {
             ferrySortButtons[i].addEventListener('change', function(event) {
                 if (event.target.value !== prevSortRadioValue) {
@@ -125,11 +135,11 @@ const siteController = {
         };
     },
     terminalSortFunctionality: function() {
-        let terminalSortData = [null, "desc"];
+        let terminalSortData = [null, 0];
         let terminalSortButtons = document.terminalSortRadio.terminalSort;
         let prevSortRadioValue = null;
         let terminalOrderButtons = document.terminalSortOrderRadio.terminalSortOrder;
-        let prevOrderRadioValue = "desc";
+        let prevOrderRadioValue = 0;
         for (let i =0; i < terminalSortButtons.length; i++) {
             terminalSortButtons[i].addEventListener('change', function(event) {
                 if (event.target.value !== prevSortRadioValue) {
@@ -167,7 +177,7 @@ const siteController = {
             });
         };
     },
-    createFerriesPage: async function(sortType) {
+    createFerriesPage: async function() {
         this.htmlWriteTarget.innerHTML = '';
         this.htmlBuffer = `
             <div class="radio-sort">
@@ -204,7 +214,7 @@ const siteController = {
                 </form>
             </div>
         `;
-        await this.captureFerriesArray(sortType);
+        await this.captureFerriesArray();
         this.ferriesArray.forEach((ferry) => {
             this.htmlBuffer += `
                 <div class="single-ferry-card">
@@ -235,22 +245,22 @@ const siteController = {
             <div class="radio-sort">
                 <form name="terminalSortRadio">
                     <p>Sort By:</p>
-                    <input type="radio" id="name" name="terminalSort" value="name">
+                    <input type="radio" id="name" name="terminalSort" value="0">
                     <label for="name">Name</label>
-                    <input type="radio" id="opened" name="terminalSort" value="opened" checked>
+                    <input type="radio" id="opened" name="terminalSort" value="1" checked>
                     <label for="opened">Opened</label>
                 </form>
 
                 <form name="terminalSortOrderRadio">
                     <p>Sort Order:</p>
-                    <input type="radio" id="ascending" name="terminalSortOrder" value="ascending">
+                    <input type="radio" id="ascending" name="terminalSortOrder" value="1">
                     <label for="ascending">Ascending</label>
-                    <input type="radio" id="descending" name="terminalSortOrder" value="descending" checked>
+                    <input type="radio" id="descending" name="terminalSortOrder" value="0" checked>
                     <label for="descending">Descending</label>
                 </form>
             </div>
         `;
-        await this.captureTerminalsArray(sortType);
+        await this.captureTerminalsArray();
         this.terminalsArray.forEach((terminal) => {
             this.htmlBuffer += `
                 <div class="single-terminal-card">
