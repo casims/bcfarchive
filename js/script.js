@@ -29,44 +29,36 @@ const siteController = {
         if (capturedURL.includes('#')) {
             let urlHashPosition = capturedURL.indexOf('#')+2;
             let capturedPageID = capturedURL.substring(urlHashPosition);
-            if (this.onSiteCheck === true) {
-                return;
-            } else if (capturedPageID.substring(0,7) === 'ferries') {
+            if (capturedPageID.substring(0,7) === 'ferries') {
                 if (capturedPageID.substring(8).includes('f')) {
-                    this.captureValidFerryIDs();
+                    await this.captureValidFerryIDs();
                     let capturedSingleFerryPageID = capturedPageID.substring(8);
                     if (this.validFerryIDs.includes(capturedSingleFerryPageID)) {
                         this.createSingleFerryPage(capturedSingleFerryPageID);
-                        this.onSiteCheck = false;
                     } else {
                         this.create404();
                     }
                 } else {
                     this.createFerriesPage();
-                    this.onSiteCheck = false;
                 }
             } else if (capturedPageID.substring(0,9) === 'terminals') {
                 if (capturedPageID.substring(9).includes('t')) {
-                    this.captureValidTerminalIDs();
+                    await this.captureValidTerminalIDs();
                     let capturedSingleTerminalPageID = capturedPageID.substring(9);
                     if (this.validTerminalIDs.includes(capturedSingleTerminalPageID)) {
                         this.createSingleTerminalPage(capturedSingleTerminalPageID);
-                        this.onsiteCheck = false;
                     } else {
                         this.create404();
                     }
                 } else {
                     this.createTerminalsPage();
-                    this.onSiteCheck = false;
                 }
             } else if (this.onSiteCheck === false || this.onSiteCheck === null) {
                 this.createMainPage();
-                this.onSiteCheck = true;
             };
         } else {
             scroll(0,0);
             this.createMainPage();
-            this.onSiteCheck = true;
         }
     },
     createMainPage: function() {
@@ -239,7 +231,7 @@ const siteController = {
         this.htmlWriteTarget.innerHTML = this.htmlBuffer;
         this.ferrySortFunctionality();
     },
-    createTerminalsPage: async function(sortType) {
+    createTerminalsPage: async function() {
         this.htmlWriteTarget.innerHTML = '';
         this.htmlBuffer = `
             <div class="radio-sort">
