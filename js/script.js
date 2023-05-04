@@ -6,6 +6,8 @@ const siteController = {
     validTerminalIDs: null,
     htmlWriteTarget: document.querySelector('main#main'),
     onSiteCheck: null,
+    searchFunctionalityRunning: false,
+
     ferriesArray: null,
     terminalsArray: null,
     ferriesSearchArray: null,
@@ -62,6 +64,21 @@ const siteController = {
             scroll(0,0);
             this.createMainPage();
         }
+    },
+    searchFunctionality: function() {
+        this.searchFunctionalityRunning = true;
+        let searchField = document.getElementById('search-field');
+        let searchFieldInput = '';
+        let ferrySearchButton = document.getElementById('ferry-search-button');
+        let terminalSearchButton = document.getElementById('terminal-search-button');
+        ferrySearchButton.addEventListener('click', function() {
+            searchFieldInput = searchField.value;
+            window.location.href = `http://localhost/bcfarchive/#/search/f/${searchFieldInput}`;
+        });
+        terminalSearchButton.addEventListener('click', function() {
+            searchFieldInput = searchField.value;
+            window.location.href = `http://localhost/bcfarchive/#/search/t/${searchFieldInput}`;
+        });
     },
     createMainPage: function() {
         this.htmlWriteTarget.innerHTML = '';
