@@ -5,9 +5,7 @@ const siteController = {
     validFerryIDs: null,
     validTerminalIDs: null,
     htmlWriteTarget: document.querySelector('main#main'),
-    onSiteCheck: null,
     searchFunctionalityRunning: false,
-
     ferriesArray: null,
     terminalsArray: null,
     ferriesSearchArray: null,
@@ -29,6 +27,9 @@ const siteController = {
             });
     },
     router: async function() {
+        if (this.searchFunctionalityRunning === false) {
+            this.searchFunctionality();
+        };
         let capturedURL = window.location.href;
         if (capturedURL.includes('#')) {
             let urlHashPosition = capturedURL.indexOf('#')+2;
@@ -41,29 +42,35 @@ const siteController = {
                         this.createSingleFerryPage(capturedSingleFerryPageID);
                     } else {
                         this.create404();
-                    }
+                    };
                 } else {
                     this.createFerriesPage();
-                }
+                };
             } else if (capturedPageID.substring(0,9) === 'terminals') {
-                if (capturedPageID.substring(9).includes('t')) {
+                if (capturedPageID.substring(10).includes('t')) {
                     await this.captureValidTerminalIDs();
-                    let capturedSingleTerminalPageID = capturedPageID.substring(9);
+                    let capturedSingleTerminalPageID = capturedPageID.substring(10);
                     if (this.validTerminalIDs.includes(capturedSingleTerminalPageID)) {
                         this.createSingleTerminalPage(capturedSingleTerminalPageID);
                     } else {
                         this.create404();
-                    }
+                    };
                 } else {
                     this.createTerminalsPage();
                 }
-            } else if (this.onSiteCheck === false || this.onSiteCheck === null) {
-                this.createMainPage();
+            } else if (capturedPageID.substring(0,6) === 'search') {
+                if (capturedPageID.substring(7,8) === 'f') {
+                    let ferrySearchQuery = capturedPageID.substring(9);
+                    this.createFerriesSearchPage(ferrySearchQuery);
+                } else if (capturedPageID.substring(7,8) === 't') {
+                    let terminalSearchQuery = capturedPageID.substring(9);
+                    this.createTerminalsSearchPage(terminalSearchQuery);
+                };
             };
         } else {
             scroll(0,0);
             this.createMainPage();
-        }
+        };
     },
     searchFunctionality: function() {
         this.searchFunctionalityRunning = true;
