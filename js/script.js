@@ -303,7 +303,7 @@ const siteController = {
             this.ferriesSearchArray = responseJSON;
         });
     },
-    captrueTerminalsSearchArray: async function(searchQuery) {
+    captureTerminalsSearchArray: async function(searchQuery) {
         await fetch('./search-terminals.php', {
             method: "POST",
             body: JSON.stringify(searchQuery)
@@ -343,7 +343,7 @@ const siteController = {
     createTerminalsSearchPage: async function(searchQuery) {
         this.htmlWriteTarget.innerHTML = '';
         this.htmlBuffer = `<p>Terminal Search Results for '${searchQuery}':</p>`;
-        await this.captrueTerminalsSearchArray(searchQuery);
+        await this.captureTerminalsSearchArray(searchQuery);
         this.terminalsArray.forEach((terminal) => {
             this.htmlBuffer += `
                 <div class="single-terminal-card">
