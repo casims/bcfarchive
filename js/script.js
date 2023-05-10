@@ -72,6 +72,13 @@ const siteController = {
             this.createMainPage();
         };
     },
+    create404: function() {
+        this.htmlWriteTarget.innerHTML = '';
+        this.htmlBuffer = `
+            <h2>Error 404</h2>
+            <p>Sorry, page was not found.</p>`;
+        this.htmlWriteTarget.innerHTML = this.htmlBuffer;
+    },
     searchFunctionality: function() {
         this.searchFunctionalityRunning = true;
         let searchField = document.getElementById('search-field');
@@ -108,6 +115,7 @@ const siteController = {
                     <img src="media/terminalss-thumbnail.jpg" alt="">
                 </a>
             </section>`;
+        this.htmlWriteTarget.innerHTML = this.htmlBuffer;
     },
     captureFerriesArray: async function(sortType) {
         if (sortType) {
