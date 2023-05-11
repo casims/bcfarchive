@@ -181,7 +181,7 @@ const siteController = {
                 if (event.target.value !== prevSortRadioValue) {
                     terminalSortData[0] = event.target.value;
                     prevSortRadioValue = event.target.value;
-                    this.captureTerminalsArray(terminalSortData);
+                    siteController.captureTerminalsArray(terminalSortData);
                 }
             });
         };
@@ -190,7 +190,7 @@ const siteController = {
                 if (event.target.value !== prevOrderRadioValue) {
                     terminalSortData[0] = event.target.value;
                     prevOrderRadioValue = event.target.value;
-                    this.captureTerminalsArray(terminalSortData);
+                    siteController.captureTerminalsArray(terminalSortData);
                 }
             });
         };
