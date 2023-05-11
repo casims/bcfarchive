@@ -292,6 +292,7 @@ const siteController = {
             `;
         });
         this.htmlWriteTarget.innerHTML = this.htmlBuffer;
+        this.terminalSortFunctionality();
     },
     captureFerriesSearchArray: async function(searchQuery) {
         await fetch('./search-ferries.php', {
