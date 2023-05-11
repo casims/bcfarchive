@@ -10,7 +10,7 @@ if( mysqli_connect_errno() != 0 ){
 }
 
 $recievedData = file_get_contents('php://input');
-if ($recievedData) {
+if (!empty($recievedData)) {
     $processedData = json_decode($recievedData);
 
     $sortTypeArray = ['name', 'opened'];
@@ -21,17 +21,18 @@ if ($recievedData) {
     };
 
     $sortMethod = array(
-        "type" => $sortTypeArray[$processedData[0]]
+        "type" => $sortTypeArray[$processedData[0]],
+        "order" => $sortOrderArray[$processedData[1]]
     );
 
-    $terminalsDataQuery = `SELECT * FROM terminals ORDER BY $sortMethod["type"] $sortMethod["order"]`;
+    $terminalsDataQuery = `SELECT * FROM terminals ORDER BY $sortMethod[0] $sortMethod[1]`;
     $capturedTerminalsData = $mysqli->query($terminalsDataQuery);
     $processedTerminalsData = array();
         while ($singleTerminal = mysqli_fetch_assoc($capturedTerminalsData)) {
             $processedTerminalsData[] = $singleTerminal;
         };
 } else {
-    $terminalsDataQuery = "SELECT * FROM terminals ORDER BY years_active_start DESC";
+    $terminalsDataQuery = "SELECT * FROM terminals ORDER BY opened DESC";
     $capturedTerminalsData = $mysqli->query($terminalsDataQuery);
     $processedTerminalsData = array();
         while ($singleTerminal = mysqli_fetch_assoc($capturedTerminalsData)) {
