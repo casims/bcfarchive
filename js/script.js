@@ -98,11 +98,11 @@ const siteController = {
         this.htmlWriteTarget.innerHTML = '';
         this.htmlBuffer = `
             <section id="home-category-section">
-                <a href="/ferries/">
+                <a href="#/ferries/">
                     Ferries
                     <img src="media/ferries-thumbnail.jpg" alt="">
                 </a>
-                <a href="/terminals/">
+                <a href="#/terminals/">
                     Terminals
                     <img src="media/terminalss-thumbnail.jpg" alt="">
                 </a>
