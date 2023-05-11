@@ -20,12 +20,9 @@ if (!empty($recievedData)) {
         $processedData[0] = 2;
     };
 
-    $sortMethod = array(
-        "type" => $sortTypeArray[$processedData[0]],
-        "order" => $sortOrderArray[$processedData[1]]
-    );
+    $sortMethod = [$sortTypeArray[$processedData[0]], $sortOrderArray[$processedData[1]]];
 
-    $terminalsDataQuery = `SELECT * FROM terminals ORDER BY $sortMethod[0] $sortMethod[1]`;
+    $terminalsDataQuery = "SELECT * FROM terminals ORDER BY $sortMethod[0] $sortMethod[1]";
     $capturedTerminalsData = $mysqli->query($terminalsDataQuery);
     $processedTerminalsData = array();
         while ($singleTerminal = mysqli_fetch_assoc($capturedTerminalsData)) {
