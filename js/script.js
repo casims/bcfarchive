@@ -138,7 +138,7 @@ const siteController = {
                 if (event.target.value !== prevSortRadioValue) {
                     ferrySortData[0] = event.target.value;
                     prevSortRadioValue = event.target.value;
-                    this.captureFerriesArray(ferrySortData);
+                    siteController.captureFerriesArray(ferrySortData);
                 };
             });
         };
@@ -147,7 +147,7 @@ const siteController = {
                 if (event.target.value !== prevOrderRadioValue) {
                     ferrySortData[1] = event.target.value;
                     prevOrderRadioValue = event.target.value;
-                    this.captureFerriesArray(ferrySortData);
+                    siteController.captureFerriesArray(ferrySortData);
                 };
             });
         };
