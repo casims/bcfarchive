@@ -10,8 +10,7 @@ if( mysqli_connect_errno() != 0 ){
 }
 
 $recievedData = file_get_contents('php://input');
-
-if ($recievedData) {
+if (!empty($recievedData)) {
     $processedData = json_decode($recievedData);
 
     $sortTypeArray = ['name', 'class', 'years_active_start', 'years_active_end', 'horsepower', 'max_speed', 'length', 'displacement', 'vehicle_capacity', 'passenger_capacity'];
@@ -21,12 +20,9 @@ if ($recievedData) {
         $processedData[0] = 2;
     };
 
-    $sortMethod = array(
-        "type" => $sortTypeArray[$processedData[0]];
-        "order" => $sortTypeArray[$processedData[1]];
-    );
+    $sortMethod = [$sortTypeArray[$processedData[0]], $sortOrderArray[$processedData[1]]];
 
-    $ferriesDataQuery = `SELECT * FROM ferries ORDER BY $sortMethod["type"] $sortMethod["order"]`;
+    $ferriesDataQuery = "SELECT * FROM ferries ORDER BY $sortMethod[0] $sortMethod[1]";
     $capturedFerriesData = $mysqli->query($ferriesDataQuery);
     $processedFerriesData = array();
         while ($singleFerry = mysqli_fetch_assoc($capturedFerriesData)) {
