@@ -12,7 +12,7 @@
     $foundTerminalIDs = $mysqli->query($findTerminalIDs);
 
     while($row = mysqli_fetch_assoc($foundTerminalIDs)){
-        $foundTerminalIDsArray[] = $row;
+        $foundTerminalIDsArray[] = $row['page_id'];
     };
 
     echo json_encode($foundTerminalIDsArray);

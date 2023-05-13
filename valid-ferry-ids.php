@@ -12,7 +12,7 @@
     $foundFerryIDs = $mysqli->query($findFerryIDs);
 
     while($row = mysqli_fetch_assoc($foundFerryIDs)){
-        $foundFerryIDsArray[] = $row;
+        $foundFerryIDsArray[] = $row['page_id'];
     };
 
     echo json_encode($foundFerryIDsArray);
