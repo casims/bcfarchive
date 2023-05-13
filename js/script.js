@@ -475,6 +475,7 @@ const siteController = {
                 </tr>
             </table>
             <p>${this.singleTerminalObject.history}</p>`;
+        this.htmlWriteTarget.innerHTML = this.htmlBuffer;
     }
 };
 
