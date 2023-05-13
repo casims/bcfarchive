@@ -345,7 +345,7 @@ const siteController = {
         this.htmlWriteTarget.innerHTML = '';
         this.htmlBuffer = `<p>Terminal Search Results for '${searchQuery}':</p>`;
         await this.captureTerminalsSearchArray(searchQuery);
-        this.terminalsArray.forEach((terminal) => {
+        this.terminalsSearchArray.forEach((terminal) => {
             this.htmlBuffer += `
                 <div class="single-terminal-card">
                     <a href="#/terminals/${terminal.page_id}">
