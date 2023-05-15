@@ -5,6 +5,7 @@ const siteController = {
     validFerryIDs: null,
     validTerminalIDs: null,
     htmlWriteTarget: document.querySelector('main#main'),
+    htmlCardsWriteTarget: null,
     searchFunctionalityRunning: false,
     ferriesArray: null,
     terminalsArray: null,
@@ -139,6 +140,7 @@ const siteController = {
                     ferrySortData[0] = event.target.value;
                     prevSortRadioValue = event.target.value;
                     siteController.captureFerriesArray(ferrySortData);
+                    siteController.renderFerriesSort();
                 };
             });
         };
@@ -148,6 +150,7 @@ const siteController = {
                     ferrySortData[1] = event.target.value;
                     prevOrderRadioValue = event.target.value;
                     siteController.captureFerriesArray(ferrySortData);
+                    siteController.renderFerriesSort();
                 };
             });
         };
@@ -182,6 +185,7 @@ const siteController = {
                     terminalSortData[0] = event.target.value;
                     prevSortRadioValue = event.target.value;
                     siteController.captureTerminalsArray(terminalSortData);
+                    siteController.renderTerminalsSort();
                 }
             });
         };
@@ -191,6 +195,7 @@ const siteController = {
                     terminalSortData[0] = event.target.value;
                     prevOrderRadioValue = event.target.value;
                     siteController.captureTerminalsArray(terminalSortData);
+                    siteController.renderTerminalsSort();
                 }
             });
         };
@@ -198,7 +203,7 @@ const siteController = {
     createFerriesPage: async function() {
         this.htmlWriteTarget.innerHTML = '';
         this.htmlBuffer = `
-            <div class="radio-sort">
+            <section class="radio-sort">
                 <form name="ferrySortRadio">
                     <p>Sort By:</p>
                     <input type="radio" id="name" name="ferrySort" value="0">
@@ -230,12 +235,13 @@ const siteController = {
                     <input type="radio" id="descending" name="ferrySortOrder" value="0" checked>
                     <label for="descending">Descending</label>
                 </form>
-            </div>
+            </section>
+            <section id="ferry-cards">
         `;
         await this.captureFerriesArray();
         this.ferriesArray.forEach((ferry) => {
             this.htmlBuffer += `
-                <div class="single-ferry-card">
+                <article class="single-ferry-card">
                     <a href="#/ferries/${ferry.page_id}">
                         <p class="single-ferry-card-name">${ferry.name}</p>
                         <p class="single-ferry-card-class">${ferry.class}</p>
@@ -251,10 +257,13 @@ const siteController = {
                         <p class="single-ferry-card-passenger-capacity">${ferry.passenger_capacity}</p>
                         <img class="single-ferry-card-image" src="${ferry.thumbnail}" alt="${ferry.thumbnail_alt}">
                     </a>
-                </div>
+                </article>
             `;
         });
+            this.htmlBuffer += `
+            </section>`;
         this.htmlWriteTarget.innerHTML = this.htmlBuffer;
+        this.htmlCardsWriteTarget = document.querySelector('section#ferry-cards');
         this.ferrySortFunctionality();
     },
     createTerminalsPage: async function() {
@@ -293,6 +302,47 @@ const siteController = {
         });
         this.htmlWriteTarget.innerHTML = this.htmlBuffer;
         this.terminalSortFunctionality();
+    },
+    renderFerriesSort: function() {
+        this.htmlBuffer = '';
+        this.ferriesArray.forEach((ferry) => {
+            this.htmlBuffer += `
+                <article class="single-ferry-card">
+                    <a href="#/ferries/${ferry.page_id}">
+                        <p class="single-ferry-card-name">${ferry.name}</p>
+                        <p class="single-ferry-card-class">${ferry.class}</p>
+                        <p class="single-ferry-card-status">${ferry.status}</p>
+                        <p class="single-ferry-card-years-active-start">${ferry.years_active_start}</p>
+                        <p class="single-ferry-card-years-active-end">${ferry.years_active_end}</p>
+                        <p class="single-ferry-card-current-route">${ferry.current_route}</p>
+                        <p class="single-ferry-card-horsepower">${ferry.horsepower}</p>
+                        <p class="single-ferry-card-max-speed">${ferry.max_speed}</p>
+                        <p class="single-ferry-card-length">${ferry.length}</p>
+                        <p class="single-ferry-card-displacement">${ferry.displacement}</p>
+                        <p class="single-ferry-card-vehicle-capacity">${ferry.vehicle_capacity}</p>
+                        <p class="single-ferry-card-passenger-capacity">${ferry.passenger_capacity}</p>
+                        <img class="single-ferry-card-image" src="${ferry.thumbnail}" alt="${ferry.thumbnail_alt}">
+                    </a>
+                </article>
+            `;
+        });
+        this.htmlCardsWriteTarget.innerHTML = this.htmlBuffer;
+    },
+    renderTerminalsSort: function() {
+        this.htmlBuffer = '';
+        this.terminalsArray.forEach((terminal) => {
+            this.htmlBuffer += `
+                <div class="single-terminal-card">
+                    <a href="#/terminals/${terminal.page_id}">
+                        <p class="single-terminal-card-name">${terminal.name}</p>
+                        <p class="single-terminal-card-opened">${terminal.opened}</p>
+                        <p class="single-terminal-card-address">${terminal.address}</p>
+                        <img class="single-terminal-card-image" src="${terminal.picture}" alt="${terminal.picture_alt}">
+                    </a>
+                </div>
+            `;
+        });
+        this.htmlCardsWriteTarget.innerHTML = this.htmlBuffer;
     },
     captureFerriesSearchArray: async function(searchQuery) {
         await fetch('./search-ferries.php', {
