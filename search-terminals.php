@@ -11,9 +11,9 @@ if( mysqli_connect_errno() != 0 ){
 
 $recievedData = file_get_contents('php://input');
 
-if ($recievedData) {
+if (!empty($recievedData)) {
     $processedData = json_decode($recievedData);
-    $terminalsDataQuery = `SELECT * FROM terminals WHERE name LIKE '%$processedData%'`;
+    $terminalsDataQuery = "SELECT * FROM terminals WHERE name LIKE '%$processedData%'";
     $capturedTerminalsData = $mysqli->query($terminalsDataQuery);
     $processedTerminalsData = array();
         while ($singleTerminal = mysqli_fetch_assoc($capturedTerminalsData)) {
