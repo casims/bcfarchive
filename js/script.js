@@ -246,8 +246,7 @@ const siteController = {
                         <p class="single-ferry-card-name">${ferry.name}</p>
                         <p class="single-ferry-card-class">${ferry.class}</p>
                         <p class="single-ferry-card-status">${ferry.status}</p>
-                        <p class="single-ferry-card-years-active-start">${ferry.years_active_start}</p>
-                        <p class="single-ferry-card-years-active-end">${ferry.years_active_end}</p>
+                        <p class="single-ferry-card-years-active">${ferry.years_active_start} - ${ferry.years_active_end}</p>
                         <p class="single-ferry-card-current-route">${ferry.current_route}</p>
                         <p class="single-ferry-card-horsepower">${ferry.horsepower}</p>
                         <p class="single-ferry-card-max-speed">${ferry.max_speed}</p>
@@ -312,8 +311,7 @@ const siteController = {
                         <p class="single-ferry-card-name">${ferry.name}</p>
                         <p class="single-ferry-card-class">${ferry.class}</p>
                         <p class="single-ferry-card-status">${ferry.status}</p>
-                        <p class="single-ferry-card-years-active-start">${ferry.years_active_start}</p>
-                        <p class="single-ferry-card-years-active-end">${ferry.years_active_end}</p>
+                        <p class="single-ferry-card-years-active">${ferry.years_active_start} - ${ferry.years_active_end}</p>
                         <p class="single-ferry-card-current-route">${ferry.current_route}</p>
                         <p class="single-ferry-card-horsepower">${ferry.horsepower}</p>
                         <p class="single-ferry-card-max-speed">${ferry.max_speed}</p>
@@ -321,7 +319,7 @@ const siteController = {
                         <p class="single-ferry-card-displacement">${ferry.displacement}</p>
                         <p class="single-ferry-card-vehicle-capacity">${ferry.vehicle_capacity}</p>
                         <p class="single-ferry-card-passenger-capacity">${ferry.passenger_capacity}</p>
-                        <img class="single-ferry-card-image" src="${ferry.thumbnail}" alt="${ferry.thumbnail_alt}">
+                        <img class="single-ferry-card-image" src="${ferry.picture}" alt="${ferry.picture_alt}">
                     </a>
                 </article>
             `;
@@ -375,8 +373,7 @@ const siteController = {
                         <p class="single-ferry-card-name">${ferry.name}</p>
                         <p class="single-ferry-card-class">${ferry.class}</p>
                         <p class="single-ferry-card-status">${ferry.status}</p>
-                        <p class="single-ferry-card-years-active-start">${ferry.years_active_start}</p>
-                        <p class="single-ferry-card-years-active-end">${ferry.years_active_end}</p>
+                        <p class="single-ferry-card-years-active">${ferry.years_active_start} - ${ferry.years_active_end}</p>
                         <p class="single-ferry-card-current-route">${ferry.current_route}</p>
                         <p class="single-ferry-card-horsepower">${ferry.horsepower}</p>
                         <p class="single-ferry-card-max-speed">${ferry.max_speed}</p>
