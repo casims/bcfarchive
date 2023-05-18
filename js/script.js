@@ -255,7 +255,7 @@ const siteController = {
                         <p class="single-ferry-card-displacement">${ferry.displacement}</p>
                         <p class="single-ferry-card-vehicle-capacity">${ferry.vehicle_capacity}</p>
                         <p class="single-ferry-card-passenger-capacity">${ferry.passenger_capacity}</p>
-                        <img class="single-ferry-card-image" src="${ferry.thumbnail}" alt="${ferry.thumbnail_alt}">
+                        <img class="single-ferry-card-image" src="${ferry.picture}" alt="${ferry.picture_alt}">
                     </a>
                 </article>
             `;
@@ -384,7 +384,7 @@ const siteController = {
                         <p class="single-ferry-card-displacement">${ferry.displacement}</p>
                         <p class="single-ferry-card-vehicle-capacity">${ferry.vehicle_capacity}</p>
                         <p class="single-ferry-card-passenger-capacity">${ferry.passenger_capacity}</p>
-                        <img class="single-ferry-card-image" src="${ferry.thumbnail}" alt="${ferry.thumbnail_alt}">
+                        <img class="single-ferry-card-image" src="${ferry.picture}" alt="${ferry.picture_alt}">
                     </a>
                 </div>
             `;
@@ -440,7 +440,7 @@ const siteController = {
                 </tr>
                 <tr>
                     <th>Picture</th>
-                    <td> <img src="${this.singleFerryObject.thumbnail}" alt="${this.singleFerryObject.thumbnail_alt}"></td>
+                    <td> <img src="${this.singleFerryObject.picture}" alt="${this.singleFerryObject.picture_alt}"></td>
                 </tr>
                 <tr>
                     <th>Class</th>
@@ -509,7 +509,7 @@ const siteController = {
                 </tr>
                 <tr>
                     <th>Picture</th>
-                    <td> <img src="${this.singleTerminalObject.picture}" alt=""></td>
+                    <td> <img src="${this.singleTerminalObject.picture}" alt="${this.singleTerminalObject.picture_alt}"></td>
                 </tr>
                 <tr>
                     <th>Address</th>
