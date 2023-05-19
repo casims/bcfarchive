@@ -437,7 +437,8 @@ const siteController = {
                 </tr>
                 <tr>
                     <th>Picture</th>
-                    <td> <img src="${this.singleFerryObject.picture}" alt="${this.singleFerryObject.picture_alt}"></td>
+                    <td><img src="${this.singleFerryObject.picture}" alt="${this.singleFerryObject.picture_alt}"><a href="${this.singleFerryObject.picture_alt}">Image Source</a></td>
+                    
                 </tr>
                 <tr>
                     <th>Class</th>
@@ -506,7 +507,7 @@ const siteController = {
                 </tr>
                 <tr>
                     <th>Picture</th>
-                    <td> <img src="${this.singleTerminalObject.picture}" alt="${this.singleTerminalObject.picture_alt}"></td>
+                    <td> <img src="${this.singleTerminalObject.picture}" alt="${this.singleTerminalObject.picture_alt}"><a href="${this.singleTerminalObject.picture_alt}">Image Source</a></td>
                 </tr>
                 <tr>
                     <th>Address</th>
