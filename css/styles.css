@@ -1,7 +1,7 @@
 body {
   display: grid;
   grid-template-columns: 1rem auto 1rem;
-  grid-template-rows: 10rem auto 4rem;
+  grid-template-rows: 5rem auto 3rem;
   grid-template-areas: "h h h" ". m ." "f f f";
 }
 
@@ -15,6 +15,14 @@ main {
 
 footer {
   grid-area: f;
+}
+
+header {
+  display: flex;
+}
+
+#search-field {
+  display: block;
 }
 
 /*# sourceMappingURL=styles.css.map */
