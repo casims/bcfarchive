@@ -1,0 +1,21 @@
+body {
+    display: grid;
+    grid-template-columns: 1rem auto 1rem;
+    grid-template-rows: 10rem auto 4rem;
+    grid-template-areas: 
+        "h h h"
+        ". m ."
+        "f f f";
+};
+
+header {
+    grid-area: h;
+};
+
+main {
+    grid-area: m;
+};
+
+footer {
+    grid-area: f;
+};
