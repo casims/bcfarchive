@@ -1,7 +1,41 @@
+@use 'variables' as *;
+
 header {
-display: flex;
+    background-color: $dark-blue;
+    padding: 0rem 1rem;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    a {
+        color: $white;
+        text-decoration: none;
+    };
+    button {
+        background-color: none;
+        background: none;
+        border: none;
+        svg {
+            height: 2rem;
+            width: 2rem;
+            path {
+                fill: $white;
+            }
+        };
+    };
+    nav {
+        width: 100%;
+    }
 };
 
 #search-field {
     display: block;
+};
+
+h1 {
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    font-style: italic;
+    color: $white;
+    display: inline;
 };
