@@ -10,6 +10,8 @@ body {
 
 header {
     grid-area: h;
+    height: 5rem;
+    z-index: 99;
 };
 
 main {

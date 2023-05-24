@@ -6,7 +6,7 @@ const siteController = {
     validTerminalIDs: null,
     htmlWriteTarget: document.querySelector('main#main'),
     htmlCardsWriteTarget: null,
-    searchFunctionalityRunning: false,
+    navFunctionalityRunning: false,
     ferriesArray: null,
     terminalsArray: null,
     ferriesSearchArray: null,
@@ -28,8 +28,8 @@ const siteController = {
             });
     },
     router: async function() {
-        if (this.searchFunctionalityRunning === false) {
-            this.searchFunctionality();
+        if (this.navFunctionalityRunning === false) {
+            this.navFunctionality();
         };
         let capturedURL = window.location.href;
         if (capturedURL.includes('#')) {
@@ -80,12 +80,23 @@ const siteController = {
             <p>Sorry, page was not found.</p>`;
         this.htmlWriteTarget.innerHTML = this.htmlBuffer;
     },
-    searchFunctionality: function() {
-        this.searchFunctionalityRunning = true;
+    navFunctionality: function() {
+        this.navFunctionalityRunning = true;
         let searchField = document.getElementById('search-field');
         let searchFieldInput = '';
         let ferrySearchButton = document.getElementById('ferry-search-button');
         let terminalSearchButton = document.getElementById('terminal-search-button');
+        let menuExpandButton = document.getElementById('nav-menu-button');
+        let menuExpanded = false;
+        menuExpandButton.addEventListener('click', function() {
+            if (menuExpanded === false) {
+                document.getElementById('header').style.height = '20rem';
+                menuExpanded = true;
+            } else {
+                document.getElementById('header').style.height = '5rem';
+                menuExpanded = false;
+            };
+        });
         ferrySearchButton.addEventListener('click', function() {
             searchFieldInput = searchField.value;
             window.location.href = `http://localhost/bcfarchive/#/search/f/${searchFieldInput}`;
