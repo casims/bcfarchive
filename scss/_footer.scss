@@ -1,0 +1,16 @@
+@use 'variables' as *;
+
+footer {
+    background-color: $dark-blue;
+    color: $white;
+    text-align: center;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    padding: 1.2rem;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    p {
+        margin: 0;
+    };
+};

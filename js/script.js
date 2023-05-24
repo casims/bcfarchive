@@ -90,7 +90,7 @@ const siteController = {
         let menuExpanded = false;
         menuExpandButton.addEventListener('click', function() {
             if (menuExpanded === false) {
-                document.getElementById('header').style.height = '20rem';
+                document.getElementById('header').style.height = '14rem';
                 menuExpanded = true;
             } else {
                 document.getElementById('header').style.height = '5rem';
