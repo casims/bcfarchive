@@ -5,12 +5,14 @@ footer {
     color: $white;
     text-align: center;
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-    padding: 1.2rem;
-    position: fixed;
-    left: 0;
-    bottom: 0;
+    padding: 1rem;
     width: 100%;
+    margin-top: auto;
     p {
         margin: 0;
+        font-size: 0.8rem;
+        a {
+            color: $white;
+        };
     };
 };

@@ -93,7 +93,7 @@ const siteController = {
                 document.getElementById('header').style.height = '14rem';
                 menuExpanded = true;
             } else {
-                document.getElementById('header').style.height = '5rem';
+                document.getElementById('header').style.height = '4rem';
                 menuExpanded = false;
             };
         });

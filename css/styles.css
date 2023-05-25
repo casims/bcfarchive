@@ -1,21 +1,31 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;1,600;1,700&display=swap");
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 main {
   padding: 0 1rem;
 }
 
 header {
   background-color: #003366;
-  height: 5rem;
+  height: 4rem;
   padding: 0rem 1rem;
   overflow: hidden;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  transition: height 0.2s ease;
 }
 header h1, header button {
-  max-height: 5rem;
+  max-height: 4rem;
 }
-header a {
+header h1 {
+  margin: 0.8rem 0;
+}
+header h1 a {
   color: #FFFFFF;
   text-decoration: none;
 }
@@ -47,16 +57,19 @@ header nav ul li {
   font-style: italic;
   font-size: 1.6rem;
   border-bottom: 2px solid #003366;
+  transition: all 0.5s ease;
 }
 header nav ul li :hover {
   background-color: #FFFFFF;
+  color: #003366;
 }
 header nav ul li a {
   color: #0079A5;
   display: block;
   padding: 0.5rem 1rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
 }
-
 #search-field {
   display: block;
 }
@@ -74,14 +87,16 @@ footer {
   color: #FFFFFF;
   text-align: center;
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  padding: 1.2rem;
-  position: fixed;
-  left: 0;
-  bottom: 0;
+  padding: 1rem;
   width: 100%;
+  margin-top: auto;
 }
 footer p {
   margin: 0;
+  font-size: 0.8rem;
+}
+footer p a {
+  color: #FFFFFF;
 }
 
 /*# sourceMappingURL=styles.css.map */
