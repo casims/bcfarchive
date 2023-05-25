@@ -129,4 +129,34 @@ footer p a {
   color: #FFFFFF;
 }
 
+#home-info-section {
+  background-color: #F2F2F2;
+  color: red;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  padding: 0.6rem;
+  margin-top: 1rem;
+  border-radius: 10px;
+}
+#home-info-section #home-info-header {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  position: relative;
+}
+#home-info-section #home-info-header::after {
+  content: "";
+  height: 2px;
+  background-color: red;
+  margin: 0 auto;
+  position: absolute;
+  bottom: -0.6rem;
+  left: 0;
+  right: 0;
+}
+#home-info-section p {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1rem;
+}
+
 /*# sourceMappingURL=styles.css.map */
