@@ -2,18 +2,20 @@
 
 header {
     background-color: $dark-blue;
-    height: 4rem;
-    padding: 0rem 1rem;
     overflow: hidden;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    transition: height 0.2s ease;
     h1, button {
         max-height: 4rem;
     }
     h1 {
         margin: 0.8rem 0;
+        font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+        font-weight: 700;
+        font-style: italic;
+        color: $white;
+        display: inline;
         a {
             color: $white;
             text-decoration: none;
@@ -33,8 +35,10 @@ header {
     };
     nav {
         width: 100vw;
+        height: 0rem;
         margin: 0 calc(50% - 50vw);
         background-color: $light-grey;
+        transition: height 0.2s ease;
         ul {
             list-style: none;
             margin: 0;
@@ -56,23 +60,45 @@ header {
                     padding: 0.5rem 1rem;
                     text-decoration: none;
                     transition: all 0.2s ease;
-                    :hover {
-                        
-                    }
+                };
+            };
+        };
+        .search-section {
+            padding: 0 1rem;
+            #search-field {
+                display: block;
+                width: 100%;
+                margin: 0.8rem 0 0;
+                border-radius: 4px;
+                font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+                font-size: 1rem;
+                padding: 0.3rem 0.6rem;
+            };
+            #search-button-container {
+                display: flex;
+                justify-content: space-between;
+                button {
+                    background-color: $light-blue;
+                    border-radius: 4px;
+                    padding: 0.4rem;
+                    margin: 0.5rem 0;
+                    width: 49%;
+                    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+                    font-size: 0.9rem;
+                    color: $white;
+                    transition: all 0.2s ease;
+                };
+                :hover {
+                    background-color: $dark-blue;
                 };
             };
         };
     };
-};
-
-#search-field {
-    display: block;
-};
-
-h1 {
-    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-    font-weight: 700;
-    font-style: italic;
-    color: $white;
-    display: inline;
+    #header-bottom {
+        background-color: $dark-blue;
+        width: 100vw;
+        height: 0.4rem;
+        margin: 0 calc(50% - 50vw);
+        border-top: 2px solid $light-grey;
+    };
 };

@@ -5,25 +5,27 @@ body {
   flex-direction: column;
 }
 
-main {
+header, main, footer {
   padding: 0 1rem;
 }
 
 header {
   background-color: #003366;
-  height: 4rem;
-  padding: 0rem 1rem;
   overflow: hidden;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  transition: height 0.2s ease;
 }
 header h1, header button {
   max-height: 4rem;
 }
 header h1 {
   margin: 0.8rem 0;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  color: #FFFFFF;
+  display: inline;
 }
 header h1 a {
   color: #FFFFFF;
@@ -43,8 +45,10 @@ header button svg path {
 }
 header nav {
   width: 100vw;
+  height: 0rem;
   margin: 0 calc(50% - 50vw);
   background-color: #F2F2F2;
+  transition: height 0.2s ease;
 }
 header nav ul {
   list-style: none;
@@ -70,16 +74,42 @@ header nav ul li a {
   text-decoration: none;
   transition: all 0.2s ease;
 }
-#search-field {
-  display: block;
+header nav .search-section {
+  padding: 0 1rem;
 }
-
-h1 {
+header nav .search-section #search-field {
+  display: block;
+  width: 100%;
+  margin: 0.8rem 0 0;
+  border-radius: 4px;
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  font-weight: 700;
-  font-style: italic;
+  font-size: 1rem;
+  padding: 0.3rem 0.6rem;
+}
+header nav .search-section #search-button-container {
+  display: flex;
+  justify-content: space-between;
+}
+header nav .search-section #search-button-container button {
+  background-color: #0079A5;
+  border-radius: 4px;
+  padding: 0.4rem;
+  margin: 0.5rem 0;
+  width: 49%;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-size: 0.9rem;
   color: #FFFFFF;
-  display: inline;
+  transition: all 0.2s ease;
+}
+header nav .search-section #search-button-container :hover {
+  background-color: #003366;
+}
+header #header-bottom {
+  background-color: #003366;
+  width: 100vw;
+  height: 0.4rem;
+  margin: 0 calc(50% - 50vw);
+  border-top: 2px solid #F2F2F2;
 }
 
 footer {
@@ -87,12 +117,12 @@ footer {
   color: #FFFFFF;
   text-align: center;
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  padding: 1rem;
   width: 100%;
   margin-top: auto;
 }
 footer p {
   margin: 0;
+  padding: 0.4rem 0;
   font-size: 0.8rem;
 }
 footer p a {

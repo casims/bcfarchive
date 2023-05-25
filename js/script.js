@@ -90,10 +90,10 @@ const siteController = {
         let menuExpanded = false;
         menuExpandButton.addEventListener('click', function() {
             if (menuExpanded === false) {
-                document.getElementById('header').style.height = '14rem';
+                document.getElementById('nav').style.height = '11.6rem';
                 menuExpanded = true;
             } else {
-                document.getElementById('header').style.height = '4rem';
+                document.getElementById('nav').style.height = '0rem';
                 menuExpanded = false;
             };
         });
