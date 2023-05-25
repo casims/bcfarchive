@@ -35,6 +35,7 @@ header button {
   background-color: none;
   background: none;
   border: none;
+  cursor: pointer;
 }
 header button svg {
   height: 2rem;
@@ -100,6 +101,7 @@ header nav .search-section #search-button-container button {
   font-size: 0.9rem;
   color: #FFFFFF;
   transition: all 0.2s ease;
+  cursor: pointer;
 }
 header nav .search-section #search-button-container :hover {
   background-color: #003366;
