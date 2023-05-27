@@ -114,16 +114,14 @@ const siteController = {
                 <p>This site has absolutely no affiliation whatsoever with BC Ferries/British Columbia Ferry Services Inc..  This is merely a fan site.  Being as such, much of the information here may be out of date.  Better resources with more up to date/accurate information can be found on the credits page.</p>
             </section>
             <section id="home-category-section">
-                <div id="home-ferry-category-card">
+                <div class="category-card" id="ferry-cat-card">
                     <a href="#/ferries/">
                         Ferries
-                        <img src="media/ferries-thumbnail.jpg" alt="">
                     </a>
                 </div>
-                <div id="home-terminal-category-card">
+                <div class="category-card" id="terminal-cat-card">
                     <a href="#/terminals/">
                         Terminals
-                        <img src="media/terminals-thumbnail.jpg" alt="">
                     </a>
                 </div>
             </section>`;
