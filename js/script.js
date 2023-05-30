@@ -172,6 +172,17 @@ const siteController = {
                 };
             });
         };
+        let sortExpandButton = document.getElementById('ferry-sort-button-expand');
+        let sortExpanded = false;
+        sortExpandButton.addEventListener('click', function() {
+            if (sortExpanded === false) {
+                sortExpanded = true;
+                document.getElementById('ferry-sort-section').style.height = "29.8rem";
+            } else if (sortExpanded === true) {
+                sortExpanded = false;
+                document.getElementById('ferry-sort-section').style.height = "2.9rem";
+            };
+        });
     },
     captureTerminalsArray: async function(sortType) {
         if (sortType) {
@@ -217,14 +228,25 @@ const siteController = {
                 }
             });
         };
+        let sortExpandButton = document.getElementById('terminal-sort-button-expand');
+        let sortExpanded = false;
+        sortExpandButton.addEventListener('click', function() {
+            if (sortExpanded === false) {
+                sortExpanded = true;
+                document.getElementById('terminal-sort-section').style.height = "13.5rem";
+            } else if (sortExpanded === true) {
+                sortExpanded = false;
+                document.getElementById('terminal-sort-section').style.height = "2.9rem";
+            };
+        });
     },
     createFerriesPage: async function() {
         this.htmlWriteTarget.innerHTML = '';
         this.htmlBuffer = `
-            <section class="radio-sort">
+            <section class="radio-sort" id="ferry-sort-section">
                 <div class="radio-sort-header">
                     <p>Sort</p>
-                    <button class="sort-expand">
+                    <button class="sort-expand" id="ferry-sort-button-expand">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6 18h-2v5h-2v-5h-2v-3h6v3zm-2-17h-2v12h2v-12zm11 7h-6v3h2v12h2v-12h2v-3zm-2-7h-2v5h2v-5zm11 14h-6v3h2v5h2v-5h2v-3zm-2-14h-2v12h2v-12z"/></svg>
                     </button>
                 </div>
@@ -320,21 +342,39 @@ const siteController = {
     createTerminalsPage: async function() {
         this.htmlWriteTarget.innerHTML = '';
         this.htmlBuffer = `
-            <div class="radio-sort">
+            <div class="radio-sort" id="terminal-sort-section">
+                <div class="radio-sort-header">
+                    <p>Sort</p>
+                    <button class="sort-expand" id="terminal-sort-button-expand">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6 18h-2v5h-2v-5h-2v-3h6v3zm-2-17h-2v12h2v-12zm11 7h-6v3h2v12h2v-12h2v-3zm-2-7h-2v5h2v-5zm11 14h-6v3h2v5h2v-5h2v-3zm-2-14h-2v12h2v-12z"/></svg>
+                    </button>
+                </div>
                 <form name="terminalSortRadio">
                     <p>Sort By:</p>
-                    <input type="radio" id="name" name="terminalSort" value="0">
-                    <label for="name">Name</label>
-                    <input type="radio" id="opened" name="terminalSort" value="1" checked>
-                    <label for="opened">Opened</label>
+                    <div class="sort-by-radio-container">
+                        <div class="radio-option-wrapper">
+                            <input type="radio" id="name" name="terminalSort" value="0">
+                            <label for="name">Name</label>
+                        </div>
+                        <div class="radio-option-wrapper">
+                            <input type="radio" id="opened" name="terminalSort" value="1" checked>
+                            <label for="opened">Opened</label>
+                        </div>
+                    </div>
                 </form>
 
                 <form name="terminalSortOrderRadio">
                     <p>Sort Order:</p>
-                    <input type="radio" id="ascending" name="terminalSortOrder" value="1">
-                    <label for="ascending">Ascending</label>
-                    <input type="radio" id="descending" name="terminalSortOrder" value="0" checked>
-                    <label for="descending">Descending</label>
+                    <div class="sort-order-radio-container">
+                        <div class="radio-option-wrapper">
+                            <input type="radio" id="ascending" name="terminalSortOrder" value="1">
+                            <label for="ascending">Ascending</label>
+                        </div>
+                        <div class="radio-option-wrapper">
+                            <input type="radio" id="descending" name="terminalSortOrder" value="0" checked>
+                            <label for="descending">Descending</label>
+                        </div>
+                    </div>
                 </form>
             </div>
         `;
