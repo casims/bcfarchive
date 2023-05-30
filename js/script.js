@@ -114,6 +114,7 @@ const siteController = {
                 <p>This site has absolutely no affiliation whatsoever with BC Ferries/British Columbia Ferry Services Inc..  This is merely a fan site.  Being as such, much of the information here may be out of date.  Better resources with more up to date/accurate information can be found on the credits page.</p>
             </section>
             <section id="home-category-section">
+                <h2>Categories</h2>
                 <div class="category-card" id="ferry-cat-card">
                     <a href="#/ferries/">
                         Ferries
@@ -221,36 +222,70 @@ const siteController = {
         this.htmlWriteTarget.innerHTML = '';
         this.htmlBuffer = `
             <section class="radio-sort">
+                <div class="radio-sort-header">
+                    <p>Sort</p>
+                    <button class="sort-expand">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6 18h-2v5h-2v-5h-2v-3h6v3zm-2-17h-2v12h2v-12zm11 7h-6v3h2v12h2v-12h2v-3zm-2-7h-2v5h2v-5zm11 14h-6v3h2v5h2v-5h2v-3zm-2-14h-2v12h2v-12z"/></svg>
+                    </button>
+                </div>
                 <form name="ferrySortRadio">
                     <p>Sort By:</p>
-                    <input type="radio" id="name" name="ferrySort" value="0">
-                    <label for="name">Name</label>
-                    <input type="radio" id="class" name="ferrySort" value="1">
-                    <label for="class">Class</label>
-                    <input type="radio" id="years-active-start" name="ferrySort" value="2" checked>
-                    <label for="years-active-start">Year Deployed</label>
-                    <input type="radio" id="years-active-end" name="ferrySort" value="3">
-                    <label for="years-active-end">Year Retired</label>
-                    <input type="radio" id="horsepower" name="ferrySort" value="4">
-                    <label for="horsepower">Horsepower</label>
-                    <input type="radio" id="max-speed" name="ferrySort" value="5">
-                    <label for="max-speed">Max Speed</label>
-                    <input type="radio" id="length" name="ferrySort" value="6">
-                    <label for="length">Length</label>
-                    <input type="radio" id="displacement" name="ferrySort" value="7">
-                    <label for="displacement">Displacement</label>
-                    <input type="radio" id="vehicle-capacity" name="ferrySort" value="8">
-                    <label for="vehicle-capacity">Vehicle Capacity</label>
-                    <input type="radio" id="passenger-capacity" name="ferrySort" value="9">
-                    <label for="passenger-capacity">Passenger Capacity</label>
+                    <div class="sort-by-radio-container">
+                        <div class="radio-option-wrapper">
+                            <input type="radio" id="name" name="ferrySort" value="0">
+                            <label for="name">Name</label>
+                        </div>
+                        <div class="radio-option-wrapper">
+                            <input type="radio" id="class" name="ferrySort" value="1">
+                            <label for="class">Class</label>
+                        </div>
+                        <div class="radio-option-wrapper">
+                            <input type="radio" id="years-active-start" name="ferrySort" value="2" checked>
+                            <label for="years-active-start">Year Deployed</label>
+                        </div>    
+                        <div class="radio-option-wrapper">
+                            <input type="radio" id="years-active-end" name="ferrySort" value="3">
+                            <label for="years-active-end">Year Retired</label>
+                        </div>
+                        <div class="radio-option-wrapper">
+                            <input type="radio" id="horsepower" name="ferrySort" value="4">
+                            <label for="horsepower">Horsepower</label>
+                        </div>
+                        <div class="radio-option-wrapper">
+                            <input type="radio" id="max-speed" name="ferrySort" value="5">
+                            <label for="max-speed">Max Speed</label>
+                        </div>
+                        <div class="radio-option-wrapper">
+                            <input type="radio" id="length" name="ferrySort" value="6">
+                            <label for="length">Length</label>
+                        </div>
+                        <div class="radio-option-wrapper">
+                            <input type="radio" id="displacement" name="ferrySort" value="7">
+                            <label for="displacement">Displacement</label>
+                        </div>
+                        <div class="radio-option-wrapper">
+                            <input type="radio" id="vehicle-capacity" name="ferrySort" value="8">
+                            <label for="vehicle-capacity">Vehicle Capacity</label>
+                        </div>
+                        <div class="radio-option-wrapper">
+                            <input type="radio" id="passenger-capacity" name="ferrySort" value="9">
+                            <label for="passenger-capacity">Passenger Capacity</label>
+                        </div>
+                    </div>
                 </form>
 
                 <form name="ferrySortOrderRadio">
                     <p>Sort Order:</p>
-                    <input type="radio" id="ascending" name="ferrySortOrder" value="1">
-                    <label for="ascending">Ascending</label>
-                    <input type="radio" id="descending" name="ferrySortOrder" value="0" checked>
-                    <label for="descending">Descending</label>
+                    <div class="sort-order-radio-container">
+                        <div class="radio-option-wrapper">
+                            <input type="radio" id="ascending" name="ferrySortOrder" value="1">
+                            <label for="ascending">Ascending</label>
+                        </div>
+                        <div class="radio-option-wrapper">
+                            <input type="radio" id="descending" name="ferrySortOrder" value="0" checked>
+                            <label for="descending">Descending</label>
+                        </div>
+                    </div>
                 </form>
             </section>
             <section id="ferry-cards">

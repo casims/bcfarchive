@@ -201,4 +201,64 @@ footer p a {
   color: #003366;
 }
 
+.radio-sort {
+  background-color: #F2F2F2;
+  margin-top: 1rem;
+  padding: 0.8rem;
+  border-radius: 5px;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+}
+.radio-sort .radio-sort-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  position: relative;
+  margin-bottom: 1.3rem;
+}
+.radio-sort .radio-sort-header p {
+  margin: 0;
+}
+.radio-sort .radio-sort-header button {
+  background-color: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+.radio-sort form {
+  position: relative;
+}
+.radio-sort form p {
+  margin: 1rem 0 0.4rem;
+  font-size: 0.9rem;
+}
+.radio-sort form p::before {
+  content: "";
+  height: 1px;
+  background-color: #d8d8d8;
+  margin: 0 auto;
+  position: absolute;
+  top: -0.4rem;
+  left: -0.8rem;
+  right: -0.8rem;
+}
+.radio-sort form .radio-option-wrapper {
+  background-color: #0079A5;
+  color: white;
+  padding: 0.4rem;
+  margin-bottom: 0.2rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+.radio-sort form .sort-order-radio-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.radio-sort form .sort-order-radio-container .radio-option-wrapper {
+  width: 49%;
+}
+
 /*# sourceMappingURL=styles.css.map */

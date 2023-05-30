@@ -1,0 +1,61 @@
+@use 'variables' as *;
+
+.radio-sort {
+    background-color: $light-grey;
+    margin-top: 1rem;
+    padding: .8rem;
+    border-radius: 5px;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    .radio-sort-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.1rem;
+        font-weight: 600;
+        position: relative;
+        margin-bottom: 1.3rem;
+        p {
+            margin: 0;
+        };
+        button {
+            background-color: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        };
+    };
+    form {
+        position: relative;
+        p {
+            margin: 1rem 0 0.4rem;
+            font-size: 0.9rem;
+            &::before {
+                content: '';
+                height: 1px;
+                background-color: rgb(216, 216, 216);
+                margin: 0 auto;
+                position: absolute;
+                top: -0.4rem;
+                left: -0.8rem;
+                right: -0.8rem;
+            };
+        };
+        .radio-option-wrapper {
+            background-color: $light-blue;
+            color: white;
+            padding: 0.4rem;
+            margin-bottom: 0.2rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        };
+        .sort-order-radio-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            .radio-option-wrapper {
+                width: 49%;
+            }
+        }
+    };
+};
