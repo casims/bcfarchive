@@ -270,12 +270,12 @@ const siteController = {
                             <label for="years-active-end">Year Retired</label>
                         </div>
                         <div class="radio-option-wrapper">
-                            <input type="radio" id="horsepower" name="ferrySort" value="4">
-                            <label for="horsepower">Horsepower</label>
+                            <input type="radio" id="passenger-capacity" name="ferrySort" value="9">
+                            <label for="passenger-capacity">Passenger Capacity</label>
                         </div>
                         <div class="radio-option-wrapper">
-                            <input type="radio" id="max-speed" name="ferrySort" value="5">
-                            <label for="max-speed">Max Speed</label>
+                            <input type="radio" id="vehicle-capacity" name="ferrySort" value="8">
+                            <label for="vehicle-capacity">Vehicle Capacity</label>
                         </div>
                         <div class="radio-option-wrapper">
                             <input type="radio" id="length" name="ferrySort" value="6">
@@ -286,12 +286,12 @@ const siteController = {
                             <label for="displacement">Displacement</label>
                         </div>
                         <div class="radio-option-wrapper">
-                            <input type="radio" id="vehicle-capacity" name="ferrySort" value="8">
-                            <label for="vehicle-capacity">Vehicle Capacity</label>
+                            <input type="radio" id="max-speed" name="ferrySort" value="5">
+                            <label for="max-speed">Max Speed</label>
                         </div>
                         <div class="radio-option-wrapper">
-                            <input type="radio" id="passenger-capacity" name="ferrySort" value="9">
-                            <label for="passenger-capacity">Passenger Capacity</label>
+                            <input type="radio" id="horsepower" name="ferrySort" value="4">
+                            <label for="horsepower">Horsepower</label>
                         </div>
                     </div>
                 </form>
@@ -319,16 +319,14 @@ const siteController = {
                     <a href="#/ferries/${ferry.page_id}">
                         <p class="single-ferry-card-name">${ferry.name}</p>
                         <p class="single-ferry-card-class">${ferry.class}</p>
-                        <p class="single-ferry-card-status">${ferry.status}</p>
                         <p class="single-ferry-card-years-active">${ferry.years_active_start} - ${ferry.years_active_end}</p>
-                        <p class="single-ferry-card-current-route">${ferry.current_route}</p>
-                        <p class="single-ferry-card-horsepower">${ferry.horsepower}</p>
-                        <p class="single-ferry-card-max-speed">${ferry.max_speed}</p>
+                        <img class="single-ferry-card-image" src="${ferry.picture}" alt="${ferry.picture_alt}">
+                        <p class="single-ferry-card-passenger-capacity">${ferry.passenger_capacity}</p>
+                        <p class="single-ferry-card-vehicle-capacity">${ferry.vehicle_capacity}</p>
                         <p class="single-ferry-card-length">${ferry.length}</p>
                         <p class="single-ferry-card-displacement">${ferry.displacement}</p>
-                        <p class="single-ferry-card-vehicle-capacity">${ferry.vehicle_capacity}</p>
-                        <p class="single-ferry-card-passenger-capacity">${ferry.passenger_capacity}</p>
-                        <img class="single-ferry-card-image" src="${ferry.picture}" alt="${ferry.picture_alt}">
+                        <p class="single-ferry-card-max-speed">${ferry.max_speed}</p>
+                        <p class="single-ferry-card-horsepower">${ferry.horsepower}</p>
                     </a>
                 </article>
             `;
@@ -400,18 +398,16 @@ const siteController = {
             this.htmlBuffer += `
                 <article class="single-ferry-card">
                     <a href="#/ferries/${ferry.page_id}">
-                        <p class="single-ferry-card-name">${ferry.name}</p>
-                        <p class="single-ferry-card-class">${ferry.class}</p>
-                        <p class="single-ferry-card-status">${ferry.status}</p>
-                        <p class="single-ferry-card-years-active">${ferry.years_active_start} - ${ferry.years_active_end}</p>
-                        <p class="single-ferry-card-current-route">${ferry.current_route}</p>
-                        <p class="single-ferry-card-horsepower">${ferry.horsepower}</p>
-                        <p class="single-ferry-card-max-speed">${ferry.max_speed}</p>
-                        <p class="single-ferry-card-length">${ferry.length}</p>
-                        <p class="single-ferry-card-displacement">${ferry.displacement}</p>
-                        <p class="single-ferry-card-vehicle-capacity">${ferry.vehicle_capacity}</p>
-                        <p class="single-ferry-card-passenger-capacity">${ferry.passenger_capacity}</p>
-                        <img class="single-ferry-card-image" src="${ferry.picture}" alt="${ferry.picture_alt}">
+                    <p class="single-ferry-card-name">${ferry.name}</p>
+                    <p class="single-ferry-card-class">${ferry.class}</p>
+                    <p class="single-ferry-card-years-active">${ferry.years_active_start} - ${ferry.years_active_end}</p>
+                    <img class="single-ferry-card-image" src="${ferry.picture}" alt="${ferry.picture_alt}">
+                    <p class="single-ferry-card-passenger-capacity">${ferry.passenger_capacity}</p>
+                    <p class="single-ferry-card-vehicle-capacity">${ferry.vehicle_capacity}</p>
+                    <p class="single-ferry-card-length">${ferry.length}</p>
+                    <p class="single-ferry-card-displacement">${ferry.displacement}</p>
+                    <p class="single-ferry-card-max-speed">${ferry.max_speed}</p>
+                    <p class="single-ferry-card-horsepower">${ferry.horsepower}</p>
                     </a>
                 </article>
             `;
