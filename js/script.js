@@ -320,7 +320,9 @@ const siteController = {
                         <p class="single-ferry-card-name">${ferry.name}</p>
                         <p class="single-ferry-card-class">${ferry.class}</p>
                         <p class="single-ferry-card-years-active">${ferry.years_active_start} - ${ferry.years_active_end}</p>
-                        <img class="single-ferry-card-image" src="${ferry.picture}" alt="${ferry.picture_alt}">
+                        <div class="single-ferry-card-image">
+                            <img src="${ferry.picture}" alt="${ferry.picture_alt}">
+                        </div>
                         <p class="single-ferry-card-passenger-capacity">${ferry.passenger_capacity}</p>
                         <p class="single-ferry-card-vehicle-capacity">${ferry.vehicle_capacity}</p>
                         <p class="single-ferry-card-length">${ferry.length}</p>
