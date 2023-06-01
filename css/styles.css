@@ -294,4 +294,82 @@ footer p a {
   width: 49%;
 }
 
+#ferry-cards a {
+  text-decoration: none;
+  color: black;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-size: 0.8rem;
+}
+
+.single-ferry-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 4.5rem 1fr 1fr;
+  grid-template-areas: "name name image" "pcap lgth m-spd" "vcap disp h-pow";
+  background-color: #F2F2F2;
+  width: auto;
+  margin: 1rem 0 0;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+}
+.single-ferry-card > * {
+  margin: 0;
+  padding: 0.4rem;
+}
+.single-ferry-card .single-ferry-card-name {
+  grid-area: name;
+  color: #003366;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.2rem;
+}
+.single-ferry-card .single-ferry-card-class {
+  grid-area: name;
+  align-self: end;
+  font-size: 0.9rem;
+}
+.single-ferry-card .single-ferry-card-years-active {
+  grid-area: name;
+  justify-self: end;
+  align-self: end;
+  font-size: 0.8rem;
+}
+.single-ferry-card .single-ferry-card-image {
+  grid-area: image;
+}
+.single-ferry-card .single-ferry-card-passenger-capacity {
+  grid-area: pcap;
+  border-bottom: 1px #d8d8d8 solid;
+  border-top: 2px #d8d8d8 solid;
+  border-right: 1px #d8d8d8 solid;
+}
+.single-ferry-card .single-ferry-card-vehicle-capacity {
+  grid-area: vcap;
+  border-top: 1px #d8d8d8 solid;
+  border-right: 1px #d8d8d8 solid;
+}
+.single-ferry-card .single-ferry-card-length {
+  grid-area: lgth;
+  border: 1px #d8d8d8 solid;
+  border-top: 2px #d8d8d8 solid;
+}
+.single-ferry-card .single-ferry-card-displacement {
+  grid-area: disp;
+  border-top: 1px #d8d8d8 solid;
+  border-left: 1px #d8d8d8 solid;
+  border-right: 1px #d8d8d8 solid;
+}
+.single-ferry-card .single-ferry-card-max-speed {
+  grid-area: m-spd;
+  border-bottom: 1px #d8d8d8 solid;
+  border-top: 2px #d8d8d8 solid;
+  border-left: 1px #d8d8d8 solid;
+}
+.single-ferry-card .single-ferry-card-horsepower {
+  grid-area: h-pow;
+  border-top: 1px #d8d8d8 solid;
+  border-left: 1px #d8d8d8 solid;
+}
+
 /*# sourceMappingURL=styles.css.map */

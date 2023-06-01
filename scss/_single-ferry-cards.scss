@@ -1,0 +1,82 @@
+@use 'variables' as *;
+
+#ferry-cards a {
+    text-decoration: none;
+    color: black;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    font-size: 0.8rem;
+}
+
+.single-ferry-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 4.5rem 1fr 1fr;
+    grid-template-areas:
+        "name name image"
+        "pcap lgth m-spd"
+        "vcap disp h-pow";
+    background-color: $light-grey;
+    width: auto;
+    margin: 1rem 0 0;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    & > * {
+        margin: 0;
+        padding: .4rem;
+    };
+    .single-ferry-card-name {
+        grid-area: name;
+        color: $dark-blue;
+        font-size: 1.2rem;
+        font-weight: 600;
+        line-height: 1.2rem;
+    };
+    .single-ferry-card-class {
+        grid-area: name;
+        align-self: end;
+        font-size: .9rem;
+    };
+    .single-ferry-card-years-active {
+        grid-area: name;
+        justify-self: end;
+        align-self: end;
+        font-size: .8rem;
+    };
+    .single-ferry-card-image {
+        grid-area: image;
+    };
+    .single-ferry-card-passenger-capacity {
+        grid-area: pcap;
+        border-bottom: 1px $darker-grey solid;
+        border-top: 2px $darker-grey solid;
+        border-right: 1px $darker-grey solid;
+    };
+    .single-ferry-card-vehicle-capacity {
+        grid-area: vcap;
+        border-top: 1px $darker-grey solid;
+        border-right: 1px $darker-grey solid;
+    };
+    .single-ferry-card-length {
+        grid-area: lgth;
+        border: 1px $darker-grey solid;
+        border-top: 2px $darker-grey solid;
+    };
+    .single-ferry-card-displacement {
+        grid-area: disp;
+        border-top: 1px $darker-grey solid;
+        border-left: 1px $darker-grey solid;
+        border-right: 1px $darker-grey solid;
+    };
+    .single-ferry-card-max-speed {
+        grid-area: m-spd;
+        border-bottom: 1px $darker-grey solid;
+        border-top: 2px $darker-grey solid;
+        border-left: 1px $darker-grey solid;
+    };
+    .single-ferry-card-horsepower {
+        grid-area: h-pow;
+        border-top: 1px $darker-grey solid;
+        border-left: 1px $darker-grey solid;
+    };
+};
