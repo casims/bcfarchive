@@ -62,9 +62,11 @@ const siteController = {
             } else if (capturedPageID.substring(0,6) === 'search') {
                 if (capturedPageID.substring(7,8) === 'f') {
                     let ferrySearchQuery = capturedPageID.substring(9);
+                    ferrySearchQuery = ferrySearchQuery.replace('%20', ' ');
                     this.createFerriesSearchPage(ferrySearchQuery);
                 } else if (capturedPageID.substring(7,8) === 't') {
                     let terminalSearchQuery = capturedPageID.substring(9);
+                    ferrySearchQuery = ferrySearchQuery.replace('%20', ' ');
                     this.createTerminalsSearchPage(terminalSearchQuery);
                 };
             };
@@ -470,28 +472,39 @@ const siteController = {
     },
     createFerriesSearchPage: async function(searchQuery) {
         this.htmlWriteTarget.innerHTML = '';
-        this.htmlBuffer = `<p>Ferry Search Results for '${searchQuery}':</p>`;
+        this.htmlBuffer = `
+            <h2>Ferry Search Results for '${searchQuery}':</h2>
+            <section id="ferry-cards">
+        `;
         await this.captureFerriesSearchArray(searchQuery);
         this.ferriesSearchArray.forEach((ferry) => {
             this.htmlBuffer += `
-                <div class="single-ferry-card">
-                    <a href="#/ferries/${ferry.page_id}">
+                <a href="#/ferries/${ferry.page_id}">
+                    <article class="single-ferry-card">
                         <p class="single-ferry-card-name">${ferry.name}</p>
                         <p class="single-ferry-card-class">${ferry.class}</p>
-                        <p class="single-ferry-card-status">${ferry.status}</p>
-                        <p class="single-ferry-card-years-active">${ferry.years_active_start} - ${ferry.years_active_end}</p>
-                        <p class="single-ferry-card-current-route">${ferry.current_route}</p>
-                        <p class="single-ferry-card-horsepower">${ferry.horsepower}</p>
-                        <p class="single-ferry-card-max-speed">${ferry.max_speed}</p>
+                        <p class="single-ferry-card-years-active">${ferry.years_active_start} - `;
+                        if (ferry.years_active_end === "9999") {
+                            this.htmlBuffer += `Present`;
+                        } else {
+                            this.htmlBuffer += `${ferry.years_active_end}`;
+                        };            
+                        this.htmlBuffer += `
+                        </p>
+                        <div class="single-ferry-card-image">
+                            <img src="${ferry.picture}" alt="${ferry.picture_alt}">
+                        </div>
+                        <p class="single-ferry-card-passenger-capacity">${ferry.passenger_capacity}</p>
+                        <p class="single-ferry-card-vehicle-capacity">${ferry.vehicle_capacity}</p>
                         <p class="single-ferry-card-length">${ferry.length}</p>
                         <p class="single-ferry-card-displacement">${ferry.displacement}</p>
-                        <p class="single-ferry-card-vehicle-capacity">${ferry.vehicle_capacity}</p>
-                        <p class="single-ferry-card-passenger-capacity">${ferry.passenger_capacity}</p>
-                        <img class="single-ferry-card-image" src="${ferry.picture}" alt="${ferry.picture_alt}">
-                    </a>
-                </div>
+                        <p class="single-ferry-card-max-speed">${ferry.max_speed}</p>
+                        <p class="single-ferry-card-horsepower">${ferry.horsepower}</p>
+                    </article>
+                </a>
             `;
         });
+        this.htmlBuffer += `</section>`;
         this.htmlWriteTarget.innerHTML = this.htmlBuffer;
     },
     createTerminalsSearchPage: async function(searchQuery) {
