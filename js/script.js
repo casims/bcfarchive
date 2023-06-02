@@ -351,7 +351,7 @@ const siteController = {
     createTerminalsPage: async function() {
         this.htmlWriteTarget.innerHTML = '';
         this.htmlBuffer = `
-            <div class="radio-sort" id="terminal-sort-section">
+            <section class="radio-sort" id="terminal-sort-section">
                 <div class="radio-sort-header">
                     <p>Sort</p>
                     <button class="sort-expand" id="terminal-sort-button-expand">
@@ -385,21 +385,25 @@ const siteController = {
                         </div>
                     </div>
                 </form>
-            </div>
+            </section>
+            <section id="terminal-cards">
         `;
         await this.captureTerminalsArray();
         this.terminalsArray.forEach((terminal) => {
             this.htmlBuffer += `
-                <div class="single-terminal-card">
-                    <a href="#/terminals/${terminal.page_id}">
+                <a href="#/terminals/${terminal.page_id}">
+                    <div class="single-terminal-card">
                         <p class="single-terminal-card-name">${terminal.name}</p>
+                        <div class="single-terminal-card-image">
+                            <img src="${terminal.picture}" alt="${terminal.picture_alt}">
+                        </div>
+                        <p class="single-terminal-card-location">${terminal.location}</p>
                         <p class="single-terminal-card-opened">${terminal.opened}</p>
-                        <p class="single-terminal-card-address">${terminal.address}</p>
-                        <img class="single-terminal-card-image" src="${terminal.picture}" alt="${terminal.picture_alt}">
-                    </a>
-                </div>
+                    </div>
+                </a>
             `;
         });
+        this.htmlBuffer += `</section>`;
         this.htmlWriteTarget.innerHTML = this.htmlBuffer;
         this.terminalSortFunctionality();
     },

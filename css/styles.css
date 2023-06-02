@@ -384,6 +384,62 @@ footer p a {
   border-left: 1px #d8d8d8 solid;
 }
 
+#terminal-cards a {
+  text-decoration: none;
+  color: black;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-size: 0.8rem;
+}
+
+.single-terminal-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 11rem 3.5rem 1fr;
+  grid-template-areas: "image image image" "name name name" "lctn lctn opnd";
+  background-color: #F2F2F2;
+  width: auto;
+  margin: 1rem 0 0;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+}
+.single-terminal-card > * {
+  margin: 0;
+  padding: 0.4rem;
+}
+.single-terminal-card .single-terminal-card-name {
+  grid-area: name;
+  color: #003366;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.2rem;
+}
+.single-terminal-card .single-terminal-card-image {
+  grid-area: image;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.single-terminal-card .single-terminal-card-image img {
+  position: absolute;
+  top: -100%;
+  right: 0;
+  bottom: -100%;
+  left: 0;
+  margin: auto;
+}
+.single-terminal-card .single-terminal-card-location {
+  grid-area: lctn;
+  border-top: 2px #d8d8d8 solid;
+  border-right: 1px #d8d8d8 solid;
+}
+.single-terminal-card .single-terminal-card-opened {
+  grid-area: opnd;
+  border-top: 2px #d8d8d8 solid;
+  border-left: 1px #d8d8d8 solid;
+}
+
 h2 {
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   font-weight: 700;
