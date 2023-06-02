@@ -1,0 +1,20 @@
+@use 'variables' as *;
+
+h2 {
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: $light-blue;
+    margin: 1rem 0 2rem;
+    position: relative;
+    &:after {
+        content: '';
+        height: 2px;
+        background-color: $darker-grey;
+        margin: 0 auto;
+        position: absolute;
+        bottom: -0.9rem;
+        left: -1rem;
+        right: -1rem;
+    };
+};
