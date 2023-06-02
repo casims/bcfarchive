@@ -300,11 +300,11 @@ const siteController = {
                     <p>Sort Order:</p>
                     <div class="sort-order-radio-container">
                         <div class="radio-option-wrapper">
-                            <input type="radio" id="ascending" name="ferrySortOrder" value="1">
+                            <input type="radio" id="ascending" name="ferrySortOrder" value="0">
                             <label for="ascending">Ascending</label>
                         </div>
                         <div class="radio-option-wrapper">
-                            <input type="radio" id="descending" name="ferrySortOrder" value="0" checked>
+                            <input type="radio" id="descending" name="ferrySortOrder" value="1" checked>
                             <label for="descending">Descending</label>
                         </div>
                     </div>
@@ -319,7 +319,14 @@ const siteController = {
                     <article class="single-ferry-card">
                         <p class="single-ferry-card-name">${ferry.name}</p>
                         <p class="single-ferry-card-class">${ferry.class}</p>
-                        <p class="single-ferry-card-years-active">${ferry.years_active_start} - ${ferry.years_active_end}</p>
+                        <p class="single-ferry-card-years-active">${ferry.years_active_start} - `;
+                        if (ferry.years_active_end === "9999") {
+                            this.htmlBuffer += `Present`;
+                        } else {
+                            this.htmlBuffer += `${ferry.years_active_end}`;
+                        };            
+                        this.htmlBuffer += `
+                        </p>
                         <div class="single-ferry-card-image">
                             <img src="${ferry.picture}" alt="${ferry.picture_alt}">
                         </div>
@@ -398,20 +405,29 @@ const siteController = {
         this.htmlBuffer = '';
         this.ferriesArray.forEach((ferry) => {
             this.htmlBuffer += `
-                <article class="single-ferry-card">
-                    <a href="#/ferries/${ferry.page_id}">
-                    <p class="single-ferry-card-name">${ferry.name}</p>
-                    <p class="single-ferry-card-class">${ferry.class}</p>
-                    <p class="single-ferry-card-years-active">${ferry.years_active_start} - ${ferry.years_active_end}</p>
-                    <img class="single-ferry-card-image" src="${ferry.picture}" alt="${ferry.picture_alt}">
-                    <p class="single-ferry-card-passenger-capacity">${ferry.passenger_capacity}</p>
-                    <p class="single-ferry-card-vehicle-capacity">${ferry.vehicle_capacity}</p>
-                    <p class="single-ferry-card-length">${ferry.length}</p>
-                    <p class="single-ferry-card-displacement">${ferry.displacement}</p>
-                    <p class="single-ferry-card-max-speed">${ferry.max_speed}</p>
-                    <p class="single-ferry-card-horsepower">${ferry.horsepower}</p>
-                    </a>
-                </article>
+                <a href="#/ferries/${ferry.page_id}">
+                    <article class="single-ferry-card">
+                        <p class="single-ferry-card-name">${ferry.name}</p>
+                        <p class="single-ferry-card-class">${ferry.class}</p>
+                        <p class="single-ferry-card-years-active">${ferry.years_active_start} - `;
+                        if (ferry.years_active_end === "9999") {
+                            this.htmlBuffer += `Present`;
+                        } else {
+                            this.htmlBuffer += `${ferry.years_active_end}`;
+                        };            
+                        this.htmlBuffer += `
+                        </p>
+                        <div class="single-ferry-card-image">
+                            <img src="${ferry.picture}" alt="${ferry.picture_alt}">
+                        </div>
+                        <p class="single-ferry-card-passenger-capacity">${ferry.passenger_capacity}</p>
+                        <p class="single-ferry-card-vehicle-capacity">${ferry.vehicle_capacity}</p>
+                        <p class="single-ferry-card-length">${ferry.length}</p>
+                        <p class="single-ferry-card-displacement">${ferry.displacement}</p>
+                        <p class="single-ferry-card-max-speed">${ferry.max_speed}</p>
+                        <p class="single-ferry-card-horsepower">${ferry.horsepower}</p>
+                    </article>
+                </a>
             `;
         });
         this.htmlCardsWriteTarget.innerHTML = this.htmlBuffer;
