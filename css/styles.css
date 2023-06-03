@@ -294,6 +294,9 @@ footer p a {
   width: 49%;
 }
 
+#ferry-cards {
+  margin-bottom: 1rem;
+}
 #ferry-cards a {
   text-decoration: none;
   color: black;
@@ -304,7 +307,7 @@ footer p a {
 .single-ferry-card {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 10rem 3.5rem 1fr 1fr;
+  grid-template-rows: 11rem 3.5rem 1fr 1fr;
   grid-template-areas: "image image image" "name name name" "pcap lgth m-spd" "vcap disp h-pow";
   background-color: #F2F2F2;
   width: auto;
@@ -384,6 +387,9 @@ footer p a {
   border-left: 1px #d8d8d8 solid;
 }
 
+#terminal-cards {
+  margin-bottom: 1rem;
+}
 #terminal-cards a {
   text-decoration: none;
   color: black;

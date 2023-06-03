@@ -1,11 +1,14 @@
 @use 'variables' as *;
 
-#terminal-cards a {
-    text-decoration: none;
-    color: black;
-    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-    font-size: 0.8rem;
-}
+#terminal-cards {
+    margin-bottom: 1rem;
+    a {
+        text-decoration: none;
+        color: black;
+        font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+        font-size: 0.8rem;
+    };
+};
 
 .single-terminal-card {
     display: grid;
