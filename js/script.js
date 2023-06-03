@@ -14,6 +14,7 @@ const siteController = {
     terminalsSearchArray: null,
     singleFerryObject: null,
     singleTerminalObject: null,
+    // Grabs an array from SQL DB to see what page IDs are stored
     captureValidFerryIDs: async function () {
         await fetch('./valid-ferry-ids.php')
             .then((response) => response.json())
@@ -28,9 +29,12 @@ const siteController = {
                 this.validTerminalIDs = responseJSON;
             });
     },
+    // Function for determining which page to display based on URL
     router: async function() {
+        // Starts Nav event listeners if they are not running already
         if (this.navFunctionalityRunning === false) {
             this.navFunctionality();
+        // Collapses Nav menu when loading a new page
         } else {
             this.menuExpanded = true;
             this.navToggle();
@@ -39,10 +43,12 @@ const siteController = {
         if (capturedURL.includes('#')) {
             let urlHashPosition = capturedURL.indexOf('#')+2;
             let capturedPageID = capturedURL.substring(urlHashPosition);
+            // Checks if URL contains "ferries", then loads ferries page - If it also contains a specific ferry page ID, then loads that specific page
             if (capturedPageID.substring(0,7) === 'ferries') {
                 if (capturedPageID.substring(8).includes('f')) {
                     await this.captureValidFerryIDs();
                     let capturedSingleFerryPageID = capturedPageID.substring(8);
+                    // Checks if the page ID in the URL is located in the valid IDs array that was grabbed earlier, if so then render the page
                     if (this.validFerryIDs.includes(capturedSingleFerryPageID)) {
                         this.createSingleFerryPage(capturedSingleFerryPageID);
                     } else {
@@ -51,10 +57,12 @@ const siteController = {
                 } else {
                     this.createFerriesPage();
                 };
+            // Checks if URL contains "terminals", if so loads terminals page - If it also contains a specific ferry page ID, then loads that specific page
             } else if (capturedPageID.substring(0,9) === 'terminals') {
                 if (capturedPageID.substring(10).includes('t')) {
                     await this.captureValidTerminalIDs();
                     let capturedSingleTerminalPageID = capturedPageID.substring(10);
+                    // Checks if the page ID in the URL is located in the valid IDs array that was grabbed earlier, if so then render the page
                     if (this.validTerminalIDs.includes(capturedSingleTerminalPageID)) {
                         this.createSingleTerminalPage(capturedSingleTerminalPageID);
                     } else {
@@ -63,9 +71,11 @@ const siteController = {
                 } else {
                     this.createTerminalsPage();
                 }
+            // If URL contains "search", begin the search function
             } else if (capturedPageID.substring(0,6) === 'search') {
                 if (capturedPageID.substring(7,8) === 'f') {
                     let ferrySearchQuery = capturedPageID.substring(9);
+                    // Replaces %20 with a space since the function grabs the search term from the URL
                     ferrySearchQuery = ferrySearchQuery.replace('%20', ' ');
                     this.createFerriesSearchPage(ferrySearchQuery);
                 } else if (capturedPageID.substring(7,8) === 't') {
@@ -86,6 +96,7 @@ const siteController = {
             <p>Sorry, page was not found.</p>`;
         this.htmlWriteTarget.innerHTML = this.htmlBuffer;
     },
+    // Event listeners for expanding/collapsing nav bar, as well as search functionality
     navFunctionality: function() {
         this.navFunctionalityRunning = true;
         let searchField = document.getElementById('search-field');
@@ -136,6 +147,7 @@ const siteController = {
             </section>`;
         this.htmlWriteTarget.innerHTML = this.htmlBuffer;
     },
+    // Grabs array from SQL DB of all ferries stored.  Puts them in specific order if sort parameters are specified
     captureFerriesArray: async function(sortType) {
         if (sortType) {
             await fetch('./ferries-data.php', {
@@ -154,6 +166,7 @@ const siteController = {
             });
         };
     },
+    // Event listeners for ferry sort parameter options
     ferrySortFunctionality: function() {
         let ferrySortData = [null, 0];
         let ferrySortButtons = document.ferrySortRadio.ferrySort;
@@ -192,6 +205,7 @@ const siteController = {
             };
         });
     },
+    // Grabs array from SQL DB of all terminals stored.  Puts them in specific order if sort parameters are specified
     captureTerminalsArray: async function(sortType) {
         if (sortType) {
             await fetch('./terminals-data.php', {
@@ -210,6 +224,7 @@ const siteController = {
             });
         };
     },
+    // Event listeners for terminal sort parameter options
     terminalSortFunctionality: function() {
         let terminalSortData = [null, 0];
         let terminalSortButtons = document.terminalSortRadio.terminalSort;
@@ -248,6 +263,7 @@ const siteController = {
             };
         });
     },
+    // Renders ferries page using array grabbed from SQL DB
     createFerriesPage: async function() {
         this.htmlWriteTarget.innerHTML = '';
         this.htmlBuffer = `
@@ -352,9 +368,11 @@ const siteController = {
             this.htmlBuffer += `
             </section>`;
         this.htmlWriteTarget.innerHTML = this.htmlBuffer;
+        // Creates a target for specific section to allow for re-rendering of only the ferry cards.  When sort parameters are applied and the cards need to be re-rendered, this makes it so the sort section doesnt have to be re-rendered.
         this.htmlCardsWriteTarget = document.querySelector('section#ferry-cards');
         this.ferrySortFunctionality();
     },
+    // Renders terminals page with array grabbed from SQL DB
     createTerminalsPage: async function() {
         this.htmlWriteTarget.innerHTML = '';
         this.htmlBuffer = `
@@ -413,9 +431,11 @@ const siteController = {
         });
         this.htmlBuffer += `</section>`;
         this.htmlWriteTarget.innerHTML = this.htmlBuffer;
+        // Creates a target for specific section to allow for re-rendering of only the terminal cards.  When sort parameters are applied and the cards need to be re-rendered, this makes it so the sort section doesnt have to be re-rendered.
         this.htmlCardsWriteTarget = document.querySelector('section#terminal-cards');
         this.terminalSortFunctionality();
     },
+    // Re-renders ferry-cards section with new array that has search parameters applied to it
     renderFerriesSort: function() {
         this.htmlBuffer = '';
         this.ferriesArray.forEach((ferry) => {
@@ -447,6 +467,7 @@ const siteController = {
         });
         this.htmlCardsWriteTarget.innerHTML = this.htmlBuffer;
     },
+    // Re-renders terminal-cards section with new array that has search parameters applied to it
     renderTerminalsSort: function() {
         this.htmlBuffer = '';
         this.terminalsArray.forEach((terminal) => {
@@ -465,6 +486,7 @@ const siteController = {
         });
         this.htmlCardsWriteTarget.innerHTML = this.htmlBuffer;
     },
+    // Takes "searchQuery" which was grabbed from URL and makes SQL Query with said search term, returns array with results
     captureFerriesSearchArray: async function(searchQuery) {
         await fetch('./search-ferries.php', {
             method: "POST",
@@ -485,6 +507,7 @@ const siteController = {
             this.terminalsSearchArray = responseJSON;
         });
     },
+    // Creates page that shows results of SQL Query with specified search term
     createFerriesSearchPage: async function(searchQuery) {
         this.htmlWriteTarget.innerHTML = '';
         this.htmlBuffer = `
@@ -546,6 +569,7 @@ const siteController = {
         this.htmlBuffer += `</section>`;
         this.htmlWriteTarget.innerHTML = this.htmlBuffer;
     },
+    // Grabs specific entry from SQL DB based on page ID provided
     captureSingleFerryObject: async function(pageID) {
         await fetch('./single-ferry-data.php', {
             method: "POST",
@@ -566,6 +590,7 @@ const siteController = {
                 this.singleTerminalObject = responseJSON;
         });
     },
+    // Renders "single page" for a specific entry from SQL DB with page ID provided
     createSingleFerryPage: async function(pageID) {
         await this.captureSingleFerryObject(pageID);
         this.htmlWriteTarget.innerHTML = '';
@@ -667,6 +692,7 @@ const siteController = {
     }
 };
 
+// Runs router functions everytime the site loads or the URL changes
 window.onload = function() {
     siteController.router();
 };
