@@ -7,6 +7,7 @@ const siteController = {
     htmlWriteTarget: document.querySelector('main#main'),
     htmlCardsWriteTarget: null,
     navFunctionalityRunning: false,
+    menuExpanded: false,
     ferriesArray: null,
     terminalsArray: null,
     ferriesSearchArray: null,
@@ -30,6 +31,9 @@ const siteController = {
     router: async function() {
         if (this.navFunctionalityRunning === false) {
             this.navFunctionality();
+        } else {
+            this.menuExpanded = true;
+            this.navToggle();
         };
         let capturedURL = window.location.href;
         if (capturedURL.includes('#')) {
@@ -66,7 +70,7 @@ const siteController = {
                     this.createFerriesSearchPage(ferrySearchQuery);
                 } else if (capturedPageID.substring(7,8) === 't') {
                     let terminalSearchQuery = capturedPageID.substring(9);
-                    ferrySearchQuery = ferrySearchQuery.replace('%20', ' ');
+                    terminalSearchQuery = terminalSearchQuery.replace('%20', ' ');
                     this.createTerminalsSearchPage(terminalSearchQuery);
                 };
             };
@@ -89,15 +93,8 @@ const siteController = {
         let ferrySearchButton = document.getElementById('ferry-search-button');
         let terminalSearchButton = document.getElementById('terminal-search-button');
         let menuExpandButton = document.getElementById('nav-menu-button');
-        let menuExpanded = false;
         menuExpandButton.addEventListener('click', function() {
-            if (menuExpanded === false) {
-                document.getElementById('nav').style.height = '11.6rem';
-                menuExpanded = true;
-            } else {
-                document.getElementById('nav').style.height = '0rem';
-                menuExpanded = false;
-            };
+            siteController.navToggle();
         });
         ferrySearchButton.addEventListener('click', function() {
             searchFieldInput = searchField.value;
@@ -107,6 +104,15 @@ const siteController = {
             searchFieldInput = searchField.value;
             window.location.href = `http://localhost/bcfarchive/#/search/t/${searchFieldInput}`;
         });
+    },
+    navToggle: function() {
+        if (this.menuExpanded === false) {
+            document.getElementById('nav').style.height = '11.6rem';
+            this.menuExpanded = true;
+        } else {
+            document.getElementById('nav').style.height = '0rem';
+            this.menuExpanded = false;
+        };
     },
     createMainPage: function() {
         this.htmlWriteTarget.innerHTML = '';
@@ -312,6 +318,7 @@ const siteController = {
                     </div>
                 </form>
             </section>
+            <h2>Ferries</h2>
             <section id="ferry-cards">
         `;
         await this.captureFerriesArray();
@@ -386,25 +393,27 @@ const siteController = {
                     </div>
                 </form>
             </section>
+            <h2>Terminals</h2>
             <section id="terminal-cards">
         `;
         await this.captureTerminalsArray();
         this.terminalsArray.forEach((terminal) => {
             this.htmlBuffer += `
                 <a href="#/terminals/${terminal.page_id}">
-                    <div class="single-terminal-card">
+                    <article class="single-terminal-card">
                         <p class="single-terminal-card-name">${terminal.name}</p>
                         <div class="single-terminal-card-image">
                             <img src="${terminal.picture}" alt="${terminal.picture_alt}">
                         </div>
                         <p class="single-terminal-card-location">${terminal.location}</p>
                         <p class="single-terminal-card-opened">${terminal.opened}</p>
-                    </div>
+                    </article>
                 </a>
             `;
         });
         this.htmlBuffer += `</section>`;
         this.htmlWriteTarget.innerHTML = this.htmlBuffer;
+        this.htmlCardsWriteTarget = document.querySelector('section#terminal-cards');
         this.terminalSortFunctionality();
     },
     renderFerriesSort: function() {
@@ -442,14 +451,16 @@ const siteController = {
         this.htmlBuffer = '';
         this.terminalsArray.forEach((terminal) => {
             this.htmlBuffer += `
-                <div class="single-terminal-card">
-                    <a href="#/terminals/${terminal.page_id}">
+                <a href="#/terminals/${terminal.page_id}">
+                    <article class="single-terminal-card">
                         <p class="single-terminal-card-name">${terminal.name}</p>
+                        <div class="single-terminal-card-image">
+                            <img src="${terminal.picture}" alt="${terminal.picture_alt}">
+                        </div>
+                        <p class="single-terminal-card-location">${terminal.location}</p>
                         <p class="single-terminal-card-opened">${terminal.opened}</p>
-                        <p class="single-terminal-card-address">${terminal.address}</p>
-                        <img class="single-terminal-card-image" src="${terminal.picture}" alt="${terminal.picture_alt}">
-                    </a>
-                </div>
+                    </article>
+                </a>
             `;
         });
         this.htmlCardsWriteTarget.innerHTML = this.htmlBuffer;
@@ -513,20 +524,26 @@ const siteController = {
     },
     createTerminalsSearchPage: async function(searchQuery) {
         this.htmlWriteTarget.innerHTML = '';
-        this.htmlBuffer = `<p>Terminal Search Results for '${searchQuery}':</p>`;
+        this.htmlBuffer = `
+            <h2>Terminal Search Results for '${searchQuery}':</h2>
+            <section id="terminal-cards">
+            `;
         await this.captureTerminalsSearchArray(searchQuery);
         this.terminalsSearchArray.forEach((terminal) => {
             this.htmlBuffer += `
-                <div class="single-terminal-card">
-                    <a href="#/terminals/${terminal.page_id}">
-                        <p class="single-terminal-card-name">${terminal.name}</p>
-                        <p class="single-terminal-card-opened">${terminal.opened}</p>
-                        <p class="single-terminal-card-address">${terminal.address}</p>
-                        <img class="single-terminal-card-image" src="${terminal.picture}" alt="${terminal.picture_alt}">
-                    </a>
-                </div>
+            <a href="#/terminals/${terminal.page_id}">
+                <article class="single-terminal-card">
+                    <p class="single-terminal-card-name">${terminal.name}</p>
+                    <div class="single-terminal-card-image">
+                        <img src="${terminal.picture}" alt="${terminal.picture_alt}">
+                    </div>
+                    <p class="single-terminal-card-location">${terminal.location}</p>
+                    <p class="single-terminal-card-opened">${terminal.opened}</p>
+                </article>
+            </a>
             `;
         });
+        this.htmlBuffer += `</section>`;
         this.htmlWriteTarget.innerHTML = this.htmlBuffer;
     },
     captureSingleFerryObject: async function(pageID) {
