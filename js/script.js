@@ -83,6 +83,8 @@ const siteController = {
                     terminalSearchQuery = terminalSearchQuery.replace('%20', ' ');
                     this.createTerminalsSearchPage(terminalSearchQuery);
                 };
+            } else if (capturedPageID.substring(0,7) === 'credits') {
+                this.createCredits();
             };
         } else {
             scroll(0,0);
@@ -94,6 +96,14 @@ const siteController = {
         this.htmlBuffer = `
             <h2>Error 404</h2>
             <p>Sorry, page was not found.</p>`;
+        this.htmlWriteTarget.innerHTML = this.htmlBuffer;
+    },
+    createCredits: function() {
+        this.htmlWriteTarget.innerHTML = '';
+        this.htmlBuffer = `
+            <h2>Credits</h2>
+            <p>Image Source for "Ferries" Category Thumbnail (Image was cropped):<br> [<a href="https://flickr.com/photos/8441189@N04/2591295036">Link</a>]</p>
+            <p>Image Source for "Terminals" Category Thumbnail (Image was cropped):<br> [<a href="https://www.flickr.com/photos/dph1110/2671969217/">Link</a>]</p>`;
         this.htmlWriteTarget.innerHTML = this.htmlBuffer;
     },
     // Event listeners for expanding/collapsing nav bar, as well as search functionality
