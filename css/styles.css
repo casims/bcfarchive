@@ -5,6 +5,11 @@ body {
   flex-direction: column;
 }
 
+p {
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-size: 0.8rem;
+}
+
 header, main, footer {
   padding: 0 1rem;
 }
