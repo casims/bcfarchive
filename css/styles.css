@@ -5,6 +5,33 @@ body {
   flex-direction: column;
 }
 
+h2, h3 {
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #0079A5;
+  margin: 1rem 0 2rem;
+  position: relative;
+}
+h2:after, h3:after {
+  content: "";
+  height: 2px;
+  background-color: #d8d8d8;
+  margin: 0 auto;
+  position: absolute;
+  bottom: -0.9rem;
+  left: -1rem;
+  right: -1rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1.6rem;
+}
+h3:after {
+  bottom: -0.8rem;
+}
+
 p {
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   font-size: 0.8rem;
@@ -168,24 +195,6 @@ footer p a {
 
 #home-category-section {
   margin-top: 1rem;
-}
-#home-category-section h2 {
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  font-weight: 700;
-  font-size: 1.4rem;
-  color: #0079A5;
-  margin: 1rem 0 2rem;
-  position: relative;
-}
-#home-category-section h2:after {
-  content: "";
-  height: 2px;
-  background-color: #d8d8d8;
-  margin: 0 auto;
-  position: absolute;
-  bottom: -0.9rem;
-  left: -1rem;
-  right: -1rem;
 }
 #home-category-section .category-card {
   width: 100%;
