@@ -605,15 +605,13 @@ const siteController = {
         await this.captureSingleFerryObject(pageID);
         this.htmlWriteTarget.innerHTML = '';
         this.htmlBuffer = `
+            <h2>${this.singleFerryObject.name}</h2>
             <table>
                 <tr>
-                    <th>Name</th>
-                    <td>${this.singleFerryObject.name}</td>
-                </tr>
-                <tr>
-                    <th>Picture</th>
-                    <td><img src="${this.singleFerryObject.picture}" alt="${this.singleFerryObject.picture_alt}"><a href="${this.singleFerryObject.picture_alt}">Image Source</a></td>
-                    
+                    <td>
+                        <img src="${this.singleFerryObject.picture}" alt="${this.singleFerryObject.picture_alt}">
+                        <p>[<a href="${this.singleFerryObject.picture_source}">Image Source</a>]</p>
+                    </td>
                 </tr>
                 <tr>
                     <th>Class</th>
@@ -639,17 +637,17 @@ const siteController = {
                     <th>Place of Origin</th>
                     <td>${this.singleFerryObject.origin}</td>
                 </tr>
+            </table>
+            <p>${this.singleFerryObject.history}</p>
+            <h3>Technical Information</h3>
+            <table>
                 <tr>
-                    <th>Engines</th>
-                    <td>${this.singleFerryObject.engines}</td>
+                    <th>Vehicle Capacity</th>
+                    <td>${this.singleFerryObject.vehicle_capacity}</td>
                 </tr>
                 <tr>
-                    <th>Horsepower</th>
-                    <td>${this.singleFerryObject.horsepower}</td>
-                </tr>
-                <tr>
-                    <th>Max Speed</th>
-                    <td>${this.singleFerryObject.max_speed}</td>
+                    <th>Passenger Capacity</th>
+                    <td>${this.singleFerryObject.passenger_capacity}</td>
                 </tr>
                 <tr>
                     <th>Length</th>
@@ -660,15 +658,18 @@ const siteController = {
                     <td>${this.singleFerryObject.displacement}</td>
                 </tr>
                 <tr>
-                    <th>Vehicle Capacity</th>
-                    <td>${this.singleFerryObject.vehicle_capacity}</td>
+                    <th>Max Speed</th>
+                    <td>${this.singleFerryObject.max_speed}</td>
                 </tr>
                 <tr>
-                    <th>Passenger Capacity</th>
-                    <td>${this.singleFerryObject.passenger_capacity}</td>
+                    <th>Horsepower</th>
+                    <td>${this.singleFerryObject.horsepower}</td>
                 </tr>
-            </table>
-            <p>${this.singleFerryObject.history}</p>`;
+                <tr>
+                    <th>Engines</th>
+                    <td>${this.singleFerryObject.engines}</td>
+                </tr>
+            </table>`;
         this.htmlWriteTarget.innerHTML = this.htmlBuffer;
     },
     createSingleTerminalPage: async function(pageID) {
