@@ -5,6 +5,10 @@ body {
   flex-direction: column;
 }
 
+header, main, footer {
+  padding: 0 1rem;
+}
+
 h2, h3 {
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   font-weight: 700;
@@ -37,8 +41,12 @@ p {
   font-size: 0.8rem;
 }
 
-header, main, footer {
-  padding: 0 1rem;
+.single-ferry-main-content p {
+  font-size: 0.95rem;
+}
+
+.single-ferry-technical-information {
+  margin-bottom: 1rem;
 }
 
 header {
@@ -487,9 +495,21 @@ table {
   text-align: left;
   border-collapse: collapse;
   border-radius: 5px;
+  table-layout: fixed;
+  width: 100%;
+}
+table tbody {
+  padding: 0.4rem;
 }
 table td, table th {
   padding: 0.4rem;
+  max-width: 50%;
+}
+
+.single-ferry-main-content table p {
+  text-align: center;
+  font-size: 0.8rem;
+  margin: 0;
 }
 
 /*# sourceMappingURL=styles.css.map */

@@ -606,77 +606,81 @@ const siteController = {
         this.htmlWriteTarget.innerHTML = '';
         this.htmlBuffer = `
             <h2>${this.singleFerryObject.name}</h2>
-            <table>
-                <tr>
-                    <td colspan="2">
-                        <img src="${this.singleFerryObject.picture}" alt="${this.singleFerryObject.picture_alt}">
-                        <p>[<a href="${this.singleFerryObject.picture_source}">Image Source</a>]</p>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Class</th>
-                    <td>${this.singleFerryObject.class}</td>
-                </tr>
-                <tr>
-                    <th>Status</th>
-                    <td>${this.singleFerryObject.status}</td>
-                </tr>
-                <tr>
-                    <th>Years Active</th>
-                    <td>${this.singleFerryObject.years_active_start} - `                         
-                    if (this.singleFerryObject.years_active_end === "9999") {
-                        this.htmlBuffer += `Present`;
-                    } else {
-                        this.htmlBuffer += `${this.singleFerryObject.years_active_end}`;
-                    };            
-                    this.htmlBuffer += `
-                    </td>
-                </tr>
-                <tr>
-                    <th>Home Terminal</th>
-                    <td>${this.singleFerryObject.home_terminal}</td>
-                </tr>
-                <tr>
-                    <th>Current Route</th>
-                    <td>${this.singleFerryObject.current_route}</td>
-                </tr>
-                <tr>
-                    <th>Place of Origin</th>
-                    <td>${this.singleFerryObject.origin}</td>
-                </tr>
-            </table>
-            <p>${this.singleFerryObject.history}</p>
-            <h3>Technical Information</h3>
-            <table>
-                <tr>
-                    <th>Vehicle Capacity</th>
-                    <td>${this.singleFerryObject.vehicle_capacity}</td>
-                </tr>
-                <tr>
-                    <th>Passenger Capacity</th>
-                    <td>${this.singleFerryObject.passenger_capacity}</td>
-                </tr>
-                <tr>
-                    <th>Length</th>
-                    <td>${this.singleFerryObject.length}</td>
-                </tr>
-                <tr>
-                    <th>Displacement</th>
-                    <td>${this.singleFerryObject.displacement}</td>
-                </tr>
-                <tr>
-                    <th>Max Speed</th>
-                    <td>${this.singleFerryObject.max_speed}</td>
-                </tr>
-                <tr>
-                    <th>Horsepower</th>
-                    <td>${this.singleFerryObject.horsepower}</td>
-                </tr>
-                <tr>
-                    <th>Engines</th>
-                    <td>${this.singleFerryObject.engines}</td>
-                </tr>
-            </table>`;
+            <section class="single-ferry-main-content">
+                <table>
+                    <tr>
+                        <td colspan="2">
+                            <img src="${this.singleFerryObject.picture}" alt="${this.singleFerryObject.picture_alt}">
+                            <p>[<a href="${this.singleFerryObject.picture_source}">Image Source</a>]</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Class</th>
+                        <td>${this.singleFerryObject.class}</td>
+                    </tr>
+                    <tr>
+                        <th>Status</th>
+                        <td>${this.singleFerryObject.status}</td>
+                    </tr>
+                    <tr>
+                        <th>Years Active</th>
+                        <td>${this.singleFerryObject.years_active_start} - `                         
+                        if (this.singleFerryObject.years_active_end === "9999") {
+                            this.htmlBuffer += `Present`;
+                        } else {
+                            this.htmlBuffer += `${this.singleFerryObject.years_active_end}`;
+                        };            
+                        this.htmlBuffer += `
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Home Terminal</th>
+                        <td>${this.singleFerryObject.home_terminal}</td>
+                    </tr>
+                    <tr>
+                        <th>Current Route</th>
+                        <td>${this.singleFerryObject.current_route}</td>
+                    </tr>
+                    <tr>
+                        <th>Place of Origin</th>
+                        <td>${this.singleFerryObject.origin}</td>
+                    </tr>
+                </table>
+                <p>${this.singleFerryObject.history}</p>
+            </section>
+            <section class="single-ferry-technical-information">
+                <h3>Technical Information</h3>
+                <table>
+                    <tr>
+                        <th>Vehicle Capacity</th>
+                        <td>${this.singleFerryObject.vehicle_capacity}</td>
+                    </tr>
+                    <tr>
+                        <th>Passenger Capacity</th>
+                        <td>${this.singleFerryObject.passenger_capacity}</td>
+                    </tr>
+                    <tr>
+                        <th>Length</th>
+                        <td>${this.singleFerryObject.length}</td>
+                    </tr>
+                    <tr>
+                        <th>Displacement</th>
+                        <td>${this.singleFerryObject.displacement}</td>
+                    </tr>
+                    <tr>
+                        <th>Max Speed</th>
+                        <td>${this.singleFerryObject.max_speed}</td>
+                    </tr>
+                    <tr>
+                        <th>Horsepower</th>
+                        <td>${this.singleFerryObject.horsepower}</td>
+                    </tr>
+                    <tr>
+                        <th>Engines</th>
+                        <td>${this.singleFerryObject.engines}</td>
+                    </tr>
+                </table>
+            </section>`;
         this.htmlWriteTarget.innerHTML = this.htmlBuffer;
     },
     createSingleTerminalPage: async function(pageID) {
