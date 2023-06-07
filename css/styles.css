@@ -41,11 +41,11 @@ p {
   font-size: 0.8rem;
 }
 
-.single-ferry-main-content p {
+.single-ferry-main-content p, .single-terminal-main-content p {
   font-size: 0.95rem;
 }
 
-.single-ferry-technical-information {
+.single-ferry-technical-information, .single-terminal-main-content {
   margin-bottom: 1rem;
 }
 
@@ -506,7 +506,7 @@ table td, table th {
   max-width: 50%;
 }
 
-.single-ferry-main-content table p {
+.single-ferry-main-content table p, .single-terminal-main-content table p {
   text-align: center;
   font-size: 0.8rem;
   margin: 0;

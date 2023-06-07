@@ -42,12 +42,12 @@ p {
     font-size: 0.8rem;
 };
 
-.single-ferry-main-content {
+.single-ferry-main-content, .single-terminal-main-content {
     p {
         font-size: 0.95rem;
     };
 };
 
-.single-ferry-technical-information {
+.single-ferry-technical-information, .single-terminal-main-content {
     margin-bottom: 1rem;
 };

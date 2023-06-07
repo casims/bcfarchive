@@ -687,29 +687,29 @@ const siteController = {
         await this.captureSingleTerminalObject(pageID);
         this.htmlWriteTarget.innerHTML= '';
         this.htmlBuffer = `
-            <table>
-                <tr>
-                    <th>Name</th>
-                    <td>${this.singleTerminalObject.name}</td>
-                </tr>
-                <tr>
-                    <th>Picture</th>
-                    <td> <img src="${this.singleTerminalObject.picture}" alt="${this.singleTerminalObject.picture_alt}"><a href="${this.singleTerminalObject.picture_alt}">Image Source</a></td>
-                </tr>
-                <tr>
-                    <th>Address</th>
-                    <td>${this.singleTerminalObject.address}</td>
-                </tr>
-                <tr>
-                    <th>Opened</th>
-                    <td>${this.singleTerminalObject.opened}</td>
-                </tr>
-                <tr>
-                    <th>Routes</th>
-                    <td>${this.singleTerminalObject.routes}</td>
-                </tr>
-            </table>
-            <p>${this.singleTerminalObject.history}</p>`;
+            <h2>${this.singleTerminalObject.name}</h2>
+            <section class="single-terminal-main-content">
+                <table>
+                    <tr>
+                        <td colspan="2">
+                            <img src="${this.singleTerminalObject.picture}" alt="${this.singleTerminalObject.picture_alt}"><p>[<a href="${this.singleTerminalObject.picture_alt}">Image Source</a>]</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Opened</th>
+                        <td>${this.singleTerminalObject.opened}</td>
+                    </tr>
+                    <tr>
+                        <th>Routes</th>
+                        <td>${this.singleTerminalObject.routes}</td>
+                    </tr>
+                    <tr>
+                        <th>Address</th>
+                        <td>${this.singleTerminalObject.address}</td>
+                    </tr>
+                </table>
+                <p>${this.singleTerminalObject.history}</p>
+            </section>`;
         this.htmlWriteTarget.innerHTML = this.htmlBuffer;
     }
 };
