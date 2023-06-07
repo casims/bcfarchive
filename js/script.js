@@ -608,7 +608,7 @@ const siteController = {
             <h2>${this.singleFerryObject.name}</h2>
             <table>
                 <tr>
-                    <td>
+                    <td colspan="2">
                         <img src="${this.singleFerryObject.picture}" alt="${this.singleFerryObject.picture_alt}">
                         <p>[<a href="${this.singleFerryObject.picture_source}">Image Source</a>]</p>
                     </td>
@@ -623,7 +623,14 @@ const siteController = {
                 </tr>
                 <tr>
                     <th>Years Active</th>
-                    <td>${this.singleFerryObject.years_active_start} - ${this.singleFerryObject.years_active_end}</td>
+                    <td>${this.singleFerryObject.years_active_start} - `                         
+                    if (this.singleFerryObject.years_active_end === "9999") {
+                        this.htmlBuffer += `Present`;
+                    } else {
+                        this.htmlBuffer += `${this.singleFerryObject.years_active_end}`;
+                    };            
+                    this.htmlBuffer += `
+                    </td>
                 </tr>
                 <tr>
                     <th>Home Terminal</th>

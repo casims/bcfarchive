@@ -479,4 +479,17 @@ h2:after {
   right: -1rem;
 }
 
+table {
+  background-color: #F2F2F2;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-size: 0.8rem;
+  padding: 0;
+  text-align: left;
+  border-collapse: collapse;
+  border-radius: 5px;
+}
+table td, table th {
+  padding: 0.4rem;
+}
+
 /*# sourceMappingURL=styles.css.map */
