@@ -51,3 +51,12 @@ p {
 .single-ferry-technical-information, .single-terminal-main-content {
     margin-bottom: 1rem;
 };
+
+@media (min-width: 450px) {
+    header, nav, footer {
+        padding: 0 2rem;
+    };
+    main {
+        margin: 0 2rem;
+    };
+};

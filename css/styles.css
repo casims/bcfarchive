@@ -49,6 +49,15 @@ p {
   margin-bottom: 1rem;
 }
 
+@media (min-width: 450px) {
+  header, nav, footer {
+    padding: 0 2rem;
+  }
+
+  main {
+    margin: 0 2rem;
+  }
+}
 header {
   background-color: #003366;
   overflow: hidden;
@@ -156,6 +165,14 @@ header #header-bottom {
   border-top: 2px solid #F2F2F2;
 }
 
+@media (min-width: 450px) {
+  header nav ul li a {
+    padding: inherit 3rem;
+  }
+  header nav .search-section {
+    padding: inherit 3rem;
+  }
+}
 footer {
   background-color: #003366;
   color: #FFFFFF;
@@ -243,6 +260,15 @@ footer p a {
   color: #003366;
 }
 
+@media (min-width: 450px) {
+  #home-category-section .category-card {
+    height: 9rem;
+    line-height: 9rem;
+  }
+  #home-category-section .category-card a {
+    font-size: 1.8rem;
+  }
+}
 .radio-sort {
   background-color: #F2F2F2;
   height: 2.9rem;

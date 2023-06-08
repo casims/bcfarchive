@@ -39,3 +39,15 @@
         };
     };
 };
+
+@media (min-width: 450px) {
+    #home-category-section {
+        .category-card {
+            height: 9rem;
+            line-height: 9rem;
+            a {
+                font-size: 1.8rem;
+            };
+        };
+    };
+};

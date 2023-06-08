@@ -106,3 +106,20 @@ header {
         border-top: 2px solid $light-grey;
     };
 };
+
+@media (min-width: 450px) {
+    header {
+        nav {
+            ul {
+                li {
+                    a {
+                        padding: inherit 3rem;
+                    };
+                };
+            };
+            .search-section {
+                padding: inherit 3rem;
+            }
+        };
+    };
+};
