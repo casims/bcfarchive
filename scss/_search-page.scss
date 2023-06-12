@@ -18,3 +18,10 @@ h2 {
         right: -1rem;
     };
 };
+
+@media (min-width: 700px) {
+    h2::after {
+        left: -2rem;
+        right: -2rem;
+    }
+}

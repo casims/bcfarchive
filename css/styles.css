@@ -3,6 +3,26 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-image: url("../media/background-min.JPG");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+}
+body::after {
+  content: "";
+  background: rgba(255, 255, 255, 0.65);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+main {
+  background-color: #FFFFFF;
+  flex: 1;
 }
 
 header, main, footer {
@@ -55,7 +75,14 @@ p {
   }
 
   main {
-    margin: 0 2rem;
+    margin: 0 auto;
+    width: 28rem;
+  }
+}
+@media (min-width: 700px) {
+  main {
+    width: 38rem;
+    padding: 0 2rem;
   }
 }
 header {
@@ -70,6 +97,9 @@ header {
 }
 header h1, header button {
   max-height: 4rem;
+}
+header .bar-link {
+  display: none;
 }
 header h1 {
   margin: 0.8rem 0;
@@ -165,12 +195,21 @@ header #header-bottom {
   border-top: 2px solid #F2F2F2;
 }
 
-@media (min-width: 450px) {
-  header nav ul li a {
-    padding: inherit 3rem;
+@media (min-width: 700px) {
+  header .bar-link {
+    display: initial;
+    max-height: 4rem;
+    margin: 1rem 0;
+    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-style: italic;
+    color: #FFFFFF;
+    font-size: 1.6rem;
+    text-decoration: none;
+    display: inline;
   }
-  header nav .search-section {
-    padding: inherit 3rem;
+  header nav ul {
+    display: none;
   }
 }
 footer {
@@ -267,6 +306,16 @@ footer p a {
   }
   #home-category-section .category-card a {
     font-size: 1.8rem;
+  }
+}
+@media (min-width: 700px) {
+  #home-category-section .category-card {
+    height: 10rem;
+    line-height: 10rem;
+  }
+  #home-category-section .category-card a {
+    font-size: 2rem;
+    padding-left: 2rem;
   }
 }
 .radio-sort {
@@ -515,6 +564,12 @@ h2:after {
   right: -1rem;
 }
 
+@media (min-width: 700px) {
+  h2::after {
+    left: -2rem;
+    right: -2rem;
+  }
+}
 table {
   background-color: #F2F2F2;
   font-family: "Montserrat", Arial, Helvetica, sans-serif;

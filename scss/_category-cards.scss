@@ -51,3 +51,16 @@
         };
     };
 };
+
+@media (min-width: 700px) {
+    #home-category-section {
+        .category-card {
+            height: 10rem;
+            line-height: 10rem;
+            a {
+                font-size: 2rem;
+                padding-left: 2rem;
+            };
+        };
+    };
+};

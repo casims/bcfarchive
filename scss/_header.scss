@@ -12,6 +12,9 @@ header {
     h1, button {
         max-height: 4rem;
     }
+    .bar-link {
+        display: none;
+    }
     h1 {
         margin: 0.8rem 0;
         font-family: 'Montserrat', Arial, Helvetica, sans-serif;
@@ -107,19 +110,24 @@ header {
     };
 };
 
-@media (min-width: 450px) {
+@media (min-width: 700px) {
     header {
+        .bar-link {
+            display: initial;
+            max-height: 4rem;
+            margin: 1rem 0;
+            font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+            font-weight: 600;
+            font-style: italic;
+            color: $white;
+            font-size: 1.6rem;
+            text-decoration: none;
+            display: inline;
+        }
         nav {
             ul {
-                li {
-                    a {
-                        padding: inherit 3rem;
-                    };
-                };
-            };
-            .search-section {
-                padding: inherit 3rem;
+                display: none;
             }
-        };
-    };
+        }
+    }
 };
