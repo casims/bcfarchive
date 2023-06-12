@@ -102,6 +102,7 @@ const siteController = {
         this.htmlWriteTarget.innerHTML = '';
         this.htmlBuffer = `
             <h2>Credits</h2>
+            <p>Image Source for background image (Image may appear cropped):<br> [<a href="https://commons.wikimedia.org/wiki/File:TsawwassenFerryTerminal.JPG">Link</a>]</p>
             <p>Image Source for "Ferries" Category Thumbnail (Image was cropped):<br> [<a href="https://flickr.com/photos/8441189@N04/2591295036">Link</a>]</p>
             <p>Image Source for "Terminals" Category Thumbnail (Image was cropped):<br> [<a href="https://www.flickr.com/photos/dph1110/2671969217/">Link</a>]</p>`;
         this.htmlWriteTarget.innerHTML = this.htmlBuffer;
