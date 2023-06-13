@@ -73,7 +73,7 @@ p {
 };
 
 @media (min-width: 450px) {
-    header, nav, footer {
+    header, .mobile-nav, footer {
         padding: 0 2rem;
     };
     main {

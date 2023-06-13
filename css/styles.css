@@ -70,7 +70,7 @@ p {
 }
 
 @media (min-width: 450px) {
-  header, nav, footer {
+  header, .mobile-nav, footer {
     padding: 0 2rem;
   }
 
@@ -95,10 +95,16 @@ header {
   top: 0;
   z-index: 90;
 }
+header .desktop-nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0;
+}
 header h1, header button {
   max-height: 4rem;
 }
-header .bar-link {
+header .category-links-wrapper {
   display: none;
 }
 header h1 {
@@ -108,6 +114,7 @@ header h1 {
   font-style: italic;
   color: #FFFFFF;
   display: inline;
+  flex: 1;
 }
 header h1 a {
   color: #FFFFFF;
@@ -126,19 +133,19 @@ header button svg {
 header button svg path {
   fill: #FFFFFF;
 }
-header nav {
+header .mobile-nav {
   width: 100vw;
   height: 0rem;
   margin: 0 calc(50% - 50vw);
   background-color: #F2F2F2;
   transition: height 0.2s ease;
 }
-header nav ul {
+header .mobile-nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-header nav ul li {
+header .mobile-nav ul li {
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   font-weight: 700;
   font-style: italic;
@@ -146,20 +153,20 @@ header nav ul li {
   border-bottom: 2px solid #003366;
   transition: all 0.5s ease;
 }
-header nav ul li :hover {
+header .mobile-nav ul li :hover {
   color: #003366;
 }
-header nav ul li a {
+header .mobile-nav ul li a {
   color: #0079A5;
   display: block;
   padding: 0.5rem 1rem;
   text-decoration: none;
   transition: all 0.2s ease;
 }
-header nav .search-section {
+header .mobile-nav .search-section {
   padding: 0 1rem;
 }
-header nav .search-section #search-field {
+header .mobile-nav .search-section #search-field {
   display: block;
   width: 100%;
   margin: 0.8rem 0 0;
@@ -168,11 +175,11 @@ header nav .search-section #search-field {
   font-size: 1rem;
   padding: 0.3rem 0.6rem;
 }
-header nav .search-section #search-button-container {
+header .mobile-nav .search-section #search-button-container {
   display: flex;
   justify-content: space-between;
 }
-header nav .search-section #search-button-container button {
+header .mobile-nav .search-section #search-button-container button {
   background-color: #0079A5;
   border-radius: 4px;
   padding: 0.4rem;
@@ -184,7 +191,7 @@ header nav .search-section #search-button-container button {
   transition: all 0.2s ease;
   cursor: pointer;
 }
-header nav .search-section #search-button-container :hover {
+header .mobile-nav .search-section #search-button-container :hover {
   background-color: #003366;
 }
 header #header-bottom {
@@ -196,19 +203,24 @@ header #header-bottom {
 }
 
 @media (min-width: 700px) {
-  header .bar-link {
+  header .category-links-wrapper {
     display: initial;
-    max-height: 4rem;
-    margin: 1rem 0;
+    height: 4rem;
+    margin-right: 1rem;
+  }
+  header .category-links-wrapper a {
     font-family: "Montserrat", Arial, Helvetica, sans-serif;
     font-weight: 600;
     font-style: italic;
+    display: inline-block;
     color: #FFFFFF;
     font-size: 1.6rem;
     text-decoration: none;
-    display: inline;
+    margin: auto;
+    padding: 1.07rem;
+    max-height: 4rem;
   }
-  header nav ul {
+  header .mobile-nav ul {
     display: none;
   }
 }
@@ -593,6 +605,17 @@ table td, table th {
   text-align: center;
   font-size: 0.8rem;
   margin: 0;
+}
+
+@media (min-width: 700px) {
+  .single-ferry-main-content table, .single-terminal-main-content table {
+    width: 17rem;
+    float: right;
+  }
+
+  .single-ferry-technical-information {
+    clear: both;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */

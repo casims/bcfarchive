@@ -28,3 +28,15 @@ table {
         };
     };
 };
+
+@media (min-width: 700px) {
+    .single-ferry-main-content, .single-terminal-main-content {
+        table {
+            width: 17rem;
+            float: right;
+        };
+    };
+    .single-ferry-technical-information {
+        clear: both;
+    }
+};

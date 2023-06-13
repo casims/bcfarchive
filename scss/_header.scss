@@ -9,12 +9,18 @@ header {
     position: sticky;
     top: 0;
     z-index: 90;
+    .desktop-nav {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0;
+    }
     h1, button {
         max-height: 4rem;
-    }
-    .bar-link {
+    };
+    .category-links-wrapper {
         display: none;
-    }
+    };
     h1 {
         margin: 0.8rem 0;
         font-family: 'Montserrat', Arial, Helvetica, sans-serif;
@@ -22,6 +28,7 @@ header {
         font-style: italic;
         color: $white;
         display: inline;
+        flex: 1;
         a {
             color: $white;
             text-decoration: none;
@@ -40,7 +47,7 @@ header {
             };
         };
     };
-    nav {
+    .mobile-nav {
         width: 100vw;
         height: 0rem;
         margin: 0 calc(50% - 50vw);
@@ -112,19 +119,24 @@ header {
 
 @media (min-width: 700px) {
     header {
-        .bar-link {
+        .category-links-wrapper {
             display: initial;
-            max-height: 4rem;
-            margin: 1rem 0;
-            font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-            font-weight: 600;
-            font-style: italic;
-            color: $white;
-            font-size: 1.6rem;
-            text-decoration: none;
-            display: inline;
+            height: 4rem;
+            margin-right: 1rem;
+            a {
+                font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+                font-weight: 600;
+                font-style: italic;
+                display: inline-block;
+                color: $white;
+                font-size: 1.6rem;
+                text-decoration: none;
+                margin: auto;
+                padding: 1.07rem;
+                max-height: 4rem;
+            }
         }
-        nav {
+        .mobile-nav {
             ul {
                 display: none;
             }
