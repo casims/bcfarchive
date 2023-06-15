@@ -33,7 +33,7 @@ header, main, footer {
 h2, h3 {
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
     font-weight: 700;
-    font-size: 1.4rem;
+    font-size: 1.7rem;
     color: $light-blue;
     margin: 1rem 0 2rem;
     position: relative;
@@ -84,7 +84,7 @@ p {
 
 @media (min-width: 700px) {
     main {
-        width: 38rem;
+        width: 40rem;
         padding: 0 2rem;
     };
 };

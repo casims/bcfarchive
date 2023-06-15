@@ -46,6 +46,9 @@ header {
                 fill: $white;
             };
         };
+        .desktop-nav-button {
+            display: none;
+        }
     };
     .mobile-nav {
         width: 100vw;
@@ -134,12 +137,26 @@ header {
                 margin: auto;
                 padding: 1.07rem;
                 max-height: 4rem;
-            }
-        }
+            };
+        };
+        button {
+            .desktop-nav-button {
+                display: inline;
+            };
+            .mobile-nav-button {
+                display: none;
+            };
+        };
         .mobile-nav {
             ul {
                 display: none;
-            }
-        }
-    }
+            };
+            .search-section {
+                #search-button-container {
+                    width: 22rem;
+                    margin: auto 0 auto auto;
+                };
+            };
+        };
+    };
 };

@@ -32,7 +32,7 @@ header, main, footer {
 h2, h3 {
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   font-weight: 700;
-  font-size: 1.4rem;
+  font-size: 1.7rem;
   color: #0079A5;
   margin: 1rem 0 2rem;
   position: relative;
@@ -81,7 +81,7 @@ p {
 }
 @media (min-width: 700px) {
   main {
-    width: 38rem;
+    width: 40rem;
     padding: 0 2rem;
   }
 }
@@ -132,6 +132,9 @@ header button svg {
 }
 header button svg path {
   fill: #FFFFFF;
+}
+header button .desktop-nav-button {
+  display: none;
 }
 header .mobile-nav {
   width: 100vw;
@@ -220,8 +223,18 @@ header #header-bottom {
     padding: 1.07rem;
     max-height: 4rem;
   }
+  header button .desktop-nav-button {
+    display: inline;
+  }
+  header button .mobile-nav-button {
+    display: none;
+  }
   header .mobile-nav ul {
     display: none;
+  }
+  header .mobile-nav .search-section #search-button-container {
+    width: 22rem;
+    margin: auto 0 auto auto;
   }
 }
 footer {
@@ -321,13 +334,18 @@ footer p a {
   }
 }
 @media (min-width: 700px) {
-  #home-category-section .category-card {
-    height: 10rem;
-    line-height: 10rem;
+  #home-category-section .category-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
-  #home-category-section .category-card a {
-    font-size: 2rem;
-    padding-left: 2rem;
+  #home-category-section .category-cards-container .category-card {
+    height: 8rem;
+    line-height: 8rem;
+    width: 48%;
+  }
+  #home-category-section .category-cards-container .category-card a {
+    font-size: 1.6rem;
   }
 }
 .radio-sort {
@@ -405,6 +423,16 @@ footer p a {
   width: 49%;
 }
 
+@media (min-width: 700px) {
+  #ferry-sort-section form .sort-by-radio-container, #terminal-sort-section form .sort-by-radio-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  #ferry-sort-section form .sort-by-radio-container .radio-option-wrapper, #terminal-sort-section form .sort-by-radio-container .radio-option-wrapper {
+    width: 49%;
+  }
+}
 #ferry-cards {
   margin-bottom: 1rem;
 }
@@ -417,9 +445,9 @@ footer p a {
 
 .single-ferry-card {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 11rem 3.5rem 1fr 1fr;
-  grid-template-areas: "image image image" "name name name" "pcap lgth m-spd" "vcap disp h-pow";
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 11rem 4.8rem 1fr 1fr 1fr;
+  grid-template-areas: "image image" "name name" "pcap vcap" "lgth disp" "m-spd h-pow";
   background-color: #F2F2F2;
   width: auto;
   margin: 1rem 0 0;
@@ -472,25 +500,26 @@ footer p a {
 }
 .single-ferry-card .single-ferry-card-vehicle-capacity {
   grid-area: vcap;
-  border-top: 1px #d8d8d8 solid;
-  border-right: 1px #d8d8d8 solid;
+  border-top: 2px #d8d8d8 solid;
+  border-left: 1px #d8d8d8 solid;
+  border-bottom: 1px #d8d8d8 solid;
 }
 .single-ferry-card .single-ferry-card-length {
   grid-area: lgth;
-  border: 1px #d8d8d8 solid;
-  border-top: 2px #d8d8d8 solid;
+  border-bottom: 1px #d8d8d8 solid;
+  border-top: 1px #d8d8d8 solid;
+  border-right: 1px #d8d8d8 solid;
 }
 .single-ferry-card .single-ferry-card-displacement {
   grid-area: disp;
   border-top: 1px #d8d8d8 solid;
   border-left: 1px #d8d8d8 solid;
-  border-right: 1px #d8d8d8 solid;
+  border-bottom: 1px #d8d8d8 solid;
 }
 .single-ferry-card .single-ferry-card-max-speed {
   grid-area: m-spd;
-  border-bottom: 1px #d8d8d8 solid;
-  border-top: 2px #d8d8d8 solid;
-  border-left: 1px #d8d8d8 solid;
+  border-top: 1px #d8d8d8 solid;
+  border-right: 1px #d8d8d8 solid;
 }
 .single-ferry-card .single-ferry-card-horsepower {
   grid-area: h-pow;
@@ -498,6 +527,16 @@ footer p a {
   border-left: 1px #d8d8d8 solid;
 }
 
+@media (min-width: 700px) {
+  #ferry-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  #ferry-cards a {
+    width: 48%;
+  }
+}
 #terminal-cards {
   margin-bottom: 1rem;
 }
@@ -510,9 +549,9 @@ footer p a {
 
 .single-terminal-card {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: 11rem 3.5rem 1fr;
-  grid-template-areas: "image image image" "name name name" "lctn lctn opnd";
+  grid-template-areas: "image image" "name name" "lctn opnd";
   background-color: #F2F2F2;
   width: auto;
   margin: 1rem 0 0;
@@ -557,10 +596,20 @@ footer p a {
   border-left: 1px #d8d8d8 solid;
 }
 
+@media (min-width: 700px) {
+  #terminal-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  #terminal-cards a {
+    width: 48%;
+  }
+}
 h2 {
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   font-weight: 700;
-  font-size: 1.4rem;
+  font-size: 1.7rem;
   color: #0079A5;
   margin: 1rem 0 2rem;
   position: relative;

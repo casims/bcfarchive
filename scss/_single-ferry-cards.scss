@@ -12,13 +12,14 @@
 
 .single-ferry-card {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 11rem 3.5rem 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 11rem 4.8rem 1fr 1fr 1fr;
     grid-template-areas:
-        "image image image"
-        "name name name"
-        "pcap lgth m-spd"
-        "vcap disp h-pow";
+        "image image"
+        "name name"
+        "pcap vcap" 
+        "lgth disp"
+        "m-spd h-pow";
     background-color: $light-grey;
     width: auto;
     margin: 1rem 0 0;
@@ -70,25 +71,26 @@
     };
     .single-ferry-card-vehicle-capacity {
         grid-area: vcap;
-        border-top: 1px $darker-grey solid;
-        border-right: 1px $darker-grey solid;
+        border-top: 2px $darker-grey solid;
+        border-left: 1px $darker-grey solid;
+        border-bottom: 1px $darker-grey solid;
     };
     .single-ferry-card-length {
         grid-area: lgth;
-        border: 1px $darker-grey solid;
-        border-top: 2px $darker-grey solid;
+        border-bottom: 1px $darker-grey solid;
+        border-top: 1px $darker-grey solid;
+        border-right: 1px $darker-grey solid;
     };
     .single-ferry-card-displacement {
         grid-area: disp;
         border-top: 1px $darker-grey solid;
         border-left: 1px $darker-grey solid;
-        border-right: 1px $darker-grey solid;
+        border-bottom: 1px $darker-grey solid;
     };
     .single-ferry-card-max-speed {
         grid-area: m-spd;
-        border-bottom: 1px $darker-grey solid;
-        border-top: 2px $darker-grey solid;
-        border-left: 1px $darker-grey solid;
+        border-top: 1px $darker-grey solid;
+        border-right: 1px $darker-grey solid;
     };
     .single-ferry-card-horsepower {
         grid-area: h-pow;
@@ -97,13 +99,13 @@
     };
 };
 
-
-// .single-ferry-card {
-//     display: grid;
-//     grid-template-columns: 1fr 1fr 1fr;
-//     grid-template-rows: 4.5rem 1fr 1fr;
-//     grid-template-areas:
-//         "name name image"
-//         "pcap lgth m-spd"
-//         "vcap disp h-pow";
-// }
+@media (min-width: 700px) {
+    #ferry-cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        a {
+            width: 48%;
+        };
+    };
+};

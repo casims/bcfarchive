@@ -54,12 +54,17 @@
 
 @media (min-width: 700px) {
     #home-category-section {
-        .category-card {
-            height: 10rem;
-            line-height: 10rem;
-            a {
-                font-size: 2rem;
-                padding-left: 2rem;
+        .category-cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            .category-card {
+                height: 8rem;
+                line-height: 8rem;
+                width: 48%;
+                a {
+                    font-size: 1.6rem;
+                };
             };
         };
     };
