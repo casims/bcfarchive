@@ -8,6 +8,8 @@ const siteController = {
     htmlCardsWriteTarget: null,
     navFunctionalityRunning: false,
     menuExpanded: false,
+    ferrySortExpanded: false,
+    terminalSortExpanded: false,
     ferriesArray: null,
     terminalsArray: null,
     ferriesSearchArray: null,
@@ -129,7 +131,11 @@ const siteController = {
     },
     navToggle: function() {
         if (this.menuExpanded === false) {
-            document.getElementById('nav').style.height = '11.6rem';
+            if (!window.matchMedia('(min-width: 700px)').matches) {
+                document.getElementById('nav').style.height = '11.6rem';
+            } else {           
+                document.getElementById('nav').style.height = '5.7rem';
+            };
             this.menuExpanded = true;
         } else {
             document.getElementById('nav').style.height = '0rem';
@@ -205,16 +211,22 @@ const siteController = {
             });
         };
         let sortExpandButton = document.getElementById('ferry-sort-button-expand');
-        let sortExpanded = false;
         sortExpandButton.addEventListener('click', function() {
-            if (sortExpanded === false) {
-                sortExpanded = true;
-                document.getElementById('ferry-sort-section').style.height = "29.8rem";
-            } else if (sortExpanded === true) {
-                sortExpanded = false;
-                document.getElementById('ferry-sort-section').style.height = "2.9rem";
-            };
+            siteController.ferrySortToggle();
         });
+    },
+    ferrySortToggle: function() {
+        if (this.ferrySortExpanded === false) {
+            if (!window.matchMedia('(min-width: 700px)').matches) {
+                document.getElementById('ferry-sort-section').style.height = '29.8rem';
+            } else {           
+                document.getElementById('ferry-sort-section').style.height = '19.8rem';
+            };
+            this.ferrySortExpanded = true;
+        } else if (this.ferrySortExpanded === true) {
+            document.getElementById('ferry-sort-section').style.height = "2.9rem";
+            this.ferrySortExpanded = false;
+        };
     },
     // Grabs array from SQL DB of all terminals stored.  Puts them in specific order if sort parameters are specified
     captureTerminalsArray: async function(sortType) {
@@ -263,16 +275,22 @@ const siteController = {
             });
         };
         let sortExpandButton = document.getElementById('terminal-sort-button-expand');
-        let sortExpanded = false;
         sortExpandButton.addEventListener('click', function() {
-            if (sortExpanded === false) {
-                sortExpanded = true;
-                document.getElementById('terminal-sort-section').style.height = "13.5rem";
-            } else if (sortExpanded === true) {
-                sortExpanded = false;
-                document.getElementById('terminal-sort-section').style.height = "2.9rem";
-            };
+            siteController.terminalSortToggle();
         });
+    },
+    terminalSortToggle: function() {
+        if (this.terminalSortExpanded === false) {
+            if (!window.matchMedia('(min-width: 700px)').matches) {
+                document.getElementById('terminal-sort-section').style.height = "13.5rem";
+            } else {
+                document.getElementById('terminal-sort-section').style.height = "11.7rem";
+            };
+            this.terminalSortExpanded = true;
+        } else if (this.terminalSortExpanded === true) {
+            document.getElementById('terminal-sort-section').style.height = "2.9rem";
+            this.terminalSortExpanded = false;
+        };
     },
     // Renders ferries page using array grabbed from SQL DB
     createFerriesPage: async function() {
