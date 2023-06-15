@@ -109,7 +109,7 @@ const siteController = {
             <p>Image Source for "Terminals" Category Thumbnail (Image was cropped):<br> [<a href="https://www.flickr.com/photos/dph1110/2671969217/">Link</a>]</p>`;
         this.htmlWriteTarget.innerHTML = this.htmlBuffer;
     },
-    // Event listeners for expanding/collapsing nav bar, as well as search functionality
+    // Event listeners for expanding/collapsing nav bar, as well as search functionality. Also checks for browser width changes and collpases menus to avoid visual glitches with them being too small/large
     navFunctionality: function() {
         this.navFunctionalityRunning = true;
         let searchField = document.getElementById('search-field');
@@ -127,6 +127,17 @@ const siteController = {
         terminalSearchButton.addEventListener('click', function() {
             searchFieldInput = searchField.value;
             window.location.href = `http://localhost/bcfarchive/#/search/t/${searchFieldInput}`;
+        });
+        window.matchMedia('(min-width: 700px)').addEventListener('change', function() {
+            if (siteController.menuExpanded === true) {
+                siteController.navToggle();
+            };
+            if (siteController.ferrySortExpanded === true) {
+                siteController.ferrySortToggle();
+            };
+            if (siteController.terminalSortExpanded === true) {
+                siteController.terminalSortToggle();
+            };
         });
     },
     navToggle: function() {
@@ -151,15 +162,17 @@ const siteController = {
             </section>
             <section id="home-category-section">
                 <h2>Categories</h2>
-                <div class="category-card" id="ferry-cat-card">
-                    <a href="#/ferries/">
-                        Ferries
-                    </a>
-                </div>
-                <div class="category-card" id="terminal-cat-card">
-                    <a href="#/terminals/">
-                        Terminals
-                    </a>
+                <div class="category-cards-container">
+                    <div class="category-card" id="ferry-cat-card">
+                        <a href="#/ferries/">
+                            Ferries
+                        </a>
+                    </div>
+                    <div class="category-card" id="terminal-cat-card">
+                        <a href="#/terminals/">
+                            Terminals
+                        </a>
+                    </div>
                 </div>
             </section>`;
         this.htmlWriteTarget.innerHTML = this.htmlBuffer;
@@ -671,12 +684,12 @@ const siteController = {
                 <h3>Technical Information</h3>
                 <table>
                     <tr>
-                        <th>Vehicle Capacity</th>
-                        <td>${this.singleFerryObject.vehicle_capacity}</td>
-                    </tr>
-                    <tr>
                         <th>Passenger Capacity</th>
                         <td>${this.singleFerryObject.passenger_capacity}</td>
+                    </tr>
+                    <tr>
+                        <th>Vehicle Capacity</th>
+                        <td>${this.singleFerryObject.vehicle_capacity}</td>
                     </tr>
                     <tr>
                         <th>Length</th>
