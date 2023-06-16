@@ -252,6 +252,14 @@ header #header-bottom {
     margin: 0.8rem 0 0;
   }
 }
+@media (min-width: 1300px) {
+  header {
+    padding: 0 6rem;
+  }
+  header .mobile-nav {
+    padding: 0 8rem;
+  }
+}
 footer {
   background-color: #003366;
   color: #FFFFFF;
