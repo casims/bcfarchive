@@ -269,11 +269,13 @@ header #header-bottom {
   }
 }
 @media (min-width: 1300px) {
-  header {
-    padding: 0 6rem;
-  }
   header .mobile-nav {
     padding: 0 8rem;
+  }
+  header .mobile-nav .search-section {
+    width: 60rem;
+    margin: 0 auto;
+    padding: 0;
   }
 }
 footer {

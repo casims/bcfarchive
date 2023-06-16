@@ -183,9 +183,13 @@ header {
 
 @media (min-width: 1300px) {
     header {
-        padding: 0 6rem;
         .mobile-nav {
             padding: 0 8rem;
+            .search-section {
+                width: 60rem;
+                margin: 0 auto;
+                padding: 0;
+            }
         };
     };
 };
