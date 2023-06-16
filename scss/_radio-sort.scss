@@ -78,14 +78,28 @@
 @media (min-width: 700px) {
     #ferry-sort-section, #terminal-sort-section {
         form {
-            .sort-by-radio-container {
+            .sort-by-radio-container, .sort-order-radio-container {
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: space-between;
+                gap: 0 1rem;
                 .radio-option-wrapper {
-                    width: 49%;
+                    width: 16.7rem;
                 };
             };
         };
     };
 };
+
+@media (min-width: 1300px) {
+    #ferry-sort-section, #terminal-sort-section {
+        form {
+            .sort-by-radio-container, .sort-order-radio-container {
+                justify-content: flex-start;
+                .radio-option-wrapper {
+                    width: 12.35rem;
+                };
+            };
+        };
+    };
+}

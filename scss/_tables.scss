@@ -40,3 +40,11 @@ table {
         clear: both;
     }
 };
+
+@media (min-width: 1300px) {
+    .single-ferry-main-content, .single-terminal-main-content {
+        table {
+            width: 20rem;
+        }
+    }
+}

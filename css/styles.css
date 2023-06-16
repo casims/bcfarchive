@@ -84,6 +84,22 @@ p {
     width: 40rem;
     padding: 0 2rem;
   }
+
+  h3::after {
+    left: -2rem;
+    right: -2rem;
+  }
+}
+@media (min-width: 1300px) {
+  main {
+    width: 60rem;
+    padding: 0 3rem;
+  }
+
+  h3::after {
+    left: -3rem;
+    right: -3rem;
+  }
 }
 header {
   background-color: #003366;
@@ -360,15 +376,29 @@ footer p a {
   #home-category-section .category-cards-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 1rem;
   }
   #home-category-section .category-cards-container .category-card {
     height: 8rem;
     line-height: 8rem;
-    width: 48%;
+    width: 17.5rem;
   }
   #home-category-section .category-cards-container .category-card a {
     font-size: 1.6rem;
+  }
+}
+@media (min-width: 1300px) {
+  #home-category-section .category-cards-container {
+    justify-content: center;
+  }
+  #home-category-section .category-cards-container .category-card {
+    height: 9rem;
+    line-height: 9rem;
+    width: 22rem;
+  }
+  #home-category-section .category-cards-container .category-card a {
+    font-size: 1.8rem;
   }
 }
 .radio-sort {
@@ -447,13 +477,22 @@ footer p a {
 }
 
 @media (min-width: 700px) {
-  #ferry-sort-section form .sort-by-radio-container, #terminal-sort-section form .sort-by-radio-container {
+  #ferry-sort-section form .sort-by-radio-container, #ferry-sort-section form .sort-order-radio-container, #terminal-sort-section form .sort-by-radio-container, #terminal-sort-section form .sort-order-radio-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    gap: 0 1rem;
   }
-  #ferry-sort-section form .sort-by-radio-container .radio-option-wrapper, #terminal-sort-section form .sort-by-radio-container .radio-option-wrapper {
-    width: 49%;
+  #ferry-sort-section form .sort-by-radio-container .radio-option-wrapper, #ferry-sort-section form .sort-order-radio-container .radio-option-wrapper, #terminal-sort-section form .sort-by-radio-container .radio-option-wrapper, #terminal-sort-section form .sort-order-radio-container .radio-option-wrapper {
+    width: 16.7rem;
+  }
+}
+@media (min-width: 1300px) {
+  #ferry-sort-section form .sort-by-radio-container, #ferry-sort-section form .sort-order-radio-container, #terminal-sort-section form .sort-by-radio-container, #terminal-sort-section form .sort-order-radio-container {
+    justify-content: flex-start;
+  }
+  #ferry-sort-section form .sort-by-radio-container .radio-option-wrapper, #ferry-sort-section form .sort-order-radio-container .radio-option-wrapper, #terminal-sort-section form .sort-by-radio-container .radio-option-wrapper, #terminal-sort-section form .sort-order-radio-container .radio-option-wrapper {
+    width: 12.35rem;
   }
 }
 #ferry-cards {
@@ -554,10 +593,19 @@ footer p a {
   #ferry-cards {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 1rem;
   }
   #ferry-cards a {
-    width: 48%;
+    width: 17.5rem;
+  }
+}
+@media (min-width: 1300px) {
+  #ferry-cards {
+    gap: 1.05rem;
+  }
+  #ferry-cards a {
+    width: 17.3rem;
   }
 }
 #terminal-cards {
@@ -623,10 +671,19 @@ footer p a {
   #terminal-cards {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 1rem;
   }
   #terminal-cards a {
-    width: 48%;
+    width: 17.5rem;
+  }
+}
+@media (min-width: 1300px) {
+  #terminal-cards {
+    gap: 1.05rem;
+  }
+  #terminal-cards a {
+    width: 17.3rem;
   }
 }
 h2 {
@@ -652,6 +709,12 @@ h2:after {
   h2::after {
     left: -2rem;
     right: -2rem;
+  }
+}
+@media (min-width: 1300px) {
+  h2::after {
+    left: -3rem;
+    right: -3rem;
   }
 }
 table {
@@ -687,6 +750,11 @@ table td, table th {
 
   .single-ferry-technical-information {
     clear: both;
+  }
+}
+@media (min-width: 1300px) {
+  .single-ferry-main-content table, .single-terminal-main-content table {
+    width: 20rem;
   }
 }
 

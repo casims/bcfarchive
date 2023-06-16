@@ -87,4 +87,19 @@ p {
         width: 40rem;
         padding: 0 2rem;
     };
+    h3::after {
+        left: -2rem;
+        right: -2rem;
+    }
+};
+
+@media (min-width: 1300px) {
+    main {
+        width: 60rem;
+        padding: 0 3rem;
+    };
+    h3::after {
+        left: -3rem;
+        right: -3rem;
+    };
 };

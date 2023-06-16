@@ -57,13 +57,30 @@
         .category-cards-container {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-between;
+            justify-content: center;
+            gap: 1rem;
             .category-card {
                 height: 8rem;
                 line-height: 8rem;
-                width: 48%;
+                width: 17.5rem;
                 a {
                     font-size: 1.6rem;
+                };
+            };
+        };
+    };
+};
+
+@media (min-width: 1300px) {
+    #home-category-section {
+        .category-cards-container {
+            justify-content: center;
+            .category-card {
+                height: 9rem;
+                line-height: 9rem;
+                width: 22rem;
+                a {
+                    font-size: 1.8rem;
                 };
             };
         };
