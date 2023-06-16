@@ -139,6 +139,11 @@ const siteController = {
                 siteController.terminalSortToggle();
             };
         });
+        window.matchMedia('(min-width: 900px)').addEventListener('change', function() {
+            if (siteController.menuExpanded === true) {
+                siteController.navToggle();
+            };
+        });
     },
     navToggle: function() {
         if (this.menuExpanded === false) {
