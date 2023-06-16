@@ -237,6 +237,21 @@ header #header-bottom {
     margin: auto 0 auto auto;
   }
 }
+@media (min-width: 900px) {
+  header .mobile-nav .search-section {
+    display: flex;
+    gap: 0.5rem;
+  }
+  header .mobile-nav .search-section #search-field {
+    width: calc(100% - 22rem);
+  }
+  header .mobile-nav .search-section #search-button-container {
+    margin: 0;
+  }
+  header .mobile-nav .search-section #search-button-container button {
+    margin: 0.8rem 0 0;
+  }
+}
 footer {
   background-color: #003366;
   color: #FFFFFF;

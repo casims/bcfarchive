@@ -160,3 +160,23 @@ header {
         };
     };
 };
+
+@media (min-width: 900px) {
+    header {
+        .mobile-nav {
+            .search-section {
+                display: flex;
+                gap: .5rem;
+                #search-field {
+                    width: calc(100% - 22rem);
+                };
+                #search-button-container {
+                    margin: 0;
+                    button {
+                        margin: 0.8rem 0 0;
+                    };
+                };
+            };
+        };
+    };
+};
