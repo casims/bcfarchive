@@ -488,10 +488,10 @@ footer p a {
   }
 }
 @media (min-width: 1300px) {
-  #ferry-sort-section form .sort-by-radio-container, #ferry-sort-section form .sort-order-radio-container, #terminal-sort-section form .sort-by-radio-container, #terminal-sort-section form .sort-order-radio-container {
+  #ferry-sort-section form .sort-by-radio-container, #ferry-sort-section form .sort-order-radio-container {
     justify-content: flex-start;
   }
-  #ferry-sort-section form .sort-by-radio-container .radio-option-wrapper, #ferry-sort-section form .sort-order-radio-container .radio-option-wrapper, #terminal-sort-section form .sort-by-radio-container .radio-option-wrapper, #terminal-sort-section form .sort-order-radio-container .radio-option-wrapper {
+  #ferry-sort-section form .sort-by-radio-container .radio-option-wrapper, #ferry-sort-section form .sort-order-radio-container .radio-option-wrapper {
     width: 12.35rem;
   }
 }
