@@ -323,6 +323,7 @@ const siteController = {
     createFerriesPage: async function() {
         this.htmlWriteTarget.innerHTML = '';
         this.htmlBuffer = `
+            <h2>Ferries</h2>
             <section class="radio-sort" id="ferry-sort-section">
                 <div class="radio-sort-header">
                     <p>Sort</p>
@@ -390,7 +391,6 @@ const siteController = {
                     </div>
                 </form>
             </section>
-            <h2>Ferries</h2>
             <section id="ferry-cards">
         `;
         await this.captureFerriesArray();
@@ -432,43 +432,42 @@ const siteController = {
     createTerminalsPage: async function() {
         this.htmlWriteTarget.innerHTML = '';
         this.htmlBuffer = `
-            <section class="radio-sort" id="terminal-sort-section">
-                <div class="radio-sort-header">
-                    <p>Sort</p>
-                    <button class="sort-expand" id="terminal-sort-button-expand">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6 18h-2v5h-2v-5h-2v-3h6v3zm-2-17h-2v12h2v-12zm11 7h-6v3h2v12h2v-12h2v-3zm-2-7h-2v5h2v-5zm11 14h-6v3h2v5h2v-5h2v-3zm-2-14h-2v12h2v-12z"/></svg>
-                    </button>
+        <h2>Terminals</h2>
+        <section class="radio-sort" id="terminal-sort-section">
+            <div class="radio-sort-header">
+                <p>Sort</p>
+                <button class="sort-expand" id="terminal-sort-button-expand">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6 18h-2v5h-2v-5h-2v-3h6v3zm-2-17h-2v12h2v-12zm11 7h-6v3h2v12h2v-12h2v-3zm-2-7h-2v5h2v-5zm11 14h-6v3h2v5h2v-5h2v-3zm-2-14h-2v12h2v-12z"/></svg>
+                </button>
+            </div>
+            <form name="terminalSortRadio">
+                <p>Sort By:</p>
+                <div class="sort-by-radio-container">
+                    <div class="radio-option-wrapper">
+                        <input type="radio" id="name" name="terminalSort" value="0">
+                        <label for="name">Name</label>
+                    </div>
+                    <div class="radio-option-wrapper">
+                        <input type="radio" id="opened" name="terminalSort" value="1" checked>
+                        <label for="opened">Opened</label>
+                    </div>
                 </div>
-                <form name="terminalSortRadio">
-                    <p>Sort By:</p>
-                    <div class="sort-by-radio-container">
-                        <div class="radio-option-wrapper">
-                            <input type="radio" id="name" name="terminalSort" value="0">
-                            <label for="name">Name</label>
-                        </div>
-                        <div class="radio-option-wrapper">
-                            <input type="radio" id="opened" name="terminalSort" value="1" checked>
-                            <label for="opened">Opened</label>
-                        </div>
+            </form>
+            <form name="terminalSortOrderRadio">
+                <p>Sort Order:</p>
+                <div class="sort-order-radio-container">
+                    <div class="radio-option-wrapper">
+                        <input type="radio" id="ascending" name="terminalSortOrder" value="1">
+                        <label for="ascending">Ascending</label>
                     </div>
-                </form>
-
-                <form name="terminalSortOrderRadio">
-                    <p>Sort Order:</p>
-                    <div class="sort-order-radio-container">
-                        <div class="radio-option-wrapper">
-                            <input type="radio" id="ascending" name="terminalSortOrder" value="1">
-                            <label for="ascending">Ascending</label>
-                        </div>
-                        <div class="radio-option-wrapper">
-                            <input type="radio" id="descending" name="terminalSortOrder" value="0" checked>
-                            <label for="descending">Descending</label>
-                        </div>
+                    <div class="radio-option-wrapper">
+                        <input type="radio" id="descending" name="terminalSortOrder" value="0" checked>
+                        <label for="descending">Descending</label>
                     </div>
-                </form>
-            </section>
-            <h2>Terminals</h2>
-            <section id="terminal-cards">
+                </div>
+            </form>
+        </section>
+        <section id="terminal-cards">
         `;
         await this.captureTerminalsArray();
         this.terminalsArray.forEach((terminal) => {
