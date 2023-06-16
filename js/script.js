@@ -142,10 +142,12 @@ const siteController = {
     },
     navToggle: function() {
         if (this.menuExpanded === false) {
-            if (!window.matchMedia('(min-width: 700px)').matches) {
-                document.getElementById('nav').style.height = '11.6rem';
-            } else {           
+            if (window.matchMedia('(min-width: 900px)').matches) {
+                document.getElementById('nav').style.height = '3.46rem';
+            } else if (window.matchMedia('(min-width: 700px)').matches) {
                 document.getElementById('nav').style.height = '5.7rem';
+            } else {           
+                document.getElementById('nav').style.height = '11.6rem';
             };
             this.menuExpanded = true;
         } else {
