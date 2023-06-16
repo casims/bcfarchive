@@ -144,6 +144,11 @@ const siteController = {
                 siteController.navToggle();
             };
         });
+        window.matchMedia('(min-width: 1300px)').addEventListener('change', function() {
+            if (siteController.ferrySortExpanded === true) {
+                siteController.ferrySortToggle();
+            };
+        });
     },
     navToggle: function() {
         if (this.menuExpanded === false) {
@@ -237,10 +242,12 @@ const siteController = {
     },
     ferrySortToggle: function() {
         if (this.ferrySortExpanded === false) {
-            if (!window.matchMedia('(min-width: 700px)').matches) {
-                document.getElementById('ferry-sort-section').style.height = '29.8rem';
-            } else {           
+            if (window.matchMedia('(min-width: 1300px)').matches) {
+                document.getElementById('ferry-sort-section').style.height = '15.8rem';
+            } else if (window.matchMedia('(min-width: 700px)').matches) {
                 document.getElementById('ferry-sort-section').style.height = '19.8rem';
+            } else {           
+                document.getElementById('ferry-sort-section').style.height = '29.8rem';
             };
             this.ferrySortExpanded = true;
         } else if (this.ferrySortExpanded === true) {
