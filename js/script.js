@@ -148,6 +148,9 @@ const siteController = {
             if (siteController.ferrySortExpanded === true) {
                 siteController.ferrySortToggle();
             };
+            if (siteController.terminalSortExpanded === true) {
+                siteController.terminalSortToggle();
+            };
         });
     },
     navToggle: function() {
@@ -168,9 +171,10 @@ const siteController = {
     createMainPage: function() {
         this.htmlWriteTarget.innerHTML = '';
         this.htmlBuffer = `
-            <section id="home-info-section">
-                <p id="home-info-header">ATTENTION</p>
-                <p>This site has absolutely no affiliation whatsoever with BC Ferries/British Columbia Ferry Services Inc..  This is merely a fan site.  Being as such, much of the information here may be out of date.  Better resources with more up to date/accurate information can be found on the credits page.</p>
+            <section id="home-welcome-section">
+                <h2>Welcome</h2>
+                <p>Welcome to the BCFArchive! This is an unofficial database for ferries and terminals which are operated by BC Ferries. This site will allow you to browse and search through both, and also allow you to sort them based on various statistics.<p>
+                <p>A "Routes" category with entries will be added at a later date.</p>
             </section>
             <section id="home-category-section">
                 <h2>Categories</h2>
@@ -186,6 +190,10 @@ const siteController = {
                         </a>
                     </div>
                 </div>
+            </section>
+            <section id="home-info-section">
+                <p id="home-info-header">ATTENTION</p>
+                <p>This site has absolutely no affiliation whatsoever with BC Ferries/British Columbia Ferry Services Inc..  This is merely a fan site.  Being as such, much of the information here may be out of date.  Better resources with more up to date/accurate information can be found on the credits page.</p>
             </section>`;
         this.htmlWriteTarget.innerHTML = this.htmlBuffer;
     },
