@@ -224,23 +224,29 @@ const siteController = {
         let ferryOrderButtons = document.ferrySortOrderRadio.ferrySortOrder;
         let prevOrderRadioValue = 0;
         for (let i = 0; i < ferrySortButtons.length; i++) {
-            ferrySortButtons[i].addEventListener('change', function(event) {
-                if (event.target.value !== prevSortRadioValue) {
-                    ferrySortData[0] = event.target.value;
-                    prevSortRadioValue = event.target.value;
-                    siteController.captureFerriesArray(ferrySortData);
-                    siteController.renderFerriesSort();
-                };
+            ferrySortButtons[i].addEventListener('change', async function(event) {
+                // if (event.target.value !== prevSortRadioValue) {
+                //     ferrySortData[0] = event.target.value;
+                //     prevSortRadioValue = event.target.value;
+                //     await siteController.captureFerriesArray(ferrySortData);
+                //     siteController.renderFerriesSort();
+                // };
+                ferrySortData[0] = event.target.value;
+                await siteController.captureFerriesArray(ferrySortData);
+                siteController.renderFerriesSort();
             });
         };
         for (let i = 0; i < ferryOrderButtons.length; i++) {
-            ferryOrderButtons[i].addEventListener('change', function(event) {
-                if (event.target.value !== prevOrderRadioValue) {
-                    ferrySortData[1] = event.target.value;
-                    prevOrderRadioValue = event.target.value;
-                    siteController.captureFerriesArray(ferrySortData);
-                    siteController.renderFerriesSort();
-                };
+            ferryOrderButtons[i].addEventListener('change', async function(event) {
+                // if (event.target.value !== prevOrderRadioValue) {
+                //     ferrySortData[1] = event.target.value;
+                //     prevOrderRadioValue = event.target.value;
+                //     await siteController.captureFerriesArray(ferrySortData);
+                //     siteController.renderFerriesSort();
+                // };
+                ferrySortData[1] = event.target.value;
+                await siteController.captureFerriesArray(ferrySortData);
+                siteController.renderFerriesSort();
             });
         };
         let sortExpandButton = document.getElementById('ferry-sort-button-expand');
@@ -290,23 +296,29 @@ const siteController = {
         let terminalOrderButtons = document.terminalSortOrderRadio.terminalSortOrder;
         let prevOrderRadioValue = 0;
         for (let i =0; i < terminalSortButtons.length; i++) {
-            terminalSortButtons[i].addEventListener('change', function(event) {
-                if (event.target.value !== prevSortRadioValue) {
-                    terminalSortData[0] = event.target.value;
-                    prevSortRadioValue = event.target.value;
-                    siteController.captureTerminalsArray(terminalSortData);
-                    siteController.renderTerminalsSort();
-                }
+            terminalSortButtons[i].addEventListener('change', async function(event) {
+                // if (event.target.value !== prevSortRadioValue) {
+                //     terminalSortData[0] = event.target.value;
+                //     prevSortRadioValue = event.target.value;
+                //     siteController.captureTerminalsArray(terminalSortData);
+                //     siteController.renderTerminalsSort();
+                // }
+                terminalSortData[0] = event.target.value;
+                await siteController.captureFerriesArray(terminalSortData);
+                siteController.renderTerminalsSort();
             });
         };
         for (let i =0; i < terminalOrderButtons.length; i++) {
-            terminalOrderButtons[i].addEventListener('change', function(event) {
-                if (event.target.value !== prevOrderRadioValue) {
-                    terminalSortData[0] = event.target.value;
-                    prevOrderRadioValue = event.target.value;
-                    siteController.captureTerminalsArray(terminalSortData);
-                    siteController.renderTerminalsSort();
-                }
+            terminalOrderButtons[i].addEventListener('change', async function(event) {
+                // if (event.target.value !== prevOrderRadioValue) {
+                //     terminalSortData[0] = event.target.value;
+                //     prevOrderRadioValue = event.target.value;
+                //     siteController.captureTerminalsArray(terminalSortData);
+                //     siteController.renderTerminalsSort();
+                // };
+                terminalSortData[1] = event.target.value;
+                await siteController.captureFerriesArray(terminalSortData);
+                siteController.renderTerminalsSort();
             });
         };
         let sortExpandButton = document.getElementById('terminal-sort-button-expand');
@@ -391,11 +403,11 @@ const siteController = {
                     <p>Sort Order:</p>
                     <div class="sort-order-radio-container">
                         <div class="radio-option-wrapper">
-                            <input type="radio" id="ascending" name="ferrySortOrder" value="0">
+                            <input type="radio" id="ascending" name="ferrySortOrder" value="1">
                             <label for="ascending">Ascending</label>
                         </div>
                         <div class="radio-option-wrapper">
-                            <input type="radio" id="descending" name="ferrySortOrder" value="1" checked>
+                            <input type="radio" id="descending" name="ferrySortOrder" value="0" checked>
                             <label for="descending">Descending</label>
                         </div>
                     </div>
@@ -486,7 +498,7 @@ const siteController = {
                     <article class="single-terminal-card">
                         <p class="single-terminal-card-name">${terminal.name}</p>
                         <div class="single-terminal-card-image">
-                            <img src="${terminal.picture}" alt="${terminal.picture_alt}">
+                            <img src="./media/terminals/${terminal.picture}" alt="${terminal.picture_alt}">
                         </div>
                         <p class="single-terminal-card-location">${terminal.location}</p>
                         <p class="single-terminal-card-opened">${terminal.opened}</p>
@@ -541,7 +553,7 @@ const siteController = {
                     <article class="single-terminal-card">
                         <p class="single-terminal-card-name">${terminal.name}</p>
                         <div class="single-terminal-card-image">
-                            <img src="${terminal.picture}" alt="${terminal.picture_alt}">
+                            <img src="./media/terminals/${terminal.picture}" alt="${terminal.picture_alt}">
                         </div>
                         <p class="single-terminal-card-location">${terminal.location}</p>
                         <p class="single-terminal-card-opened">${terminal.opened}</p>
@@ -623,7 +635,7 @@ const siteController = {
                 <article class="single-terminal-card">
                     <p class="single-terminal-card-name">${terminal.name}</p>
                     <div class="single-terminal-card-image">
-                        <img src="${terminal.picture}" alt="${terminal.picture_alt}">
+                        <img src="./media/terminals/${terminal.picture}" alt="${terminal.picture_alt}">
                     </div>
                     <p class="single-terminal-card-location">${terminal.location}</p>
                     <p class="single-terminal-card-opened">${terminal.opened}</p>
@@ -747,7 +759,7 @@ const siteController = {
                 <table>
                     <tr>
                         <td colspan="2">
-                            <img src="${this.singleTerminalObject.picture}" alt="${this.singleTerminalObject.picture_alt}"><p>[<a href="${this.singleTerminalObject.picture_alt}">Image Source</a>]</p>
+                            <img src="./media/terminals/${this.singleTerminalObject.picture}" alt="${this.singleTerminalObject.picture_alt}"><p>[<a href="${this.singleTerminalObject.picture_alt}">Image Source</a>]</p>
                         </td>
                     </tr>
                     <tr>
