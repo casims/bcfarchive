@@ -102,4 +102,24 @@
             };
         };
     };
-}
+    #terminal-sort-section {
+        display: flex;
+        flex-wrap: wrap;
+        .radio-sort-header {
+            width: 100%;
+        };
+        form {
+            width: 50%;
+            flex: 1;
+            p {
+                margin-top: 0;
+            };
+            .sort-by-radio-container, .sort-order-radio-container {
+                justify-content: space-between;
+                .radio-option-wrapper {
+                    width: 12.35rem;
+                };
+            };
+        };
+    };
+};

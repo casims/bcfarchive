@@ -38,13 +38,19 @@ table {
     };
     .single-ferry-technical-information {
         clear: both;
-    }
+    };
 };
 
 @media (min-width: 1300px) {
     .single-ferry-main-content, .single-terminal-main-content {
         table {
             width: 20rem;
-        }
-    }
-}
+        };
+    };
+    .single-ferry-technical-information {
+        table {
+            width: 36rem;
+            margin: 0 auto;
+        };
+    };
+};

@@ -308,10 +308,12 @@ const siteController = {
     },
     terminalSortToggle: function() {
         if (this.terminalSortExpanded === false) {
-            if (!window.matchMedia('(min-width: 700px)').matches) {
-                document.getElementById('terminal-sort-section').style.height = "13.5rem";
-            } else {
+            if (window.matchMedia('(min-width: 1300px)').matches) {
+                document.getElementById('terminal-sort-section').style.height = "7.5rem"
+            } else if (window.matchMedia('(min-width: 700px)').matches) {
                 document.getElementById('terminal-sort-section').style.height = "11.7rem";
+            } else {
+                document.getElementById('terminal-sort-section').style.height = "13.5rem";
             };
             this.terminalSortExpanded = true;
         } else if (this.terminalSortExpanded === true) {

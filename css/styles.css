@@ -325,6 +325,11 @@ footer p a {
   line-height: 1rem;
 }
 
+@media (min-width: 1300px) {
+  #home-info-section {
+    padding: 1rem;
+  }
+}
 #home-category-section {
   margin-top: 1rem;
 }
@@ -494,6 +499,27 @@ footer p a {
     justify-content: flex-start;
   }
   #ferry-sort-section form .sort-by-radio-container .radio-option-wrapper, #ferry-sort-section form .sort-order-radio-container .radio-option-wrapper {
+    width: 12.35rem;
+  }
+
+  #terminal-sort-section {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #terminal-sort-section .radio-sort-header {
+    width: 100%;
+  }
+  #terminal-sort-section form {
+    width: 50%;
+    flex: 1;
+  }
+  #terminal-sort-section form p {
+    margin-top: 0;
+  }
+  #terminal-sort-section form .sort-by-radio-container, #terminal-sort-section form .sort-order-radio-container {
+    justify-content: space-between;
+  }
+  #terminal-sort-section form .sort-by-radio-container .radio-option-wrapper, #terminal-sort-section form .sort-order-radio-container .radio-option-wrapper {
     width: 12.35rem;
   }
 }
@@ -757,6 +783,11 @@ table td, table th {
 @media (min-width: 1300px) {
   .single-ferry-main-content table, .single-terminal-main-content table {
     width: 20rem;
+  }
+
+  .single-ferry-technical-information table {
+    width: 36rem;
+    margin: 0 auto;
   }
 }
 
