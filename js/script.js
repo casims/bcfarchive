@@ -419,7 +419,7 @@ const siteController = {
                         this.htmlBuffer += `
                         </p>
                         <div class="single-ferry-card-image">
-                            <img src="${ferry.picture}" alt="${ferry.picture_alt}">
+                            <img src="./media/ferries/${ferry.picture}" alt="${ferry.picture_alt}">
                         </div>
                         <p class="single-ferry-card-passenger-capacity">${ferry.passenger_capacity}</p>
                         <p class="single-ferry-card-vehicle-capacity">${ferry.vehicle_capacity}</p>
@@ -518,7 +518,7 @@ const siteController = {
                         this.htmlBuffer += `
                         </p>
                         <div class="single-ferry-card-image">
-                            <img src="${ferry.picture}" alt="${ferry.picture_alt}">
+                            <img src="./media/ferries/${ferry.picture}" alt="${ferry.picture_alt}">
                         </div>
                         <p class="single-ferry-card-passenger-capacity">${ferry.passenger_capacity}</p>
                         <p class="single-ferry-card-vehicle-capacity">${ferry.vehicle_capacity}</p>
@@ -595,7 +595,7 @@ const siteController = {
                         this.htmlBuffer += `
                         </p>
                         <div class="single-ferry-card-image">
-                            <img src="${ferry.picture}" alt="${ferry.picture_alt}">
+                            <img src="./media/ferries/${ferry.picture}" alt="${ferry.picture_alt}">
                         </div>
                         <p class="single-ferry-card-passenger-capacity">${ferry.passenger_capacity}</p>
                         <p class="single-ferry-card-vehicle-capacity">${ferry.vehicle_capacity}</p>
@@ -665,7 +665,7 @@ const siteController = {
                 <table>
                     <tr>
                         <td colspan="2">
-                            <img src="${this.singleFerryObject.picture}" alt="${this.singleFerryObject.picture_alt}">
+                            <img src="./media/ferries/${this.singleFerryObject.picture}" alt="${this.singleFerryObject.picture_alt}">
                             <p>[<a href="${this.singleFerryObject.picture_source}">Image Source</a>]</p>
                         </td>
                     </tr>
