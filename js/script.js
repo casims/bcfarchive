@@ -173,8 +173,8 @@ const siteController = {
         this.htmlBuffer = `
             <section id="home-welcome-section">
                 <h2>Welcome</h2>
-                <p>Welcome to the BCFArchive! This is an unofficial database for ferries and terminals which are operated by BC Ferries. This site will allow you to browse and search through both, and also allow you to sort them based on various statistics.<p>
-                <p>A "Routes" category with entries will be added at a later date.</p>
+                <p>Welcome to the BCFArchive! This is an unofficial database for ferries and terminals which are operated by BC Ferries. This site will allow you to browse and search through both, and also allow you to sort them based on various statistics. Each ferry/terminal has it's own page which will display all the information available about it.<p>
+                <p>A "Routes" category with it's own entries will be added at a later date.</p>
             </section>
             <section id="home-category-section">
                 <h2>Categories</h2>
@@ -193,7 +193,7 @@ const siteController = {
             </section>
             <section id="home-info-section">
                 <p id="home-info-header">ATTENTION</p>
-                <p>This site has absolutely no affiliation whatsoever with BC Ferries/British Columbia Ferry Services Inc..  This is merely a fan site.  Being as such, much of the information here may be out of date.  Better resources with more up to date/accurate information can be found on the credits page.</p>
+                <p>This site has no affiliation with BC Ferries/British Columbia Ferry Services Inc.. This site is also not actively maintained, so many of the information here may be out of date. More reliable sources can be found on the "Credits" page.</p>
             </section>`;
         this.htmlWriteTarget.innerHTML = this.htmlBuffer;
     },

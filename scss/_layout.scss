@@ -62,9 +62,17 @@ p {
     font-size: 0.8rem;
 };
 
+#home-welcome-section {
+    p {
+        font-size: .9rem;
+        line-height: 1.2rem;
+    }
+}
+
 .single-ferry-main-content, .single-terminal-main-content {
     p {
         font-size: 0.95rem;
+        line-height: 1.2rem;
     };
 };
 

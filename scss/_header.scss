@@ -32,6 +32,11 @@ header {
         a {
             color: $white;
             text-decoration: none;
+            padding: .8rem 0;
+            transition: color 0.3s ease;
+            &:hover {
+                color: $darker-grey;
+            }
         };
     };
     button {
@@ -137,6 +142,10 @@ header {
                 margin: auto;
                 padding: 1.07rem;
                 max-height: 4rem;
+                transition: color 0.3s ease;
+                &:hover {
+                    color: $darker-grey;
+                };
             };
         };
         button {
