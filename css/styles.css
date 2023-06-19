@@ -505,6 +505,7 @@ footer p a {
   #terminal-sort-section {
     display: flex;
     flex-wrap: wrap;
+    gap: 0 1rem;
   }
   #terminal-sort-section .radio-sort-header {
     width: 100%;
