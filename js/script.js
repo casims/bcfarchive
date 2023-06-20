@@ -433,12 +433,12 @@ const siteController = {
                         <div class="single-ferry-card-image">
                             <img src="./media/ferries/${ferry.picture}" alt="${ferry.picture_alt}">
                         </div>
-                        <p class="single-ferry-card-passenger-capacity">${ferry.passenger_capacity}</p>
-                        <p class="single-ferry-card-vehicle-capacity">${ferry.vehicle_capacity}</p>
-                        <p class="single-ferry-card-length">${ferry.length}</p>
-                        <p class="single-ferry-card-displacement">${ferry.displacement}</p>
-                        <p class="single-ferry-card-max-speed">${ferry.max_speed}</p>
-                        <p class="single-ferry-card-horsepower">${ferry.horsepower}</p>
+                        <p class="single-ferry-card-passenger-capacity">${ferry.passenger_capacity} People</p>
+                        <p class="single-ferry-card-vehicle-capacity">${ferry.vehicle_capacity} Vehicles</p>
+                        <p class="single-ferry-card-length">${ferry.length} Meters</p>
+                        <p class="single-ferry-card-displacement">${ferry.displacement} Tonnes</p>
+                        <p class="single-ferry-card-max-speed">${ferry.max_speed} Knots</p>
+                        <p class="single-ferry-card-horsepower">${ferry.horsepower} HP</p>
                     </article>
                 </a>
             `;
@@ -532,12 +532,12 @@ const siteController = {
                         <div class="single-ferry-card-image">
                             <img src="./media/ferries/${ferry.picture}" alt="${ferry.picture_alt}">
                         </div>
-                        <p class="single-ferry-card-passenger-capacity">${ferry.passenger_capacity}</p>
-                        <p class="single-ferry-card-vehicle-capacity">${ferry.vehicle_capacity}</p>
-                        <p class="single-ferry-card-length">${ferry.length}</p>
-                        <p class="single-ferry-card-displacement">${ferry.displacement}</p>
-                        <p class="single-ferry-card-max-speed">${ferry.max_speed}</p>
-                        <p class="single-ferry-card-horsepower">${ferry.horsepower}</p>
+                        <p class="single-ferry-card-passenger-capacity">${ferry.passenger_capacity} People</p>
+                        <p class="single-ferry-card-vehicle-capacity">${ferry.vehicle_capacity} Vehicles</p>
+                        <p class="single-ferry-card-length">${ferry.length} Meters</p>
+                        <p class="single-ferry-card-displacement">${ferry.displacement} Tonnes</p>
+                        <p class="single-ferry-card-max-speed">${ferry.max_speed} Knots</p>
+                        <p class="single-ferry-card-horsepower">${ferry.horsepower} HP</p>
                     </article>
                 </a>
             `;
@@ -609,12 +609,12 @@ const siteController = {
                         <div class="single-ferry-card-image">
                             <img src="./media/ferries/${ferry.picture}" alt="${ferry.picture_alt}">
                         </div>
-                        <p class="single-ferry-card-passenger-capacity">${ferry.passenger_capacity}</p>
-                        <p class="single-ferry-card-vehicle-capacity">${ferry.vehicle_capacity}</p>
-                        <p class="single-ferry-card-length">${ferry.length}</p>
-                        <p class="single-ferry-card-displacement">${ferry.displacement}</p>
-                        <p class="single-ferry-card-max-speed">${ferry.max_speed}</p>
-                        <p class="single-ferry-card-horsepower">${ferry.horsepower}</p>
+                        <p class="single-ferry-card-passenger-capacity">${ferry.passenger_capacity} People</p>
+                        <p class="single-ferry-card-vehicle-capacity">${ferry.vehicle_capacity} Vehicles</p>
+                        <p class="single-ferry-card-length">${ferry.length} Meters</p>
+                        <p class="single-ferry-card-displacement">${ferry.displacement} Tonnes</p>
+                        <p class="single-ferry-card-max-speed">${ferry.max_speed} Knots</p>
+                        <p class="single-ferry-card-horsepower">${ferry.horsepower} HP</p>
                     </article>
                 </a>
             `;
@@ -720,31 +720,27 @@ const siteController = {
                 <table>
                     <tr>
                         <th>Passenger Capacity</th>
-                        <td>${this.singleFerryObject.passenger_capacity}</td>
+                        <td>${this.singleFerryObject.passenger_capacity} People</td>
                     </tr>
                     <tr>
                         <th>Vehicle Capacity</th>
-                        <td>${this.singleFerryObject.vehicle_capacity}</td>
+                        <td>${this.singleFerryObject.vehicle_capacity} Vehicles</td>
                     </tr>
                     <tr>
                         <th>Length</th>
-                        <td>${this.singleFerryObject.length}</td>
+                        <td>${this.singleFerryObject.length} Meters</td>
                     </tr>
                     <tr>
                         <th>Displacement</th>
-                        <td>${this.singleFerryObject.displacement}</td>
+                        <td>${this.singleFerryObject.displacement} Tonnes</td>
                     </tr>
                     <tr>
                         <th>Max Speed</th>
-                        <td>${this.singleFerryObject.max_speed}</td>
+                        <td>${this.singleFerryObject.max_speed} Knots</td>
                     </tr>
                     <tr>
                         <th>Horsepower</th>
-                        <td>${this.singleFerryObject.horsepower}</td>
-                    </tr>
-                    <tr>
-                        <th>Engines</th>
-                        <td>${this.singleFerryObject.engines}</td>
+                        <td>${this.singleFerryObject.horsepower} HP</td>
                     </tr>
                 </table>
             </section>`;
