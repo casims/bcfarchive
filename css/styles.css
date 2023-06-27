@@ -427,6 +427,7 @@ footer p a {
   background-color: #F2F2F2;
   height: 2.9rem;
   margin-top: 1rem;
+  margin-bottom: 1rem;
   padding: 0.8rem;
   border-radius: 5px;
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
@@ -556,7 +557,7 @@ footer p a {
   grid-template-areas: "image image" "name name" "pcap vcap" "lgth disp" "m-spd h-pow";
   background-color: #F2F2F2;
   width: auto;
-  margin: 1rem 0 0;
+  margin: 0;
   border-radius: 5px;
   overflow: hidden;
   position: relative;
@@ -669,7 +670,7 @@ footer p a {
   grid-template-areas: "image image" "name name" "lctn opnd";
   background-color: #F2F2F2;
   width: auto;
-  margin: 1rem 0 0;
+  margin: 0;
   border-radius: 5px;
   overflow: hidden;
   position: relative;
