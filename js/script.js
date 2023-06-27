@@ -402,8 +402,13 @@ const siteController = {
                         };            
                         this.htmlBuffer += `
                         </p>
-                        <div class="single-ferry-card-image">
-                            <img src="./media/ferries/${ferry.picture}" alt="${ferry.picture_alt}">
+                        <div class="single-ferry-card-image">`;
+                        if (ferry.picture) {
+                            this.htmlBuffer += `<img src="./media/ferries/${ferry.picture}" alt="${ferry.picture_alt}">`;
+                        } else {
+                            this.htmlBuffer += `<img src="./media/na.jpg">`;
+                        };
+                        this.htmlBuffer += `                        
                         </div>
                         <p class="single-ferry-card-passenger-capacity">${ferry.passenger_capacity} People</p>
                         <p class="single-ferry-card-vehicle-capacity">${ferry.vehicle_capacity} Vehicles</p>
@@ -469,8 +474,13 @@ const siteController = {
                 <a href="#/terminals/${terminal.page_id}">
                     <article class="single-terminal-card">
                         <p class="single-terminal-card-name">${terminal.name}</p>
-                        <div class="single-terminal-card-image">
-                            <img src="./media/terminals/${terminal.picture}" alt="${terminal.picture_alt}">
+                        <div class="single-terminal-card-image">`;
+                        if (terminal.picture) {
+                            this.htmlBuffer += `<img src="./media/terminals/${terminal.picture}" alt="${terminal.picture_alt}">`;
+                        } else {
+                            this.htmlBuffer += `<img src="./media/na.jpg">`;
+                        };
+                        this.htmlBuffer += `
                         </div>
                         <p class="single-terminal-card-location">${terminal.location}</p>
                         <p class="single-terminal-card-opened">${terminal.opened}</p>
@@ -501,8 +511,13 @@ const siteController = {
                         };            
                         this.htmlBuffer += `
                         </p>
-                        <div class="single-ferry-card-image">
-                            <img src="./media/ferries/${ferry.picture}" alt="${ferry.picture_alt}">
+                        <div class="single-ferry-card-image">`;
+                        if (ferry.picture) {
+                            this.htmlBuffer += `<img src="./media/ferries/${ferry.picture}" alt="${ferry.picture_alt}">`;
+                        } else {
+                            this.htmlBuffer += `<img src="./media/na.jpg">`;
+                        };
+                        this.htmlBuffer += ` 
                         </div>
                         <p class="single-ferry-card-passenger-capacity">${ferry.passenger_capacity} People</p>
                         <p class="single-ferry-card-vehicle-capacity">${ferry.vehicle_capacity} Vehicles</p>
@@ -524,8 +539,13 @@ const siteController = {
                 <a href="#/terminals/${terminal.page_id}">
                     <article class="single-terminal-card">
                         <p class="single-terminal-card-name">${terminal.name}</p>
-                        <div class="single-terminal-card-image">
-                            <img src="./media/terminals/${terminal.picture}" alt="${terminal.picture_alt}">
+                        <div class="single-terminal-card-image">`;
+                        if (terminal.picture) {
+                            this.htmlBuffer += `<img src="./media/terminals/${terminal.picture}" alt="${terminal.picture_alt}">`;
+                        } else {
+                            this.htmlBuffer += `<img src="./media/na.jpg">`;
+                        };
+                        this.htmlBuffer += `
                         </div>
                         <p class="single-terminal-card-location">${terminal.location}</p>
                         <p class="single-terminal-card-opened">${terminal.opened}</p>
@@ -578,8 +598,13 @@ const siteController = {
                         };            
                         this.htmlBuffer += `
                         </p>
-                        <div class="single-ferry-card-image">
-                            <img src="./media/ferries/${ferry.picture}" alt="${ferry.picture_alt}">
+                        <div class="single-ferry-card-image">`;
+                        if (ferry.picture) {
+                            this.htmlBuffer += `<img src="./media/ferries/${ferry.picture}" alt="${ferry.picture_alt}">`;
+                        } else {
+                            this.htmlBuffer += `<img src="./media/na.jpg">`;
+                        };
+                        this.htmlBuffer += ` 
                         </div>
                         <p class="single-ferry-card-passenger-capacity">${ferry.passenger_capacity} People</p>
                         <p class="single-ferry-card-vehicle-capacity">${ferry.vehicle_capacity} Vehicles</p>
@@ -606,8 +631,13 @@ const siteController = {
             <a href="#/terminals/${terminal.page_id}">
                 <article class="single-terminal-card">
                     <p class="single-terminal-card-name">${terminal.name}</p>
-                    <div class="single-terminal-card-image">
-                        <img src="./media/terminals/${terminal.picture}" alt="${terminal.picture_alt}">
+                    <div class="single-terminal-card-image">`;
+                    if (terminal.picture) {
+                        this.htmlBuffer += `<img src="./media/terminals/${terminal.picture}" alt="${terminal.picture_alt}">`;
+                    } else {
+                        this.htmlBuffer += `<img src="./media/na.jpg">`;
+                    };
+                    this.htmlBuffer += `
                     </div>
                     <p class="single-terminal-card-location">${terminal.location}</p>
                     <p class="single-terminal-card-opened">${terminal.opened}</p>
@@ -648,9 +678,15 @@ const siteController = {
             <section class="single-ferry-main-content">
                 <table>
                     <tr>
-                        <td colspan="2">
+                        <td colspan="2">`;
+                        if (this.singleFerryObject.picture) {
+                            this.htmlBuffer += `
                             <img src="./media/ferries/${this.singleFerryObject.picture}" alt="${this.singleFerryObject.picture_alt}">
-                            <p>[<a href="${this.singleFerryObject.picture_source}">Image Source</a>]</p>
+                            <p>[<a href="${this.singleFerryObject.picture_source}">Image Source</a>]</p>`;
+                        } else {
+                            this.htmlBuffer += `<img src="./media/na.jpg">`;
+                        };
+                        this.htmlBuffer += `
                         </td>
                     </tr>
                     <tr>
@@ -726,8 +762,15 @@ const siteController = {
             <section class="single-terminal-main-content">
                 <table>
                     <tr>
-                        <td colspan="2">
-                            <img src="./media/terminals/${this.singleTerminalObject.picture}" alt="${this.singleTerminalObject.picture_alt}"><p>[<a href="${this.singleTerminalObject.picture_alt}">Image Source</a>]</p>
+                        <td colspan="2">`;
+                        if (this.singleTerminalObject.picture) {
+                            this.htmlBuffer += `
+                            <img src="./media/terminals/${this.singleTerminalObject.picture}" alt="${this.singleTerminalObject.picture_alt}">
+                            <p>[<a href="${this.singleTerminalObject.picture_source}">Image Source</a>]</p>`;
+                        } else {
+                            this.htmlBuffer += `<img src="./media/na.jpg">`;
+                        };
+                        this.htmlBuffer += `
                         </td>
                     </tr>
                     <tr>
