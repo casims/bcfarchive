@@ -220,17 +220,9 @@ const siteController = {
     ferrySortFunctionality: function() {
         let ferrySortData = [null, 0];
         let ferrySortButtons = document.ferrySortRadio.ferrySort;
-        let prevSortRadioValue = null;
         let ferryOrderButtons = document.ferrySortOrderRadio.ferrySortOrder;
-        let prevOrderRadioValue = 0;
         for (let i = 0; i < ferrySortButtons.length; i++) {
             ferrySortButtons[i].addEventListener('change', async function(event) {
-                // if (event.target.value !== prevSortRadioValue) {
-                //     ferrySortData[0] = event.target.value;
-                //     prevSortRadioValue = event.target.value;
-                //     await siteController.captureFerriesArray(ferrySortData);
-                //     siteController.renderFerriesSort();
-                // };
                 ferrySortData[0] = event.target.value;
                 await siteController.captureFerriesArray(ferrySortData);
                 siteController.renderFerriesSort();
@@ -238,12 +230,6 @@ const siteController = {
         };
         for (let i = 0; i < ferryOrderButtons.length; i++) {
             ferryOrderButtons[i].addEventListener('change', async function(event) {
-                // if (event.target.value !== prevOrderRadioValue) {
-                //     ferrySortData[1] = event.target.value;
-                //     prevOrderRadioValue = event.target.value;
-                //     await siteController.captureFerriesArray(ferrySortData);
-                //     siteController.renderFerriesSort();
-                // };
                 ferrySortData[1] = event.target.value;
                 await siteController.captureFerriesArray(ferrySortData);
                 siteController.renderFerriesSort();
@@ -292,17 +278,9 @@ const siteController = {
     terminalSortFunctionality: function() {
         let terminalSortData = [null, 0];
         let terminalSortButtons = document.terminalSortRadio.terminalSort;
-        let prevSortRadioValue = null;
         let terminalOrderButtons = document.terminalSortOrderRadio.terminalSortOrder;
-        let prevOrderRadioValue = 0;
         for (let i =0; i < terminalSortButtons.length; i++) {
             terminalSortButtons[i].addEventListener('change', async function(event) {
-                // if (event.target.value !== prevSortRadioValue) {
-                //     terminalSortData[0] = event.target.value;
-                //     prevSortRadioValue = event.target.value;
-                //     siteController.captureTerminalsArray(terminalSortData);
-                //     siteController.renderTerminalsSort();
-                // }
                 terminalSortData[0] = event.target.value;
                 await siteController.captureFerriesArray(terminalSortData);
                 siteController.renderTerminalsSort();
@@ -310,12 +288,6 @@ const siteController = {
         };
         for (let i =0; i < terminalOrderButtons.length; i++) {
             terminalOrderButtons[i].addEventListener('change', async function(event) {
-                // if (event.target.value !== prevOrderRadioValue) {
-                //     terminalSortData[0] = event.target.value;
-                //     prevOrderRadioValue = event.target.value;
-                //     siteController.captureTerminalsArray(terminalSortData);
-                //     siteController.renderTerminalsSort();
-                // };
                 terminalSortData[1] = event.target.value;
                 await siteController.captureFerriesArray(terminalSortData);
                 siteController.renderTerminalsSort();
