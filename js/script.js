@@ -483,7 +483,7 @@ const siteController = {
                         this.htmlBuffer += `
                         </div>
                         <p class="single-terminal-card-location">${terminal.location}</p>
-                        <p class="single-terminal-card-opened">${terminal.opened}</p>
+                        <p class="single-terminal-card-address">${terminal.address}</p>
                     </article>
                 </a>
             `;
@@ -548,7 +548,7 @@ const siteController = {
                         this.htmlBuffer += `
                         </div>
                         <p class="single-terminal-card-location">${terminal.location}</p>
-                        <p class="single-terminal-card-opened">${terminal.opened}</p>
+                        <p class="single-terminal-card-address">${terminal.address}</p>
                     </article>
                 </a>
             `;
@@ -640,7 +640,7 @@ const siteController = {
                     this.htmlBuffer += `
                     </div>
                     <p class="single-terminal-card-location">${terminal.location}</p>
-                    <p class="single-terminal-card-opened">${terminal.opened}</p>
+                    <p class="single-terminal-card-address">${terminal.address}</p>
                 </article>
             </a>
             `;
@@ -774,12 +774,17 @@ const siteController = {
                         </td>
                     </tr>
                     <tr>
-                        <th>Opened</th>
-                        <td>${this.singleTerminalObject.opened}</td>
                     </tr>
+                        <th>Location</th>
+                        <td>${this.singleTerminalObject.location}</td>
                     <tr>
-                        <th>Routes</th>
-                        <td>${this.singleTerminalObject.routes}</td>
+                        <th>Opened</th>`;
+                        if (!this.singleTerminalObject.opened === '0000') {
+                            this.htmlBuffer += `<td>${this.singleTerminalObject.opened}</td>`;
+                        } else {
+                            this.htmlBuffer += `<td>N/A</td>`;
+                        };
+                        this.htmlBuffer += `
                     </tr>
                     <tr>
                         <th>Address</th>
@@ -787,6 +792,12 @@ const siteController = {
                     </tr>
                 </table>
                 <p>${this.singleTerminalObject.history}</p>
+            </section>
+            <section class="single-terminal-routes">
+                <h3>Routes</h3>
+                <ul>
+                    ${this.singleTerminalObject.routes}
+                </ul>
             </section>`;
         this.htmlWriteTarget.innerHTML = this.htmlBuffer;
     }

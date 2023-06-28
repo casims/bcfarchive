@@ -80,6 +80,17 @@ p {
     margin-bottom: 1rem;
 };
 
+.single-terminal-routes {
+    ul {
+        padding-left: 1rem;
+        li {
+            font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.6rem;
+        };
+    };
+};
+
 @media (min-width: 450px) {
     header, .mobile-nav, footer {
         padding: 0 2rem;

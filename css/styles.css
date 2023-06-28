@@ -75,6 +75,15 @@ p {
   margin-bottom: 1rem;
 }
 
+.single-terminal-routes ul {
+  padding-left: 1rem;
+}
+.single-terminal-routes ul li {
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6rem;
+}
+
 @media (min-width: 450px) {
   header, .mobile-nav, footer {
     padding: 0 2rem;
@@ -665,9 +674,9 @@ footer p a {
 
 .single-terminal-card {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-template-rows: 11rem 3.5rem 1fr;
-  grid-template-areas: "image image" "name name" "lctn opnd";
+  grid-template-areas: "image" "name" "addr";
   background-color: #F2F2F2;
   width: auto;
   margin: 0;
@@ -702,14 +711,12 @@ footer p a {
   margin: auto;
 }
 .single-terminal-card .single-terminal-card-location {
-  grid-area: lctn;
-  border-top: 2px #d8d8d8 solid;
-  border-right: 1px #d8d8d8 solid;
+  grid-area: name;
+  align-self: end;
 }
-.single-terminal-card .single-terminal-card-opened {
-  grid-area: opnd;
+.single-terminal-card .single-terminal-card-address {
+  grid-area: addr;
   border-top: 2px #d8d8d8 solid;
-  border-left: 1px #d8d8d8 solid;
 }
 
 @media (min-width: 700px) {
@@ -794,7 +801,7 @@ table td, table th {
     margin: 0 0 0.5rem 0.5rem;
   }
 
-  .single-ferry-technical-information {
+  .single-ferry-technical-information, .single-terminal-routes {
     clear: both;
   }
 }
