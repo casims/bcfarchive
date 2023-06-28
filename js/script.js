@@ -282,14 +282,14 @@ const siteController = {
         for (let i =0; i < terminalSortButtons.length; i++) {
             terminalSortButtons[i].addEventListener('change', async function(event) {
                 terminalSortData[0] = event.target.value;
-                await siteController.captureFerriesArray(terminalSortData);
+                await siteController.captureTerminalsArray(terminalSortData);
                 siteController.renderTerminalsSort();
             });
         };
         for (let i =0; i < terminalOrderButtons.length; i++) {
             terminalOrderButtons[i].addEventListener('change', async function(event) {
                 terminalSortData[1] = event.target.value;
-                await siteController.captureFerriesArray(terminalSortData);
+                await siteController.captureTerminalsArray(terminalSortData);
                 siteController.renderTerminalsSort();
             });
         };
@@ -447,8 +447,8 @@ const siteController = {
                         <label for="name">Name</label>
                     </div>
                     <div class="radio-option-wrapper">
-                        <input type="radio" id="opened" name="terminalSort" value="1" checked>
-                        <label for="opened">Opened</label>
+                        <input type="radio" id="location" name="terminalSort" value="1" checked>
+                        <label for="location">Location</label>
                     </div>
                 </div>
             </form>
