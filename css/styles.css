@@ -566,7 +566,7 @@ footer p a {
   grid-template-areas: "image image" "name name" "pcap vcap" "lgth disp" "m-spd h-pow";
   background-color: #F2F2F2;
   width: auto;
-  margin: 0;
+  margin: 0 0 1rem;
   border-radius: 5px;
   overflow: hidden;
   position: relative;
@@ -648,7 +648,7 @@ footer p a {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem;
+    gap: 0 1rem;
   }
   #ferry-cards a {
     width: 17.5rem;
@@ -679,7 +679,7 @@ footer p a {
   grid-template-areas: "image" "name" "addr";
   background-color: #F2F2F2;
   width: auto;
-  margin: 0;
+  margin: 0 0 1rem;
   border-radius: 5px;
   overflow: hidden;
   position: relative;
@@ -724,7 +724,7 @@ footer p a {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem;
+    gap: 0 1rem;
   }
   #terminal-cards a {
     width: 17.5rem;
