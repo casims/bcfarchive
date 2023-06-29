@@ -33,6 +33,7 @@ const siteController = {
     },
     // Function for determining which page to display based on URL
     router: async function() {
+        scroll(0,0);
         // Starts Nav event listeners if they are not running already
         if (this.navFunctionalityRunning === false) {
             this.navFunctionality();
@@ -89,7 +90,6 @@ const siteController = {
                 this.createCredits();
             };
         } else {
-            scroll(0,0);
             this.createMainPage();
         };
     },
@@ -476,7 +476,7 @@ const siteController = {
                         <p class="single-terminal-card-name">${terminal.name}</p>
                         <div class="single-terminal-card-image">`;
                         if (terminal.picture) {
-                            this.htmlBuffer += `<img src="./media/terminals/${terminal.picture}" alt="${terminal.picture_alt}">`;
+                            this.htmlBuffer += `<img src="./media/terminals/thumbnails/${terminal.picture}" alt="${terminal.picture_alt}">`;
                         } else {
                             this.htmlBuffer += `<img src="./media/na.jpg">`;
                         };
@@ -541,7 +541,7 @@ const siteController = {
                         <p class="single-terminal-card-name">${terminal.name}</p>
                         <div class="single-terminal-card-image">`;
                         if (terminal.picture) {
-                            this.htmlBuffer += `<img src="./media/terminals/${terminal.picture}" alt="${terminal.picture_alt}">`;
+                            this.htmlBuffer += `<img src="./media/terminals/thumbnails/${terminal.picture}" alt="${terminal.picture_alt}">`;
                         } else {
                             this.htmlBuffer += `<img src="./media/na.jpg">`;
                         };
@@ -633,7 +633,7 @@ const siteController = {
                     <p class="single-terminal-card-name">${terminal.name}</p>
                     <div class="single-terminal-card-image">`;
                     if (terminal.picture) {
-                        this.htmlBuffer += `<img src="./media/terminals/${terminal.picture}" alt="${terminal.picture_alt}">`;
+                        this.htmlBuffer += `<img src="./media/terminals/thumbnails/${terminal.picture}" alt="${terminal.picture_alt}">`;
                     } else {
                         this.htmlBuffer += `<img src="./media/na.jpg">`;
                     };
