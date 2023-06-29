@@ -649,6 +649,7 @@ footer p a {
     flex-wrap: wrap;
     justify-content: center;
     gap: 0 1rem;
+    margin: 0;
   }
   #ferry-cards a {
     width: 17.5rem;
@@ -656,7 +657,7 @@ footer p a {
 }
 @media (min-width: 1300px) {
   #ferry-cards {
-    gap: 1.05rem;
+    gap: 0 1.05rem;
   }
   #ferry-cards a {
     width: 17.3rem;
@@ -725,6 +726,7 @@ footer p a {
     flex-wrap: wrap;
     justify-content: center;
     gap: 0 1rem;
+    margin: 0;
   }
   #terminal-cards a {
     width: 17.5rem;
@@ -732,7 +734,7 @@ footer p a {
 }
 @media (min-width: 1300px) {
   #terminal-cards {
-    gap: 1.05rem;
+    gap: 0 1.05rem;
   }
   #terminal-cards a {
     width: 17.3rem;
