@@ -404,7 +404,7 @@ const siteController = {
                         </p>
                         <div class="single-ferry-card-image">`;
                         if (ferry.picture) {
-                            this.htmlBuffer += `<img src="./media/ferries/${ferry.picture}" alt="${ferry.picture_alt}">`;
+                            this.htmlBuffer += `<img src="./media/ferries/thumbnails/${ferry.picture}" alt="${ferry.picture_alt}">`;
                         } else {
                             this.htmlBuffer += `<img src="./media/na.jpg">`;
                         };
@@ -513,7 +513,7 @@ const siteController = {
                         </p>
                         <div class="single-ferry-card-image">`;
                         if (ferry.picture) {
-                            this.htmlBuffer += `<img src="./media/ferries/${ferry.picture}" alt="${ferry.picture_alt}">`;
+                            this.htmlBuffer += `<img src="./media/ferries/thumbnails/${ferry.picture}" alt="${ferry.picture_alt}">`;
                         } else {
                             this.htmlBuffer += `<img src="./media/na.jpg">`;
                         };
@@ -600,7 +600,7 @@ const siteController = {
                         </p>
                         <div class="single-ferry-card-image">`;
                         if (ferry.picture) {
-                            this.htmlBuffer += `<img src="./media/ferries/${ferry.picture}" alt="${ferry.picture_alt}">`;
+                            this.htmlBuffer += `<img src="./media/ferries/thumbnails/${ferry.picture}" alt="${ferry.picture_alt}">`;
                         } else {
                             this.htmlBuffer += `<img src="./media/na.jpg">`;
                         };
