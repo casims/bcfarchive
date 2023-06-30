@@ -6,14 +6,14 @@ const siteController = {
     validTerminalIDs: null,
     htmlWriteTarget: document.querySelector('main#main'),
     htmlCardsWriteTarget: null,
+    cardCountCurrent: null,
+    cardCountLimit: null,
     navFunctionalityRunning: false,
     menuExpanded: false,
     ferrySortExpanded: false,
     terminalSortExpanded: false,
     ferriesArray: null,
     terminalsArray: null,
-    ferriesSearchArray: null,
-    terminalsSearchArray: null,
     singleFerryObject: null,
     singleTerminalObject: null,
     // Grabs an array from SQL DB to see what page IDs are stored
@@ -255,6 +255,83 @@ const siteController = {
             this.ferrySortExpanded = false;
         };
     },
+    ferryLoadCardsFunctionality: function() {
+        let loadFerriesButton = document.getElementById('load-ferries-button');
+        loadFerriesButton.addEventListener('click', function() {
+            siteController.htmlBuffer = '';
+            siteController.cardCountLimit = siteController.cardCountLimit + 9;
+            if (siteController.cardCountLimit > siteController.ferriesArray.length) {
+                siteController.cardCountLimit = siteController.ferriesArray.length;
+                loadFerriesButton.style.display = "none";
+            };
+            for (let i = siteController.cardCountCurrent; i < siteController.cardCountLimit; i++) {
+                siteController.htmlBuffer += `
+                    <a href="#/ferries/${siteController.ferriesArray[i].page_id}">
+                        <article class="single-ferry-card">
+                            <p class="single-ferry-card-name">${siteController.ferriesArray[i].name}</p>
+                            <p class="single-ferry-card-class">${siteController.ferriesArray[i].class}</p>
+                            <p class="single-ferry-card-years-active">${siteController.ferriesArray[i].years_active_start} - `;
+                            if (siteController.ferriesArray[i].years_active_end === "9999") {
+                                siteController.htmlBuffer += `Present`;
+                            } else {
+                                siteController.htmlBuffer += `${siteController.ferriesArray[i].years_active_end}`;
+                            };            
+                            siteController.htmlBuffer += `
+                            </p>
+                            <div class="single-ferry-card-image">`;
+                            if (siteController.ferriesArray[i].picture) {
+                                siteController.htmlBuffer += `<img src="./media/ferries/thumbnails/${siteController.ferriesArray[i].picture}" alt="${siteController.ferriesArray[i].picture_alt}">`;
+                            } else {
+                                siteController.htmlBuffer += `<img src="./media/na.jpg">`;
+                            };
+                            siteController.htmlBuffer += `                        
+                            </div>
+                            <p class="single-ferry-card-passenger-capacity">${siteController.ferriesArray[i].passenger_capacity} People</p>
+                            <p class="single-ferry-card-vehicle-capacity">${siteController.ferriesArray[i].vehicle_capacity} Vehicles</p>
+                            <p class="single-ferry-card-length">${siteController.ferriesArray[i].length} Meters</p>
+                            <p class="single-ferry-card-displacement">${siteController.ferriesArray[i].displacement} Tonnes</p>
+                            <p class="single-ferry-card-max-speed">${siteController.ferriesArray[i].max_speed} Knots</p>
+                            <p class="single-ferry-card-horsepower">${siteController.ferriesArray[i].horsepower} HP</p>
+                        </article>
+                    </a>
+                `;
+            };
+            siteController.cardCountCurrent = siteController.cardCountCurrent + 9;
+            siteController.htmlCardsWriteTarget.innerHTML += siteController.htmlBuffer;
+        });
+    },
+    terminalLoadCardsFunctionality: function() {
+        let loadTerminalsButton = document.getElementById('load-terminals-button');
+        loadTerminalsButton.addEventListener('click', function() {
+            siteController.htmlBuffer = '';
+            siteController.cardCountLimit = siteController.cardCountLimit + 9;
+            if (siteController.cardCountLimit > siteController.terminalsArray.length) {
+                siteController.cardCountLimit = siteController.terminalsArray.length;
+                loadTerminalsButton.style.display = "none";
+            };
+            for (let i = siteController.cardCountCurrent; i < siteController.cardCountLimit; i++) {
+                siteController.htmlBuffer += `
+                    <a href="#/terminals/${siteController.terminalsArray[i].page_id}">
+                        <article class="single-terminal-card">
+                            <p class="single-terminal-card-name">${siteController.terminalsArray[i].name}</p>
+                            <div class="single-terminal-card-image">`;
+                            if (siteController.terminalsArray[i].picture) {
+                                siteController.htmlBuffer += `<img src="./media/terminals/thumbnails/${siteController.terminalsArray[i].picture}" alt="${siteController.terminalsArray[i].picture_alt}">`;
+                            } else {
+                                siteController.htmlBuffer += `<img src="./media/na.jpg">`;
+                            };
+                            siteController.htmlBuffer += `
+                            </div>
+                            <p class="single-terminal-card-location">${siteController.terminalsArray[i].location}</p>
+                            <p class="single-terminal-card-address">${siteController.terminalsArray[i].address}</p>
+                        </article>
+                    </a>
+                `;
+            };
+            siteController.cardCountCurrent = siteController.cardCountCurrent + 9;
+            siteController.htmlCardsWriteTarget.innerHTML += siteController.htmlBuffer;
+        });
+    },
     // Grabs array from SQL DB of all terminals stored.  Puts them in specific order if sort parameters are specified
     captureTerminalsArray: async function(sortType) {
         if (sortType) {
@@ -388,44 +465,50 @@ const siteController = {
             <section id="ferry-cards">
         `;
         await this.captureFerriesArray();
-        this.ferriesArray.forEach((ferry) => {
+        this.cardCountLimit = 12;
+        for (let i = 0; i < this.cardCountLimit; i++) {
             this.htmlBuffer += `
-                <a href="#/ferries/${ferry.page_id}">
+                <a href="#/ferries/${this.ferriesArray[i].page_id}">
                     <article class="single-ferry-card">
-                        <p class="single-ferry-card-name">${ferry.name}</p>
-                        <p class="single-ferry-card-class">${ferry.class}</p>
-                        <p class="single-ferry-card-years-active">${ferry.years_active_start} - `;
-                        if (ferry.years_active_end === "9999") {
+                        <p class="single-ferry-card-name">${this.ferriesArray[i].name}</p>
+                        <p class="single-ferry-card-class">${this.ferriesArray[i].class}</p>
+                        <p class="single-ferry-card-years-active">${this.ferriesArray[i].years_active_start} - `;
+                        if (this.ferriesArray[i].years_active_end === "9999") {
                             this.htmlBuffer += `Present`;
                         } else {
-                            this.htmlBuffer += `${ferry.years_active_end}`;
+                            this.htmlBuffer += `${this.ferriesArray[i].years_active_end}`;
                         };            
                         this.htmlBuffer += `
                         </p>
                         <div class="single-ferry-card-image">`;
-                        if (ferry.picture) {
-                            this.htmlBuffer += `<img src="./media/ferries/thumbnails/${ferry.picture}" alt="${ferry.picture_alt}">`;
+                        if (this.ferriesArray[i].picture) {
+                            this.htmlBuffer += `<img src="./media/ferries/thumbnails/${this.ferriesArray[i].picture}" alt="${this.ferriesArray[i].picture_alt}">`;
                         } else {
                             this.htmlBuffer += `<img src="./media/na.jpg">`;
                         };
                         this.htmlBuffer += `                        
                         </div>
-                        <p class="single-ferry-card-passenger-capacity">${ferry.passenger_capacity} People</p>
-                        <p class="single-ferry-card-vehicle-capacity">${ferry.vehicle_capacity} Vehicles</p>
-                        <p class="single-ferry-card-length">${ferry.length} Meters</p>
-                        <p class="single-ferry-card-displacement">${ferry.displacement} Tonnes</p>
-                        <p class="single-ferry-card-max-speed">${ferry.max_speed} Knots</p>
-                        <p class="single-ferry-card-horsepower">${ferry.horsepower} HP</p>
+                        <p class="single-ferry-card-passenger-capacity">${this.ferriesArray[i].passenger_capacity} People</p>
+                        <p class="single-ferry-card-vehicle-capacity">${this.ferriesArray[i].vehicle_capacity} Vehicles</p>
+                        <p class="single-ferry-card-length">${this.ferriesArray[i].length} Meters</p>
+                        <p class="single-ferry-card-displacement">${this.ferriesArray[i].displacement} Tonnes</p>
+                        <p class="single-ferry-card-max-speed">${this.ferriesArray[i].max_speed} Knots</p>
+                        <p class="single-ferry-card-horsepower">${this.ferriesArray[i].horsepower} HP</p>
                     </article>
                 </a>
             `;
-        });
-            this.htmlBuffer += `
+        };
+        this.cardCountCurrent = 12;
+        this.htmlBuffer += `
+            </section>
+            <section id="button-section">
+                <button type="button" id="load-ferries-button">Load More</button>
             </section>`;
         this.htmlWriteTarget.innerHTML = this.htmlBuffer;
         // Creates a target for specific section to allow for re-rendering of only the ferry cards.  When sort parameters are applied and the cards need to be re-rendered, this makes it so the sort section doesnt have to be re-rendered.
         this.htmlCardsWriteTarget = document.querySelector('section#ferry-cards');
         this.ferrySortFunctionality();
+        this.ferryLoadCardsFunctionality();
     },
     // Renders terminals page with array grabbed from SQL DB
     createTerminalsPage: async function() {
@@ -469,90 +552,101 @@ const siteController = {
         <section id="terminal-cards">
         `;
         await this.captureTerminalsArray();
-        this.terminalsArray.forEach((terminal) => {
+        this.cardCountLimit = 12;
+        for (let i = 0; i < this.cardCountLimit; i++) {
             this.htmlBuffer += `
-                <a href="#/terminals/${terminal.page_id}">
+                <a href="#/terminals/${this.terminalsArray[i].page_id}">
                     <article class="single-terminal-card">
-                        <p class="single-terminal-card-name">${terminal.name}</p>
+                        <p class="single-terminal-card-name">${this.terminalsArray[i].name}</p>
                         <div class="single-terminal-card-image">`;
-                        if (terminal.picture) {
-                            this.htmlBuffer += `<img src="./media/terminals/thumbnails/${terminal.picture}" alt="${terminal.picture_alt}">`;
+                        if (this.terminalsArray[i].picture) {
+                            this.htmlBuffer += `<img src="./media/terminals/thumbnails/${this.terminalsArray[i].picture}" alt="${this.terminalsArray[i].picture_alt}">`;
                         } else {
                             this.htmlBuffer += `<img src="./media/na.jpg">`;
                         };
                         this.htmlBuffer += `
                         </div>
-                        <p class="single-terminal-card-location">${terminal.location}</p>
-                        <p class="single-terminal-card-address">${terminal.address}</p>
+                        <p class="single-terminal-card-location">${this.terminalsArray[i].location}</p>
+                        <p class="single-terminal-card-address">${this.terminalsArray[i].address}</p>
                     </article>
                 </a>
             `;
-        });
-        this.htmlBuffer += `</section>`;
+        };
+        this.cardCountCurrent = 12;
+        this.htmlBuffer += `
+            </section>
+            <section id="button-section">
+                <button type="button" id="load-terminals-button">Load More</button>
+            </section>`;
         this.htmlWriteTarget.innerHTML = this.htmlBuffer;
         // Creates a target for specific section to allow for re-rendering of only the terminal cards.  When sort parameters are applied and the cards need to be re-rendered, this makes it so the sort section doesnt have to be re-rendered.
         this.htmlCardsWriteTarget = document.querySelector('section#terminal-cards');
         this.terminalSortFunctionality();
+        this.terminalLoadCardsFunctionality();
     },
     // Re-renders ferry-cards section with new array that has search parameters applied to it
     renderFerriesSort: function() {
         this.htmlBuffer = '';
-        this.ferriesArray.forEach((ferry) => {
+        this.cardCountLimit = 12;
+        for (let i = 0; i < this.cardCountLimit; i++) {
             this.htmlBuffer += `
-                <a href="#/ferries/${ferry.page_id}">
+                <a href="#/ferries/${this.ferriesArray[i].page_id}">
                     <article class="single-ferry-card">
-                        <p class="single-ferry-card-name">${ferry.name}</p>
-                        <p class="single-ferry-card-class">${ferry.class}</p>
-                        <p class="single-ferry-card-years-active">${ferry.years_active_start} - `;
-                        if (ferry.years_active_end === "9999") {
+                        <p class="single-ferry-card-name">${this.ferriesArray[i].name}</p>
+                        <p class="single-ferry-card-class">${this.ferriesArray[i].class}</p>
+                        <p class="single-ferry-card-years-active">${this.ferriesArray[i].years_active_start} - `;
+                        if (this.ferriesArray[i].years_active_end === "9999") {
                             this.htmlBuffer += `Present`;
                         } else {
-                            this.htmlBuffer += `${ferry.years_active_end}`;
+                            this.htmlBuffer += `${this.ferriesArray[i].years_active_end}`;
                         };            
                         this.htmlBuffer += `
                         </p>
                         <div class="single-ferry-card-image">`;
-                        if (ferry.picture) {
-                            this.htmlBuffer += `<img src="./media/ferries/thumbnails/${ferry.picture}" alt="${ferry.picture_alt}">`;
+                        if (this.ferriesArray[i].picture) {
+                            this.htmlBuffer += `<img src="./media/ferries/thumbnails/${this.ferriesArray[i].picture}" alt="${this.ferriesArray[i].picture_alt}">`;
                         } else {
                             this.htmlBuffer += `<img src="./media/na.jpg">`;
                         };
-                        this.htmlBuffer += ` 
+                        this.htmlBuffer += `                        
                         </div>
-                        <p class="single-ferry-card-passenger-capacity">${ferry.passenger_capacity} People</p>
-                        <p class="single-ferry-card-vehicle-capacity">${ferry.vehicle_capacity} Vehicles</p>
-                        <p class="single-ferry-card-length">${ferry.length} Meters</p>
-                        <p class="single-ferry-card-displacement">${ferry.displacement} Tonnes</p>
-                        <p class="single-ferry-card-max-speed">${ferry.max_speed} Knots</p>
-                        <p class="single-ferry-card-horsepower">${ferry.horsepower} HP</p>
+                        <p class="single-ferry-card-passenger-capacity">${this.ferriesArray[i].passenger_capacity} People</p>
+                        <p class="single-ferry-card-vehicle-capacity">${this.ferriesArray[i].vehicle_capacity} Vehicles</p>
+                        <p class="single-ferry-card-length">${this.ferriesArray[i].length} Meters</p>
+                        <p class="single-ferry-card-displacement">${this.ferriesArray[i].displacement} Tonnes</p>
+                        <p class="single-ferry-card-max-speed">${this.ferriesArray[i].max_speed} Knots</p>
+                        <p class="single-ferry-card-horsepower">${this.ferriesArray[i].horsepower} HP</p>
                     </article>
                 </a>
             `;
-        });
+        };
+        this.cardCountCurrent = 12;
         this.htmlCardsWriteTarget.innerHTML = this.htmlBuffer;
     },
     // Re-renders terminal-cards section with new array that has search parameters applied to it
     renderTerminalsSort: function() {
         this.htmlBuffer = '';
-        this.terminalsArray.forEach((terminal) => {
+        this.cardCountLimit = 12;
+        for (let i = 0; i < this.cardCountLimit; i++) {
             this.htmlBuffer += `
-                <a href="#/terminals/${terminal.page_id}">
+                <a href="#/terminals/${this.terminalsArray[i].page_id}">
                     <article class="single-terminal-card">
-                        <p class="single-terminal-card-name">${terminal.name}</p>
+                        <p class="single-terminal-card-name">${this.terminalsArray[i].name}</p>
                         <div class="single-terminal-card-image">`;
-                        if (terminal.picture) {
-                            this.htmlBuffer += `<img src="./media/terminals/thumbnails/${terminal.picture}" alt="${terminal.picture_alt}">`;
+                        if (this.terminalsArray[i].picture) {
+                            this.htmlBuffer += `<img src="./media/terminals/thumbnails/${this.terminalsArray[i].picture}" alt="${this.terminalsArray[i].picture_alt}">`;
                         } else {
                             this.htmlBuffer += `<img src="./media/na.jpg">`;
                         };
                         this.htmlBuffer += `
                         </div>
-                        <p class="single-terminal-card-location">${terminal.location}</p>
-                        <p class="single-terminal-card-address">${terminal.address}</p>
+                        <p class="single-terminal-card-location">${this.terminalsArray[i].location}</p>
+                        <p class="single-terminal-card-address">${this.terminalsArray[i].address}</p>
                     </article>
                 </a>
             `;
-        });
+        };
+        this.cardCountCurrent = 12;
         this.htmlCardsWriteTarget.innerHTML = this.htmlBuffer;
     },
     // Takes "searchQuery" which was grabbed from URL and makes SQL Query with said search term, returns array with results
@@ -563,7 +657,7 @@ const siteController = {
         })
         .then((response) => response.json())
         .then((responseJSON) => {
-            this.ferriesSearchArray = responseJSON;
+            this.ferriesArray = responseJSON;
         });
     },
     captureTerminalsSearchArray: async function(searchQuery) {
@@ -573,7 +667,7 @@ const siteController = {
         })
         .then((response) => response.json())
         .then((responseJSON) => {
-            this.terminalsSearchArray = responseJSON;
+            this.terminalsArray = responseJSON;
         });
     },
     // Creates page that shows results of SQL Query with specified search term
@@ -584,40 +678,54 @@ const siteController = {
             <section id="ferry-cards">
         `;
         await this.captureFerriesSearchArray(searchQuery);
-        this.ferriesSearchArray.forEach((ferry) => {
+        this.cardCountLimit = 12;
+        if (siteController.cardCountLimit > siteController.ferriesArray.length) {
+            siteController.cardCountLimit = siteController.ferriesArray.length;
+        };
+        for (let i = 0; i < this.cardCountLimit; i++) {
             this.htmlBuffer += `
-                <a href="#/ferries/${ferry.page_id}">
+                <a href="#/ferries/${this.ferriesArray[i].page_id}">
                     <article class="single-ferry-card">
-                        <p class="single-ferry-card-name">${ferry.name}</p>
-                        <p class="single-ferry-card-class">${ferry.class}</p>
-                        <p class="single-ferry-card-years-active">${ferry.years_active_start} - `;
-                        if (ferry.years_active_end === "9999") {
+                        <p class="single-ferry-card-name">${this.ferriesArray[i].name}</p>
+                        <p class="single-ferry-card-class">${this.ferriesArray[i].class}</p>
+                        <p class="single-ferry-card-years-active">${this.ferriesArray[i].years_active_start} - `;
+                        if (this.ferriesArray[i].years_active_end === "9999") {
                             this.htmlBuffer += `Present`;
                         } else {
-                            this.htmlBuffer += `${ferry.years_active_end}`;
+                            this.htmlBuffer += `${this.ferriesArray[i].years_active_end}`;
                         };            
                         this.htmlBuffer += `
                         </p>
                         <div class="single-ferry-card-image">`;
-                        if (ferry.picture) {
-                            this.htmlBuffer += `<img src="./media/ferries/thumbnails/${ferry.picture}" alt="${ferry.picture_alt}">`;
+                        if (this.ferriesArray[i].picture) {
+                            this.htmlBuffer += `<img src="./media/ferries/thumbnails/${this.ferriesArray[i].picture}" alt="${this.ferriesArray[i].picture_alt}">`;
                         } else {
                             this.htmlBuffer += `<img src="./media/na.jpg">`;
                         };
-                        this.htmlBuffer += ` 
+                        this.htmlBuffer += `                        
                         </div>
-                        <p class="single-ferry-card-passenger-capacity">${ferry.passenger_capacity} People</p>
-                        <p class="single-ferry-card-vehicle-capacity">${ferry.vehicle_capacity} Vehicles</p>
-                        <p class="single-ferry-card-length">${ferry.length} Meters</p>
-                        <p class="single-ferry-card-displacement">${ferry.displacement} Tonnes</p>
-                        <p class="single-ferry-card-max-speed">${ferry.max_speed} Knots</p>
-                        <p class="single-ferry-card-horsepower">${ferry.horsepower} HP</p>
+                        <p class="single-ferry-card-passenger-capacity">${this.ferriesArray[i].passenger_capacity} People</p>
+                        <p class="single-ferry-card-vehicle-capacity">${this.ferriesArray[i].vehicle_capacity} Vehicles</p>
+                        <p class="single-ferry-card-length">${this.ferriesArray[i].length} Meters</p>
+                        <p class="single-ferry-card-displacement">${this.ferriesArray[i].displacement} Tonnes</p>
+                        <p class="single-ferry-card-max-speed">${this.ferriesArray[i].max_speed} Knots</p>
+                        <p class="single-ferry-card-horsepower">${this.ferriesArray[i].horsepower} HP</p>
                     </article>
                 </a>
             `;
-        });
-        this.htmlBuffer += `</section>`;
+        };
+        this.cardCountCurrent = 12;
+        this.htmlBuffer += `</section>
+            <section id="button-section">
+                <button type="button" id="load-ferries-button">Load More</button>
+            </section>`;
         this.htmlWriteTarget.innerHTML = this.htmlBuffer;
+        if (siteController.cardCountLimit = siteController.ferriesArray.length) {
+
+        };
+        // Creates a target for specific section to allow for re-rendering of only the ferry cards.  When sort parameters are applied and the cards need to be re-rendered, this makes it so the sort section doesnt have to be re-rendered.
+        this.htmlCardsWriteTarget = document.querySelector('section#ferry-cards');
+        this.ferryLoadCardsFunctionality();
     },
     createTerminalsSearchPage: async function(searchQuery) {
         this.htmlWriteTarget.innerHTML = '';
@@ -626,27 +734,38 @@ const siteController = {
             <section id="terminal-cards">
             `;
         await this.captureTerminalsSearchArray(searchQuery);
-        this.terminalsSearchArray.forEach((terminal) => {
+        this.cardCountLimit = 12;
+        if (siteController.cardCountLimit > siteController.terminalsArray.length) {
+            siteController.cardCountLimit = siteController.terminalsArray.length;
+        };
+        for (let i = 0; i < this.cardCountLimit; i++) {
             this.htmlBuffer += `
-            <a href="#/terminals/${terminal.page_id}">
-                <article class="single-terminal-card">
-                    <p class="single-terminal-card-name">${terminal.name}</p>
-                    <div class="single-terminal-card-image">`;
-                    if (terminal.picture) {
-                        this.htmlBuffer += `<img src="./media/terminals/thumbnails/${terminal.picture}" alt="${terminal.picture_alt}">`;
-                    } else {
-                        this.htmlBuffer += `<img src="./media/na.jpg">`;
-                    };
-                    this.htmlBuffer += `
-                    </div>
-                    <p class="single-terminal-card-location">${terminal.location}</p>
-                    <p class="single-terminal-card-address">${terminal.address}</p>
-                </article>
-            </a>
+                <a href="#/terminals/${this.terminalsArray[i].page_id}">
+                    <article class="single-terminal-card">
+                        <p class="single-terminal-card-name">${this.terminalsArray[i].name}</p>
+                        <div class="single-terminal-card-image">`;
+                        if (this.terminalsArray[i].picture) {
+                            this.htmlBuffer += `<img src="./media/terminals/thumbnails/${this.terminalsArray[i].picture}" alt="${this.terminalsArray[i].picture_alt}">`;
+                        } else {
+                            this.htmlBuffer += `<img src="./media/na.jpg">`;
+                        };
+                        this.htmlBuffer += `
+                        </div>
+                        <p class="single-terminal-card-location">${this.terminalsArray[i].location}</p>
+                        <p class="single-terminal-card-address">${this.terminalsArray[i].address}</p>
+                    </article>
+                </a>
             `;
-        });
-        this.htmlBuffer += `</section>`;
+        };
+        this.cardCountCurrent = 12;
+        this.htmlBuffer += `
+            </section>
+            <section id="button-section">
+                <button type="button" id="load-terminals-button">Load More</button>
+            </section>`;
         this.htmlWriteTarget.innerHTML = this.htmlBuffer;
+        this.htmlCardsWriteTarget = document.querySelector('section#terminal-cards');
+        this.terminalLoadCardsFunctionality();
     },
     // Grabs specific entry from SQL DB based on page ID provided
     captureSingleFerryObject: async function(pageID) {
