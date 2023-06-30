@@ -9,7 +9,7 @@ $recievedData = file_get_contents('php://input');
 
 if (!empty($recievedData)) {
     $processedData = $mysqli->real_escape_string(json_decode($recievedData));
-    $terminalsDataQuery = "SELECT * FROM terminals WHERE name LIKE '%$processedData%'";
+    $terminalsDataQuery = "SELECT * FROM terminals WHERE name LIKE '%$processedData%' ORDER BY name ASC";
     $capturedTerminalsData = $mysqli->query($terminalsDataQuery);
     $processedTerminalsData = array();
         while ($singleTerminal = mysqli_fetch_assoc($capturedTerminalsData)) {
