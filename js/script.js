@@ -80,11 +80,11 @@ const siteController = {
                 if (capturedPageID.substring(7,8) === 'f') {
                     let ferrySearchQuery = capturedPageID.substring(9);
                     // Replaces %20 with a space since the function grabs the search term from the URL
-                    ferrySearchQuery = ferrySearchQuery.replace('%20', ' ');
+                    ferrySearchQuery = ferrySearchQuery.replaceAll('%20', ' ');
                     this.createFerriesSearchPage(ferrySearchQuery);
                 } else if (capturedPageID.substring(7,8) === 't') {
                     let terminalSearchQuery = capturedPageID.substring(9);
-                    terminalSearchQuery = terminalSearchQuery.replace('%20', ' ');
+                    terminalSearchQuery = terminalSearchQuery.replaceAll('%20', ' ');
                     this.createTerminalsSearchPage(terminalSearchQuery);
                 };
             } else if (capturedPageID.substring(0,7) === 'credits') {
