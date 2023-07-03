@@ -715,17 +715,20 @@ const siteController = {
             `;
         };
         this.cardCountCurrent = 12;
-        this.htmlBuffer += `</section>
+        this.htmlBuffer += `
+            </section>`;
+        if (this.cardCountCurrent < this.ferriesArray.length) {
+            this.htmlBuffer += `
             <section id="button-section">
                 <button type="button" id="load-ferries-button">Load More</button>
-            </section>`;
-        this.htmlWriteTarget.innerHTML = this.htmlBuffer;
-        if (siteController.cardCountLimit = siteController.ferriesArray.length) {
-
+            </section>
+            `;
+            this.htmlWriteTarget.innerHTML = this.htmlBuffer;
+            this.htmlCardsWriteTarget = document.querySelector('section#ferry-cards');
+            this.ferryLoadCardsFunctionality();
+        } else {
+            this.htmlWriteTarget.innerHTML = this.htmlBuffer;
         };
-        // Creates a target for specific section to allow for re-rendering of only the ferry cards.  When sort parameters are applied and the cards need to be re-rendered, this makes it so the sort section doesnt have to be re-rendered.
-        this.htmlCardsWriteTarget = document.querySelector('section#ferry-cards');
-        this.ferryLoadCardsFunctionality();
     },
     createTerminalsSearchPage: async function(searchQuery) {
         this.htmlWriteTarget.innerHTML = '';
@@ -759,13 +762,19 @@ const siteController = {
         };
         this.cardCountCurrent = 12;
         this.htmlBuffer += `
-            </section>
+            </section>`;
+        if (this.cardCountCurrent < this.terminalsArray.length) {
+            this.htmlBuffer += `
             <section id="button-section">
                 <button type="button" id="load-terminals-button">Load More</button>
-            </section>`;
-        this.htmlWriteTarget.innerHTML = this.htmlBuffer;
-        this.htmlCardsWriteTarget = document.querySelector('section#terminal-cards');
-        this.terminalLoadCardsFunctionality();
+            </section>
+            `;
+            this.htmlWriteTarget.innerHTML = this.htmlBuffer;
+            this.htmlCardsWriteTarget = document.querySelector('section#terminal-cards');
+            this.terminalLoadCardsFunctionality();
+        } else {
+            this.htmlWriteTarget.innerHTML = this.htmlBuffer;
+        };
     },
     // Grabs specific entry from SQL DB based on page ID provided
     captureSingleFerryObject: async function(pageID) {
