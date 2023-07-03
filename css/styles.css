@@ -20,12 +20,12 @@ body::after {
   z-index: -1;
 }
 
-main {
+main, #loading-container {
   background-color: #FFFFFF;
   flex: 1;
 }
 
-header, main, footer {
+header, main, #loading-container, footer {
   padding: 0 1rem;
 }
 
@@ -66,6 +66,27 @@ p {
   line-height: 1.2rem;
 }
 
+#button-section {
+  display: flex;
+  justify-content: center;
+}
+#button-section button {
+  background-color: #0079A5;
+  border: none;
+  border-radius: 4px;
+  padding: 0.4rem;
+  margin: 0 0 1rem;
+  width: 10rem;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-size: 0.9rem;
+  color: #FFFFFF;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+#button-section :hover {
+  background-color: #003366;
+}
+
 .single-ferry-main-content p, .single-terminal-main-content p {
   font-size: 0.95rem;
   line-height: 1.3rem;
@@ -89,13 +110,13 @@ p {
     padding: 0 2rem;
   }
 
-  main {
+  main, #loading-container {
     margin: 0 auto;
     width: 28rem;
   }
 }
 @media (min-width: 700px) {
-  main {
+  main, #loading-container {
     width: 40rem;
     padding: 0 2rem;
   }
@@ -106,7 +127,7 @@ p {
   }
 }
 @media (min-width: 1300px) {
-  main {
+  main, #loading-container {
     width: 60rem;
     padding: 0 3rem;
   }
@@ -817,6 +838,45 @@ table td, table th {
     width: 36rem;
     margin: 0 auto;
   }
+}
+@keyframes spinner {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+#loading-container {
+  display: flex;
+  justify-content: center;
+}
+#loading-container .loading-spinner {
+  width: 108px;
+  height: 108px;
+  display: inline-block;
+  overflow: hidden;
+  background: none;
+}
+#loading-container .loading-spinner .spinner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: translateZ(0) scale(1);
+  backface-visibility: hidden;
+  transform-origin: 0 0;
+}
+#loading-container .loading-spinner .spinner div {
+  position: absolute;
+  width: 65px;
+  height: 65px;
+  border: 11px solid #0079a5;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spinner 1s linear infinite;
+  top: 54px;
+  left: 54px;
+  box-sizing: content-box;
 }
 
 /*# sourceMappingURL=styles.css.map */

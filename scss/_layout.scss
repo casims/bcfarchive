@@ -21,12 +21,12 @@ body {
     };
 };
 
-main {
+main, #loading-container {
     background-color: $white;
     flex: 1;
 };
 
-header, main, footer {
+header, main, #loading-container, footer {
     padding: 0 1rem;
 };
 
@@ -69,6 +69,27 @@ p {
     }
 }
 
+#button-section {
+    display: flex;
+    justify-content: center;
+    button {
+        background-color: $light-blue;
+        border: none;
+        border-radius: 4px;
+        padding: 0.4rem;
+        margin: 0 0 1rem;
+        width: 10rem;
+        font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+        font-size: 0.9rem;
+        color: $white;
+        transition: all 0.2s ease;
+        cursor: pointer;
+    };
+    :hover {
+        background-color: $dark-blue;
+    };
+};
+
 .single-ferry-main-content, .single-terminal-main-content {
     p {
         font-size: 0.95rem;
@@ -95,14 +116,14 @@ p {
     header, .mobile-nav, footer {
         padding: 0 2rem;
     };
-    main {
+    main, #loading-container {
         margin: 0 auto;
         width: 28rem;
     };
 };
 
 @media (min-width: 700px) {
-    main {
+    main, #loading-container {
         width: 40rem;
         padding: 0 2rem;
     };
@@ -113,7 +134,7 @@ p {
 };
 
 @media (min-width: 1300px) {
-    main {
+    main, #loading-container {
         width: 60rem;
         padding: 0 3rem;
     };
