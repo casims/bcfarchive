@@ -388,7 +388,7 @@ footer p a {
   width: 100%;
   height: 100%;
   padding-left: 1rem;
-  transition: all 0.2s ease;
+  transition: color 0.2s ease;
 }
 #home-category-section .category-card a:hover {
   color: #003366;
