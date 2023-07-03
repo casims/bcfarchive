@@ -110,32 +110,34 @@ const siteController = {
         this.htmlLoadingTarget.style.display = 'flex';
         this.htmlBuffer = `
             <h2>Credits</h2>
-            <h3>Information</h3>
-            <p>Information was gathered from the following sites:</p>
-            <ul>
-                <li>
-                    <a href="https://en.wikipedia.org/wiki/Main_Page">Wikipedia</a>
-                </li>
-                <li>
-                    <a href="https://cptdb.ca/wiki/index.php/Main_Page">Canadian Public Transit Discussion Board Wiki</a>
-                </li>
-                <li>
-                    <a href="https://www.bcferries.com/">BC Ferries Official Website</a>
-                </li>
-            </ul>
-            <p>These sites will most likely prove to be better and more reliable sources of information.</p>
-            <h3>Images</h3>
-            <ul>
-                <li>
-                    <p>Image Source for background image (Image may appear cropped):<br> [<a href="https://commons.wikimedia.org/wiki/File:TsawwassenFerryTerminal.JPG">Link</a>]</p>
-                </li>
-                <li>
-                    <p>Image Source for "Ferries" Category Thumbnail (Image was cropped):<br> [<a href="https://flickr.com/photos/8441189@N04/2591295036">Link</a>]</p>
-                </li>
-                <li>
-                    <p>Image Source for "Terminals" Category Thumbnail (Image was cropped):<br> [<a href="https://www.flickr.com/photos/dph1110/2671969217/">Link</a>]</p>
-                </li>
-            </ul>`;
+            <section class="credits-section">
+                <h3>Information</h3>
+                <p>Information was gathered from the following sites:</p>
+                <ul>
+                    <li>
+                        <p>Canadian Public Transit Discussion Board Wiki <br>[<a href="https://cptdb.ca/wiki/index.php/Main_Page">Link</a>]</p>
+                    </li>
+                    <li>
+                        <p>Wikipedia <br>[<a href="https://en.wikipedia.org/wiki/Main_Page">Link</a>]</p>
+                    </li>
+                    <li>
+                        <p>BC Ferries Official Website <br>[<a href="https://www.bcferries.com/">Link</a>]</p>
+                    </li>
+                </ul>
+                <p>These sites will most likely prove to be better and more reliable sources of information.</p>
+                <h3>Images</h3>
+                <ul>
+                    <li>
+                        <p>Image Source for background image (Image may appear cropped):<br> [<a href="https://commons.wikimedia.org/wiki/File:TsawwassenFerryTerminal.JPG">Link</a>]</p>
+                    </li>
+                    <li>
+                        <p>Image Source for "Ferries" Category Thumbnail (Image was cropped):<br> [<a href="https://flickr.com/photos/8441189@N04/2591295036">Link</a>]</p>
+                    </li>
+                    <li>
+                        <p>Image Source for "Terminals" Category Thumbnail (Image was cropped):<br> [<a href="https://www.flickr.com/photos/dph1110/2671969217/">Link</a>]</p>
+                    </li>
+                </ul>
+            </section>`;
         this.htmlWriteTarget.innerHTML = this.htmlBuffer;
         this.htmlLoadingTarget.style.display = 'none';
     },
