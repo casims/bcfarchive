@@ -330,7 +330,7 @@ const siteController = {
                 `;
             };
             siteController.cardCountCurrent = siteController.cardCountCurrent + 9;
-            siteController.htmlCardsWriteTarget.innerHTML += siteController.htmlBuffer;
+            siteController.htmlCardsWriteTarget.insertAdjacentHTML("beforeend", siteController.htmlBuffer);
             siteController.htmlLoadingTarget.style.display = 'none';
         });
     },
@@ -364,7 +364,7 @@ const siteController = {
                 `;
             };
             siteController.cardCountCurrent = siteController.cardCountCurrent + 9;
-            siteController.htmlCardsWriteTarget.innerHTML += siteController.htmlBuffer;
+            siteController.htmlCardsWriteTarget.insertAdjacentHTML("beforeend", siteController.htmlBuffer);
             siteController.htmlLoadingTarget.style.display = 'none';
         });
     },
