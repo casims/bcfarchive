@@ -61,6 +61,11 @@ p {
   font-size: 0.8rem;
 }
 
+li a {
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-size: 0.8rem;
+}
+
 #home-welcome-section p {
   font-size: 0.9rem;
   line-height: 1.2rem;

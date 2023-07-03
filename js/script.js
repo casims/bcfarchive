@@ -6,6 +6,7 @@ const siteController = {
     validTerminalIDs: null,
     htmlWriteTarget: document.querySelector('main#main'),
     htmlCardsWriteTarget: null,
+    htmlLoadingTarget: document.querySelector('div#loading-container'),
     cardCountCurrent: null,
     cardCountLimit: null,
     navFunctionalityRunning: false,
@@ -88,26 +89,55 @@ const siteController = {
                 };
             } else if (capturedPageID.substring(0,7) === 'credits') {
                 this.createCredits();
-            };
+            } else {
+                this.create404();
+            }
         } else {
             this.createMainPage();
         };
     },
     create404: function() {
         this.htmlWriteTarget.innerHTML = '';
+        this.htmlLoadingTarget.style.display = 'flex';
         this.htmlBuffer = `
             <h2>Error 404</h2>
             <p>Sorry, page was not found.</p>`;
         this.htmlWriteTarget.innerHTML = this.htmlBuffer;
+        this.htmlLoadingTarget.style.display = 'none';
     },
     createCredits: function() {
         this.htmlWriteTarget.innerHTML = '';
+        this.htmlLoadingTarget.style.display = 'flex';
         this.htmlBuffer = `
             <h2>Credits</h2>
-            <p>Image Source for background image (Image may appear cropped):<br> [<a href="https://commons.wikimedia.org/wiki/File:TsawwassenFerryTerminal.JPG">Link</a>]</p>
-            <p>Image Source for "Ferries" Category Thumbnail (Image was cropped):<br> [<a href="https://flickr.com/photos/8441189@N04/2591295036">Link</a>]</p>
-            <p>Image Source for "Terminals" Category Thumbnail (Image was cropped):<br> [<a href="https://www.flickr.com/photos/dph1110/2671969217/">Link</a>]</p>`;
+            <h3>Information</h3>
+            <p>Information was gathered from the following sites:</p>
+            <ul>
+                <li>
+                    <a href="https://en.wikipedia.org/wiki/Main_Page">Wikipedia</a>
+                </li>
+                <li>
+                    <a href="https://cptdb.ca/wiki/index.php/Main_Page">Canadian Public Transit Discussion Board Wiki</a>
+                </li>
+                <li>
+                    <a href="https://www.bcferries.com/">BC Ferries Official Website</a>
+                </li>
+            </ul>
+            <p>These sites will most likely prove to be better and more reliable sources of information.</p>
+            <h3>Images</h3>
+            <ul>
+                <li>
+                    <p>Image Source for background image (Image may appear cropped):<br> [<a href="https://commons.wikimedia.org/wiki/File:TsawwassenFerryTerminal.JPG">Link</a>]</p>
+                </li>
+                <li>
+                    <p>Image Source for "Ferries" Category Thumbnail (Image was cropped):<br> [<a href="https://flickr.com/photos/8441189@N04/2591295036">Link</a>]</p>
+                </li>
+                <li>
+                    <p>Image Source for "Terminals" Category Thumbnail (Image was cropped):<br> [<a href="https://www.flickr.com/photos/dph1110/2671969217/">Link</a>]</p>
+                </li>
+            </ul>`;
         this.htmlWriteTarget.innerHTML = this.htmlBuffer;
+        this.htmlLoadingTarget.style.display = 'none';
     },
     // Event listeners for expanding/collapsing nav bar, as well as search functionality. Also checks for browser width changes and collpases menus to avoid visual glitches with them being too small/large
     navFunctionality: function() {
@@ -170,6 +200,7 @@ const siteController = {
     },
     createMainPage: function() {
         this.htmlWriteTarget.innerHTML = '';
+        this.htmlLoadingTarget.style.display = 'flex';
         this.htmlBuffer = `
             <section id="home-welcome-section">
                 <h2>Welcome</h2>
@@ -196,6 +227,7 @@ const siteController = {
                 <p>This site has no affiliation with BC Ferries/British Columbia Ferry Services Inc.. This site is also not actively maintained, so many of the information here may be out of date. More reliable sources can be found on the "Credits" page.</p>
             </section>`;
         this.htmlWriteTarget.innerHTML = this.htmlBuffer;
+        this.htmlLoadingTarget.style.display = 'none';
     },
     // Grabs array from SQL DB of all ferries stored.  Puts them in specific order if sort parameters are specified
     captureFerriesArray: async function(sortType) {
@@ -258,6 +290,7 @@ const siteController = {
     ferryLoadCardsFunctionality: function() {
         let loadFerriesButton = document.getElementById('load-ferries-button');
         loadFerriesButton.addEventListener('click', function() {
+            siteController.htmlLoadingTarget.style.display = 'flex';
             siteController.htmlBuffer = '';
             siteController.cardCountLimit = siteController.cardCountLimit + 9;
             if (siteController.cardCountLimit > siteController.ferriesArray.length) {
@@ -298,11 +331,13 @@ const siteController = {
             };
             siteController.cardCountCurrent = siteController.cardCountCurrent + 9;
             siteController.htmlCardsWriteTarget.innerHTML += siteController.htmlBuffer;
+            siteController.htmlLoadingTarget.style.display = 'none';
         });
     },
     terminalLoadCardsFunctionality: function() {
         let loadTerminalsButton = document.getElementById('load-terminals-button');
         loadTerminalsButton.addEventListener('click', function() {
+            siteController.htmlLoadingTarget.style.display = 'flex';
             siteController.htmlBuffer = '';
             siteController.cardCountLimit = siteController.cardCountLimit + 9;
             if (siteController.cardCountLimit > siteController.terminalsArray.length) {
@@ -330,6 +365,7 @@ const siteController = {
             };
             siteController.cardCountCurrent = siteController.cardCountCurrent + 9;
             siteController.htmlCardsWriteTarget.innerHTML += siteController.htmlBuffer;
+            siteController.htmlLoadingTarget.style.display = 'none';
         });
     },
     // Grabs array from SQL DB of all terminals stored.  Puts them in specific order if sort parameters are specified
@@ -393,6 +429,7 @@ const siteController = {
     // Renders ferries page using array grabbed from SQL DB
     createFerriesPage: async function() {
         this.htmlWriteTarget.innerHTML = '';
+        this.htmlLoadingTarget.style.display = 'flex';
         this.htmlBuffer = `
             <h2>Ferries</h2>
             <section class="radio-sort" id="ferry-sort-section">
@@ -505,6 +542,7 @@ const siteController = {
                 <button type="button" id="load-ferries-button">Load More</button>
             </section>`;
         this.htmlWriteTarget.innerHTML = this.htmlBuffer;
+        this.htmlLoadingTarget.style.display = 'none';
         // Creates a target for specific section to allow for re-rendering of only the ferry cards.  When sort parameters are applied and the cards need to be re-rendered, this makes it so the sort section doesnt have to be re-rendered.
         this.htmlCardsWriteTarget = document.querySelector('section#ferry-cards');
         this.ferrySortFunctionality();
@@ -513,6 +551,7 @@ const siteController = {
     // Renders terminals page with array grabbed from SQL DB
     createTerminalsPage: async function() {
         this.htmlWriteTarget.innerHTML = '';
+        this.htmlLoadingTarget.style.display = 'flex';
         this.htmlBuffer = `
         <h2>Terminals</h2>
         <section class="radio-sort" id="terminal-sort-section">
@@ -579,6 +618,7 @@ const siteController = {
                 <button type="button" id="load-terminals-button">Load More</button>
             </section>`;
         this.htmlWriteTarget.innerHTML = this.htmlBuffer;
+        this.htmlLoadingTarget.style.display = 'none';
         // Creates a target for specific section to allow for re-rendering of only the terminal cards.  When sort parameters are applied and the cards need to be re-rendered, this makes it so the sort section doesnt have to be re-rendered.
         this.htmlCardsWriteTarget = document.querySelector('section#terminal-cards');
         this.terminalSortFunctionality();
@@ -586,6 +626,7 @@ const siteController = {
     },
     // Re-renders ferry-cards section with new array that has search parameters applied to it
     renderFerriesSort: function() {
+        this.htmlLoadingTarget.style.display = 'flex';
         this.htmlBuffer = '';
         this.cardCountLimit = 12;
         for (let i = 0; i < this.cardCountLimit; i++) {
@@ -622,9 +663,11 @@ const siteController = {
         };
         this.cardCountCurrent = 12;
         this.htmlCardsWriteTarget.innerHTML = this.htmlBuffer;
+        this.htmlLoadingTarget.style.display = 'none';
     },
     // Re-renders terminal-cards section with new array that has search parameters applied to it
     renderTerminalsSort: function() {
+        this.htmlLoadingTarget.style.display = 'flex';
         this.htmlBuffer = '';
         this.cardCountLimit = 12;
         for (let i = 0; i < this.cardCountLimit; i++) {
@@ -648,6 +691,7 @@ const siteController = {
         };
         this.cardCountCurrent = 12;
         this.htmlCardsWriteTarget.innerHTML = this.htmlBuffer;
+        this.htmlLoadingTarget.style.display = 'none';
     },
     // Takes "searchQuery" which was grabbed from URL and makes SQL Query with said search term, returns array with results
     captureFerriesSearchArray: async function(searchQuery) {
@@ -673,6 +717,7 @@ const siteController = {
     // Creates page that shows results of SQL Query with specified search term
     createFerriesSearchPage: async function(searchQuery) {
         this.htmlWriteTarget.innerHTML = '';
+        this.htmlLoadingTarget.style.display = 'flex';
         this.htmlBuffer = `
             <h2>Ferry Search Results for '${searchQuery}':</h2>
             <section id="ferry-cards">
@@ -729,9 +774,11 @@ const siteController = {
         } else {
             this.htmlWriteTarget.innerHTML = this.htmlBuffer;
         };
+        this.htmlLoadingTarget.style.display = 'none';
     },
     createTerminalsSearchPage: async function(searchQuery) {
         this.htmlWriteTarget.innerHTML = '';
+        this.htmlLoadingTarget.style.display = 'flex';
         this.htmlBuffer = `
             <h2>Terminal Search Results for '${searchQuery}':</h2>
             <section id="terminal-cards">
@@ -775,6 +822,7 @@ const siteController = {
         } else {
             this.htmlWriteTarget.innerHTML = this.htmlBuffer;
         };
+        this.htmlLoadingTarget.style.display = 'none';
     },
     // Grabs specific entry from SQL DB based on page ID provided
     captureSingleFerryObject: async function(pageID) {
@@ -801,6 +849,7 @@ const siteController = {
     createSingleFerryPage: async function(pageID) {
         await this.captureSingleFerryObject(pageID);
         this.htmlWriteTarget.innerHTML = '';
+        this.htmlLoadingTarget.style.display = 'flex';
         this.htmlBuffer = `
             <h2>${this.singleFerryObject.name}</h2>
             <section class="single-ferry-main-content">
@@ -881,10 +930,12 @@ const siteController = {
                 </table>
             </section>`;
         this.htmlWriteTarget.innerHTML = this.htmlBuffer;
+        this.htmlLoadingTarget.style.display = 'none';
     },
     createSingleTerminalPage: async function(pageID) {
         await this.captureSingleTerminalObject(pageID);
         this.htmlWriteTarget.innerHTML= '';
+        this.htmlLoadingTarget.style.display = 'flex';
         this.htmlBuffer = `
             <h2>${this.singleTerminalObject.name}</h2>
             <section class="single-terminal-main-content">
@@ -928,6 +979,7 @@ const siteController = {
                 </ul>
             </section>`;
         this.htmlWriteTarget.innerHTML = this.htmlBuffer;
+        this.htmlLoadingTarget.style.display = 'none';
     }
 };
 
