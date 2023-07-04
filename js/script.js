@@ -7,6 +7,9 @@ const siteController = {
     htmlWriteTarget: document.querySelector('main#main'),
     htmlCardsWriteTarget: null,
     htmlLoadingTarget: document.querySelector('div#loading-container'),
+    htmlNavItemsTarget: document.getElementsByClassName('nav-item'),
+    htmlFerrySortButtonsTarget: null,
+    htmlTerminalSortButtonsTarget: null,
     cardCountCurrent: null,
     cardCountLimit: null,
     navFunctionalityRunning: false,
@@ -188,14 +191,26 @@ const siteController = {
     navToggle: function() {
         if (this.menuExpanded === false) {
             if (window.matchMedia('(min-width: 900px)').matches) {
+                Array.from(this.htmlNavItemsTarget).forEach((item) => {
+                    item.tabIndex = 0;
+                });
                 document.getElementById('nav').style.height = '3.46rem';
             } else if (window.matchMedia('(min-width: 700px)').matches) {
+                Array.from(this.htmlNavItemsTarget).forEach((item) => {
+                    item.tabIndex = 0;
+                });
                 document.getElementById('nav').style.height = '5.7rem';
-            } else {           
+            } else {
+                Array.from(this.htmlNavItemsTarget).forEach((item) => {
+                    item.tabIndex = 0;
+                });
                 document.getElementById('nav').style.height = '11.6rem';
             };
             this.menuExpanded = true;
         } else {
+            Array.from(this.htmlNavItemsTarget).forEach((item) => {
+                item.tabIndex = -1;
+            });
             document.getElementById('nav').style.height = '0rem';
             this.menuExpanded = false;
         };
@@ -277,14 +292,26 @@ const siteController = {
     ferrySortToggle: function() {
         if (this.ferrySortExpanded === false) {
             if (window.matchMedia('(min-width: 1300px)').matches) {
+                Array.from(this.htmlFerrySortButtonsTarget).forEach((button) => {
+                    button.tabIndex = 0;
+                });
                 document.getElementById('ferry-sort-section').style.height = '15.8rem';
             } else if (window.matchMedia('(min-width: 700px)').matches) {
+                Array.from(this.htmlFerrySortButtonsTarget).forEach((button) => {
+                    button.tabIndex = 0;
+                });
                 document.getElementById('ferry-sort-section').style.height = '19.8rem';
-            } else {           
+            } else {   
+                Array.from(this.htmlFerrySortButtonsTarget).forEach((button) => {
+                    button.tabIndex = 0;
+                });        
                 document.getElementById('ferry-sort-section').style.height = '29.8rem';
             };
             this.ferrySortExpanded = true;
         } else if (this.ferrySortExpanded === true) {
+            Array.from(this.htmlFerrySortButtonsTarget).forEach((button) => {
+                button.tabIndex = -1;
+            });
             document.getElementById('ferry-sort-section').style.height = "2.9rem";
             this.ferrySortExpanded = false;
         };
@@ -416,14 +443,26 @@ const siteController = {
     terminalSortToggle: function() {
         if (this.terminalSortExpanded === false) {
             if (window.matchMedia('(min-width: 1300px)').matches) {
+                Array.from(this.htmlTerminalSortButtonsTarget).forEach((button) => {
+                    button.tabIndex = 0;
+                });
                 document.getElementById('terminal-sort-section').style.height = "7.5rem"
             } else if (window.matchMedia('(min-width: 700px)').matches) {
+                Array.from(this.htmlTerminalSortButtonsTarget).forEach((button) => {
+                    button.tabIndex = 0;
+                });
                 document.getElementById('terminal-sort-section').style.height = "11.7rem";
             } else {
+                Array.from(this.htmlTerminalSortButtonsTarget).forEach((button) => {
+                    button.tabIndex = 0;
+                });
                 document.getElementById('terminal-sort-section').style.height = "13.5rem";
             };
             this.terminalSortExpanded = true;
         } else if (this.terminalSortExpanded === true) {
+            Array.from(this.htmlTerminalSortButtonsTarget).forEach((button) => {
+                button.tabIndex = -1;
+            });
             document.getElementById('terminal-sort-section').style.height = "2.9rem";
             this.terminalSortExpanded = false;
         };
@@ -445,43 +484,43 @@ const siteController = {
                     <p>Sort By:</p>
                     <div class="sort-by-radio-container">
                         <div class="radio-option-wrapper">
-                            <input type="radio" id="name" name="ferrySort" value="0">
+                            <input type="radio" class="ferry-sort-input" id="name" name="ferrySort" value="0" tabindex="-1">
                             <label for="name">Name</label>
                         </div>
                         <div class="radio-option-wrapper">
-                            <input type="radio" id="class" name="ferrySort" value="1">
+                            <input type="radio" class="ferry-sort-input" id="class" name="ferrySort" value="1" tabindex="-1">
                             <label for="class">Class</label>
                         </div>
                         <div class="radio-option-wrapper">
-                            <input type="radio" id="years-active-start" name="ferrySort" value="2" checked>
+                            <input type="radio" class="ferry-sort-input" id="years-active-start" name="ferrySort" value="2" tabindex="-1" checked>
                             <label for="years-active-start">Year Deployed</label>
                         </div>    
                         <div class="radio-option-wrapper">
-                            <input type="radio" id="years-active-end" name="ferrySort" value="3">
+                            <input type="radio" class="ferry-sort-input" id="years-active-end" name="ferrySort" value="3" tabindex="-1">
                             <label for="years-active-end">Year Retired</label>
                         </div>
                         <div class="radio-option-wrapper">
-                            <input type="radio" id="passenger-capacity" name="ferrySort" value="9">
+                            <input type="radio" class="ferry-sort-input" id="passenger-capacity" name="ferrySort" value="9" tabindex="-1">
                             <label for="passenger-capacity">Passenger Capacity</label>
                         </div>
                         <div class="radio-option-wrapper">
-                            <input type="radio" id="vehicle-capacity" name="ferrySort" value="8">
+                            <input type="radio" class="ferry-sort-input" id="vehicle-capacity" name="ferrySort" value="8" tabindex="-1">
                             <label for="vehicle-capacity">Vehicle Capacity</label>
                         </div>
                         <div class="radio-option-wrapper">
-                            <input type="radio" id="length" name="ferrySort" value="6">
+                            <input type="radio" class="ferry-sort-input" id="length" name="ferrySort" value="6" tabindex="-1">
                             <label for="length">Length</label>
                         </div>
                         <div class="radio-option-wrapper">
-                            <input type="radio" id="displacement" name="ferrySort" value="7">
+                            <input type="radio" class="ferry-sort-input" id="displacement" name="ferrySort" value="7" tabindex="-1">
                             <label for="displacement">Displacement</label>
                         </div>
                         <div class="radio-option-wrapper">
-                            <input type="radio" id="max-speed" name="ferrySort" value="5">
+                            <input type="radio" class="ferry-sort-input" id="max-speed" name="ferrySort" value="5" tabindex="-1">
                             <label for="max-speed">Max Speed</label>
                         </div>
                         <div class="radio-option-wrapper">
-                            <input type="radio" id="horsepower" name="ferrySort" value="4">
+                            <input type="radio" class="ferry-sort-input" id="horsepower" name="ferrySort" value="4" tabindex="-1">
                             <label for="horsepower">Horsepower</label>
                         </div>
                     </div>
@@ -491,11 +530,11 @@ const siteController = {
                     <p>Sort Order:</p>
                     <div class="sort-order-radio-container">
                         <div class="radio-option-wrapper">
-                            <input type="radio" id="ascending" name="ferrySortOrder" value="1">
+                            <input type="radio" class="ferry-sort-input" id="ascending" name="ferrySortOrder" value="1" tabindex="-1">
                             <label for="ascending">Ascending</label>
                         </div>
                         <div class="radio-option-wrapper">
-                            <input type="radio" id="descending" name="ferrySortOrder" value="0" checked>
+                            <input type="radio" class="ferry-sort-input" id="descending" name="ferrySortOrder" value="0" tabindex="-1" checked>
                             <label for="descending">Descending</label>
                         </div>
                     </div>
@@ -544,6 +583,7 @@ const siteController = {
                 <button type="button" id="load-ferries-button">Load More</button>
             </section>`;
         this.htmlWriteTarget.innerHTML = this.htmlBuffer;
+        this.htmlFerrySortButtonsTarget = document.getElementsByClassName('ferry-sort-input');
         this.htmlLoadingTarget.style.display = 'none';
         // Creates a target for specific section to allow for re-rendering of only the ferry cards.  When sort parameters are applied and the cards need to be re-rendered, this makes it so the sort section doesnt have to be re-rendered.
         this.htmlCardsWriteTarget = document.querySelector('section#ferry-cards');
@@ -567,11 +607,11 @@ const siteController = {
                 <p>Sort By:</p>
                 <div class="sort-by-radio-container">
                     <div class="radio-option-wrapper">
-                        <input type="radio" id="name" name="terminalSort" value="0">
+                        <input type="radio" class="terminal-sort-input" id="name" name="terminalSort" value="0" tabindex="-1">
                         <label for="name">Name</label>
                     </div>
                     <div class="radio-option-wrapper">
-                        <input type="radio" id="location" name="terminalSort" value="1" checked>
+                        <input type="radio" class="terminal-sort-input" id="location" name="terminalSort" value="1" tabindex="-1" checked>
                         <label for="location">Location</label>
                     </div>
                 </div>
@@ -580,11 +620,11 @@ const siteController = {
                 <p>Sort Order:</p>
                 <div class="sort-order-radio-container">
                     <div class="radio-option-wrapper">
-                        <input type="radio" id="ascending" name="terminalSortOrder" value="1">
+                        <input type="radio" class="terminal-sort-input" id="ascending" name="terminalSortOrder" value="1" tabindex="-1">
                         <label for="ascending">Ascending</label>
                     </div>
                     <div class="radio-option-wrapper">
-                        <input type="radio" id="descending" name="terminalSortOrder" value="0" checked>
+                        <input type="radio" class="terminal-sort-input" id="descending" name="terminalSortOrder" value="0" tabindex="-1" checked>
                         <label for="descending">Descending</label>
                     </div>
                 </div>
@@ -620,6 +660,7 @@ const siteController = {
                 <button type="button" id="load-terminals-button">Load More</button>
             </section>`;
         this.htmlWriteTarget.innerHTML = this.htmlBuffer;
+        this.htmlTerminalSortButtonsTarget = document.getElementsByClassName('terminal-sort-input');
         this.htmlLoadingTarget.style.display = 'none';
         // Creates a target for specific section to allow for re-rendering of only the terminal cards.  When sort parameters are applied and the cards need to be re-rendered, this makes it so the sort section doesnt have to be re-rendered.
         this.htmlCardsWriteTarget = document.querySelector('section#terminal-cards');
