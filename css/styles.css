@@ -158,6 +158,10 @@ header .desktop-nav {
   width: 100%;
   padding: 0;
 }
+header button {
+  height: 2rem;
+  margin: 1rem 0;
+}
 header h1, header button {
   max-height: 4rem;
 }
@@ -216,7 +220,7 @@ header .mobile-nav ul li {
   font-style: italic;
   font-size: 1.6rem;
   border-bottom: 2px solid #003366;
-  transition: all 0.5s ease;
+  transition: color 0.5s ease;
 }
 header .mobile-nav ul li :hover {
   color: #003366;
@@ -226,7 +230,7 @@ header .mobile-nav ul li a {
   display: block;
   padding: 0.5rem 1rem;
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: color 0.2s ease;
 }
 header .mobile-nav .search-section {
   padding: 0 1rem;
@@ -253,7 +257,7 @@ header .mobile-nav .search-section #search-button-container button {
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   font-size: 0.9rem;
   color: #FFFFFF;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease;
   cursor: pointer;
 }
 header .mobile-nav .search-section #search-button-container :hover {
@@ -391,7 +395,6 @@ footer p a {
   margin-bottom: 1rem;
   line-height: 8rem;
   position: relative;
-  overflow: hidden;
   background-size: contain;
   background-position: right;
   background-repeat: no-repeat;
@@ -583,6 +586,8 @@ footer p a {
   color: black;
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   font-size: 0.8rem;
+  margin-bottom: 1rem;
+  display: block;
 }
 
 .single-ferry-card {
@@ -592,7 +597,7 @@ footer p a {
   grid-template-areas: "image image" "name name" "pcap vcap" "lgth disp" "m-spd h-pow";
   background-color: #F2F2F2;
   width: auto;
-  margin: 0 0 1rem;
+  margin: 0;
   border-radius: 5px;
   overflow: hidden;
   position: relative;
@@ -697,6 +702,7 @@ footer p a {
   color: black;
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   font-size: 0.8rem;
+  margin-bottom: 1rem;
 }
 
 .single-terminal-card {
@@ -706,7 +712,7 @@ footer p a {
   grid-template-areas: "image" "name" "addr";
   background-color: #F2F2F2;
   width: auto;
-  margin: 0 0 1rem;
+  margin: 0;
   border-radius: 5px;
   overflow: hidden;
   position: relative;
@@ -882,6 +888,83 @@ table td, table th {
   top: 54px;
   left: 54px;
   box-sizing: content-box;
+}
+
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal !important;
+}
+
+.screen-reader-text:focus {
+  background-color: #003366;
+  clip: auto !important;
+  clip-path: none;
+  color: #FFFFFF;
+  display: block;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000;
+  /* Above WP toolbar. */
+}
+
+.sr-only {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;
+}
+
+nav a:focus {
+  text-decoration: underline #FFFFFF;
+  outline: none;
+}
+nav ul li a:focus {
+  outline: 2px solid #003366;
+  outline-offset: -0.25rem;
+}
+nav button:focus {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 0.25rem;
+}
+nav .search-section #search-button-container button:focus {
+  outline: 2px solid #003366;
+}
+
+.category-card a:focus {
+  outline: 2px solid #003366;
+  outline-offset: 0.25rem;
+}
+
+.sort-expand:focus {
+  outline: 2px solid black;
+  outline-offset: 0.25rem;
+}
+
+#ferry-cards a:focus, #terminal-cards a:focus {
+  outline: 2px solid #003366;
+  outline-offset: 0.25rem;
 }
 
 /*# sourceMappingURL=styles.css.map */

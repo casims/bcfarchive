@@ -294,7 +294,7 @@ const siteController = {
             });
         };
         let sortExpandButton = document.getElementById('ferry-sort-button-expand');
-        sortExpandButton.addEventListener('click', function() {
+            sortExpandButton.addEventListener('click', function() {
             siteController.ferrySortToggle();
         });
     },
@@ -445,7 +445,7 @@ const siteController = {
             });
         };
         let sortExpandButton = document.getElementById('terminal-sort-button-expand');
-        sortExpandButton.addEventListener('click', function() {
+            sortExpandButton.addEventListener('click', function() {
             siteController.terminalSortToggle();
         });
     },
@@ -485,8 +485,11 @@ const siteController = {
             <section class="radio-sort" id="ferry-sort-section">
                 <div class="radio-sort-header">
                     <p>Sort</p>
-                    <button class="sort-expand" id="ferry-sort-button-expand">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6 18h-2v5h-2v-5h-2v-3h6v3zm-2-17h-2v12h2v-12zm11 7h-6v3h2v12h2v-12h2v-3zm-2-7h-2v5h2v-5zm11 14h-6v3h2v5h2v-5h2v-3zm-2-14h-2v12h2v-12z"/></svg>
+                    <button class="sort-expand" id="ferry-sort-button-expand" title="Expand Sort Menu">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M6 18h-2v5h-2v-5h-2v-3h6v3zm-2-17h-2v12h2v-12zm11 7h-6v3h2v12h2v-12h2v-3zm-2-7h-2v5h2v-5zm11 14h-6v3h2v5h2v-5h2v-3zm-2-14h-2v12h2v-12z"/>
+                        </svg>
+                        <span class="sr-only">Expand Sort Menu</span>
                     </button>
                 </div>
                 <form name="ferrySortRadio">
@@ -608,8 +611,11 @@ const siteController = {
         <section class="radio-sort" id="terminal-sort-section">
             <div class="radio-sort-header">
                 <p>Sort</p>
-                <button class="sort-expand" id="terminal-sort-button-expand">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6 18h-2v5h-2v-5h-2v-3h6v3zm-2-17h-2v12h2v-12zm11 7h-6v3h2v12h2v-12h2v-3zm-2-7h-2v5h2v-5zm11 14h-6v3h2v5h2v-5h2v-3zm-2-14h-2v12h2v-12z"/></svg>
+                <button class="sort-expand" id="terminal-sort-button-expand" title="Expand Sort Menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M6 18h-2v5h-2v-5h-2v-3h6v3zm-2-17h-2v12h2v-12zm11 7h-6v3h2v12h2v-12h2v-3zm-2-7h-2v5h2v-5zm11 14h-6v3h2v5h2v-5h2v-3zm-2-14h-2v12h2v-12z"/>
+                    </svg>
+                    <span class="sr-only">Expand Sort Menu</span>
                 </button>
             </div>
             <form name="terminalSortRadio">

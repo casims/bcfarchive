@@ -1,0 +1,91 @@
+@use 'variables' as *;
+
+.screen-reader-text {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    word-wrap: normal !important;
+  }
+  
+  .screen-reader-text:focus {
+    background-color: $dark-blue;
+    clip: auto !important;
+    clip-path: none;
+    color: $white;
+    display: block;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    height: auto;
+    left: 5px;
+    line-height: normal;
+    padding: 15px 23px 14px;
+    text-decoration: none;
+    top: 5px;
+    width: auto;
+    z-index: 100000; /* Above WP toolbar. */
+  }
+
+.sr-only {
+    border: 0 !important;
+    clip: rect(1px, 1px, 1px, 1px) !important;
+    -webkit-clip-path: inset(50%) !important;
+    clip-path: inset(50%) !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    margin: -1px !important;
+    padding: 0 !important;
+    position: absolute !important;
+    width: 1px !important;
+    white-space: nowrap !important;
+};
+
+nav {
+    a:focus {
+        text-decoration: underline $white;
+        outline: none;
+    };
+    ul {
+        li {
+            a:focus {
+                outline: 2px solid $dark-blue;
+                outline-offset: -.25rem;
+            };
+        };
+    };
+    button:focus {
+        outline: 2px solid $white;
+        outline-offset: .25rem;
+    };
+    .search-section {
+        #search-button-container {
+            button:focus {
+                outline: 2px solid $dark-blue;
+            };
+        };
+    };
+};
+
+.category-card {
+    a:focus {
+        outline: 2px solid $dark-blue;
+        outline-offset: .25rem;
+    };
+};
+
+.sort-expand:focus {
+    outline: 2px solid black;
+    outline-offset: .25rem;
+};
+
+#ferry-cards, #terminal-cards {
+    a:focus {
+        outline: 2px solid $dark-blue;
+        outline-offset: .25rem;
+    };
+};

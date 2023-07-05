@@ -14,7 +14,11 @@ header {
         justify-content: space-between;
         width: 100%;
         padding: 0;
-    }
+    };
+    button {
+        height: 2rem;
+        margin: 1rem 0;
+    };
     h1, button {
         max-height: 4rem;
     };
@@ -71,7 +75,7 @@ header {
                 font-style: italic;
                 font-size: 1.6rem;
                 border-bottom: 2px solid $dark-blue;
-                transition: all 0.5s ease;
+                transition: color 0.5s ease;
                 :hover {
                     color: $dark-blue;
                 }
@@ -80,7 +84,7 @@ header {
                     display: block;
                     padding: 0.5rem 1rem;
                     text-decoration: none;
-                    transition: all 0.2s ease;
+                    transition: color 0.2s ease;
                 };
             };
         };
@@ -107,7 +111,7 @@ header {
                     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
                     font-size: 0.9rem;
                     color: $white;
-                    transition: all 0.2s ease;
+                    transition: background-color 0.2s ease;
                     cursor: pointer;
                 };
                 :hover {
