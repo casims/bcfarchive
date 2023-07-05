@@ -147,11 +147,16 @@ const siteController = {
     // Event listeners for expanding/collapsing nav bar, as well as search functionality. Also checks for browser width changes and collpases menus to avoid visual glitches with them being too small/large
     navFunctionality: function() {
         this.navFunctionalityRunning = true;
+        let skipToContent = document.getElementById('skip-to-content');
         let searchField = document.getElementById('search-field');
         let searchFieldInput = '';
         let ferrySearchButton = document.getElementById('ferry-search-button');
         let terminalSearchButton = document.getElementById('terminal-search-button');
         let menuExpandButton = document.getElementById('nav-menu-button');
+        skipToContent.addEventListener('keypress', function() {
+            document.getElementById('main').firstElementChild.tabIndex = 0;
+            document.getElementById('main').firstElementChild.focus();
+        });
         menuExpandButton.addEventListener('click', function() {
             siteController.navToggle();
         });
@@ -193,16 +198,19 @@ const siteController = {
             if (window.matchMedia('(min-width: 900px)').matches) {
                 Array.from(this.htmlNavItemsTarget).forEach((item) => {
                     item.tabIndex = 0;
+                    item.setAttribute("aria-hidden", "false");
                 });
                 document.getElementById('nav').style.height = '3.46rem';
             } else if (window.matchMedia('(min-width: 700px)').matches) {
                 Array.from(this.htmlNavItemsTarget).forEach((item) => {
                     item.tabIndex = 0;
+                    item.setAttribute("aria-hidden", "false");
                 });
                 document.getElementById('nav').style.height = '5.7rem';
             } else {
                 Array.from(this.htmlNavItemsTarget).forEach((item) => {
                     item.tabIndex = 0;
+                    item.setAttribute("aria-hidden", "false");
                 });
                 document.getElementById('nav').style.height = '11.6rem';
             };
@@ -210,6 +218,7 @@ const siteController = {
         } else {
             Array.from(this.htmlNavItemsTarget).forEach((item) => {
                 item.tabIndex = -1;
+                item.setAttribute("aria-hidden", "true");
             });
             document.getElementById('nav').style.height = '0rem';
             this.menuExpanded = false;

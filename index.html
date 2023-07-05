@@ -10,6 +10,7 @@
     </head>
     <body>
         <header id="header">
+            <a class="screen-reader-text" id="skip-to-content" tabindex="0">Skip to content</a>
             <nav class="desktop-nav">
                 <h1>
                     <a href="/">BCFArchive</a>
@@ -26,17 +27,17 @@
             <nav id="nav" class="mobile-nav">
                 <ul>
                     <li>
-                        <a href="#/ferries/" class="nav-item" tabindex="-1">Ferries</a>
+                        <a href="#/ferries/" class="nav-item" tabindex="-1" aria-hidden="true">Ferries</a>
                     </li>
                     <li>
-                        <a href="#/terminals/" class="nav-item" tabindex="-1">Terminals</a>
+                        <a href="#/terminals/" class="nav-item" tabindex="-1" aria-hidden="true">Terminals</a>
                     </li>
                 </ul>
                 <div class="search-section">
-                    <input type="text" name="search-field" class="nav-item" id="search-field" tabindex="-1" placeholder="Search...">
+                    <input type="text" name="search-field" class="nav-item" id="search-field" tabindex="-1" aria-hidden="true" placeholder="Search...">
                     <div id="search-button-container">
-                        <button type="button" class="nav-item" id="ferry-search-button" tabindex="-1">Search Ferries</button>
-                        <button type="button" class="nav-item" id="terminal-search-button" tabindex="-1">Search Terminals</button>
+                        <button type="button" class="nav-item" id="ferry-search-button" tabindex="-1" aria-hidden="true">Search Ferries</button>
+                        <button type="button" class="nav-item" id="terminal-search-button" tabindex="-1" aria-hidden="true">Search Terminals</button>
                     </div>
                 </div>
             </nav>
