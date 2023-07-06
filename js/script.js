@@ -6,6 +6,7 @@ const siteController = {
     validTerminalIDs: null,
     htmlWriteTarget: document.querySelector('main#main'),
     htmlCardsWriteTarget: null,
+    // Loading spinner will be displayed when new page loads, and will be hidden after everything is rendered
     htmlLoadingTarget: document.querySelector('div#loading-container'),
     htmlNavItemsTarget: document.getElementsByClassName('nav-item'),
     htmlFerrySortButtonsTarget: null,
@@ -20,6 +21,7 @@ const siteController = {
     terminalsArray: null,
     singleFerryObject: null,
     singleTerminalObject: null,
+    // HTML for cards that are rendered on ferry/terminal pages, i is the index for the ferry entry grabbed from the ferries/terminals arrays
     generateFerryCard: function(i) {
         siteController.htmlBuffer += `
             <a href="#/ferries/${siteController.ferriesArray[i].page_id}" id="ferry-card-${i}">
@@ -27,6 +29,7 @@ const siteController = {
                     <p class="single-ferry-card-name">${siteController.ferriesArray[i].name}</p>
                     <p class="single-ferry-card-class">${siteController.ferriesArray[i].class}</p>
                     <p class="single-ferry-card-years-active">${siteController.ferriesArray[i].years_active_start} - `;
+                    // years_active_end will be set to 9999 in the SQL DB if it is still active
                     if (siteController.ferriesArray[i].years_active_end === "9999") {
                         siteController.htmlBuffer += `Present`;
                     } else {
@@ -38,6 +41,7 @@ const siteController = {
                     if (siteController.ferriesArray[i].picture) {
                         siteController.htmlBuffer += `<img src="./media/ferries/thumbnails/${siteController.ferriesArray[i].picture}" alt="${siteController.ferriesArray[i].picture_alt}">`;
                     } else {
+                        // Placeholder image if no image is available
                         siteController.htmlBuffer += `<img src="./media/na.jpg">`;
                     };
                     siteController.htmlBuffer += `
@@ -204,6 +208,7 @@ const siteController = {
         let ferrySearchButton = document.getElementById('ferry-search-button');
         let terminalSearchButton = document.getElementById('terminal-search-button');
         let menuExpandButton = document.getElementById('nav-menu-button');
+        // Makes it so keyboard users can easily skip nav menu
         skipToContent.addEventListener('keypress', function() {
             document.getElementById('main').firstElementChild.tabIndex = 0;
             document.getElementById('main').firstElementChild.focus();
@@ -244,6 +249,7 @@ const siteController = {
             };
         });
     },
+    // Expand/De-expands nav/search menu, also makes obscured items untabbable and unreadable by screenreaders
     navToggle: function() {
         if (this.menuExpanded === false) {
             if (window.matchMedia('(min-width: 900px)').matches) {
@@ -333,7 +339,9 @@ const siteController = {
         for (let i = 0; i < ferrySortButtons.length; i++) {
             ferrySortButtons[i].addEventListener('change', async function(event) {
                 ferrySortData[0] = event.target.value;
+                // Grabs new ferriesArray with the specified order parameters set by user
                 await siteController.captureFerriesArray(ferrySortData);
+                // Re-renders cards section with new array
                 siteController.renderFerriesSort();
             });
         };
@@ -344,11 +352,13 @@ const siteController = {
                 siteController.renderFerriesSort();
             });
         };
+        // Event listener for expanding/de-expanding sort menu
         let sortExpandButton = document.getElementById('ferry-sort-button-expand');
             sortExpandButton.addEventListener('click', function() {
             siteController.ferrySortToggle();
         });
     },
+    // Function for expanding/de-expanding sort menu, also hides obscured items from screen reader and makes them untabbable
     ferrySortToggle: function() {
         if (this.ferrySortExpanded === false) {
             if (window.matchMedia('(min-width: 1300px)').matches) {
@@ -381,7 +391,9 @@ const siteController = {
         loadFerriesButton.addEventListener('click', function() {
             siteController.htmlLoadingTarget.style.display = 'flex';
             siteController.htmlBuffer = '';
+            // 9 is the ammount of new cards that will be loaded on button press
             siteController.cardCountLimit = siteController.cardCountLimit + 9;
+            // Disables Load More button if all items from array have already been made into cards and have been rendered
             if (siteController.cardCountLimit > siteController.ferriesArray.length) {
                 siteController.cardCountLimit = siteController.ferriesArray.length;
                 loadFerriesButton.style.display = "none";
@@ -389,8 +401,10 @@ const siteController = {
             for (let i = siteController.cardCountCurrent; i < siteController.cardCountLimit; i++) {
                 siteController.generateFerryCard(i);
             };
+            // Adds new cards to the end of cards section
             siteController.htmlCardsWriteTarget.insertAdjacentHTML("beforeend", siteController.htmlBuffer);
             siteController.htmlLoadingTarget.style.display = 'none';
+            // Focuses next card on page automatically, if this is not done then the Load More button at very bottom of page will be automatically focused (bad for keyboard users)
             document.getElementById(`ferry-card-${siteController.cardCountCurrent}`).focus();
             siteController.cardCountCurrent += 9;
         });
@@ -484,8 +498,8 @@ const siteController = {
             siteController.cardCountCurrent += 9;
         });
     },
-    // Renders ferries page using array grabbed from SQL DB
-    createFerriesPage: async function() {siteController
+    // Renders ferries page with cards using array grabbed from SQL DB, also renders sort menu
+    createFerriesPage: async function() {
         this.htmlWriteTarget.innerHTML = '';
         this.htmlLoadingTarget.style.display = 'flex';
         this.htmlBuffer = `
@@ -581,7 +595,7 @@ const siteController = {
         this.ferrySortFunctionality();
         this.ferryLoadCardsFunctionality();
     },
-    // Renders terminals page with array grabbed from SQL DB
+    // Renders terminals page with cards from array grabbed from SQL DB, also renders sort menu
     createTerminalsPage: async function() {
         this.htmlWriteTarget.innerHTML = '';
         this.htmlLoadingTarget.style.display = 'flex';
