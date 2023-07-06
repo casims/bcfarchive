@@ -89,3 +89,10 @@ nav {
         outline-offset: .25rem;
     };
 };
+
+#button-section {
+    button:focus {
+        outline: 2px solid $dark-blue;
+        outline-offset: .25rem;
+    };
+};
