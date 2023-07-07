@@ -158,6 +158,18 @@ header .desktop-nav {
   width: 100%;
   padding: 0;
 }
+header #nav-menu-button {
+  height: 3rem;
+  width: 3rem;
+  padding: 0;
+  margin: 0.49rem 0;
+  border-radius: 50%;
+  background-color: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+}
 header button {
   height: 2rem;
   margin: 1rem 0;
@@ -195,6 +207,7 @@ header button {
 header button svg {
   height: 2rem;
   width: 2rem;
+  margin: auto;
 }
 header button svg path {
   fill: #FFFFFF;
@@ -387,25 +400,7 @@ footer p a {
 #home-category-section {
   margin-top: 1rem;
 }
-#home-category-section .category-card {
-  width: 100%;
-  height: 8rem;
-  background-color: #F2F2F2;
-  border-radius: 15px;
-  margin-bottom: 1rem;
-  line-height: 8rem;
-  position: relative;
-  background-size: contain;
-  background-position: right;
-  background-repeat: no-repeat;
-}
-#home-category-section .category-card#ferry-cat-card {
-  background-image: url(../media/ferries-thumbnail.jpg);
-}
-#home-category-section .category-card#terminal-cat-card {
-  background-image: url(../media/terminals-thumbnail.jpg);
-}
-#home-category-section .category-card a {
+#home-category-section a {
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   font-weight: 700;
   font-style: italic;
@@ -413,23 +408,43 @@ footer p a {
   color: #0079A5;
   text-decoration: none;
   vertical-align: middle;
-  display: inline-block;
   width: 100%;
-  height: 100%;
-  padding-left: 1rem;
+  height: 8rem;
+  margin-bottom: 1rem;
+  border-radius: 15px;
   transition: color 0.2s ease;
 }
-#home-category-section .category-card a:hover {
+#home-category-section a:hover {
   color: #003366;
+}
+#home-category-section a .category-card {
+  width: 100%;
+  height: 100%;
+  background-color: #F2F2F2;
+  border-radius: 15px;
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  line-height: 8rem;
+  display: inline-block;
+  position: relative;
+  background-size: contain;
+  background-position: right;
+  background-repeat: no-repeat;
+}
+#home-category-section a .category-card#ferry-cat-card {
+  background-image: url(../media/ferries-thumbnail.jpg);
+}
+#home-category-section a .category-card#terminal-cat-card {
+  background-image: url(../media/terminals-thumbnail.jpg);
 }
 
 @media (min-width: 450px) {
-  #home-category-section .category-card {
+  #home-category-section a {
+    font-size: 1.8rem;
+  }
+  #home-category-section a .category-card {
     height: 9rem;
     line-height: 9rem;
-  }
-  #home-category-section .category-card a {
-    font-size: 1.8rem;
   }
 }
 @media (min-width: 700px) {
@@ -439,26 +454,30 @@ footer p a {
     justify-content: center;
     gap: 1rem;
   }
-  #home-category-section .category-cards-container .category-card {
-    height: 8rem;
-    line-height: 8rem;
-    width: 17.5rem;
-  }
-  #home-category-section .category-cards-container .category-card a {
+  #home-category-section .category-cards-container a {
     font-size: 1.6rem;
+    width: 17.5rem;
+    height: 8rem;
+  }
+  #home-category-section .category-cards-container a .category-card {
+    line-height: 8rem;
+    width: 100%;
+    height: 100%;
   }
 }
 @media (min-width: 1300px) {
   #home-category-section .category-cards-container {
     justify-content: center;
   }
-  #home-category-section .category-cards-container .category-card {
+  #home-category-section .category-cards-container a {
+    font-size: 1.8rem;
     height: 9rem;
-    line-height: 9rem;
     width: 22rem;
   }
-  #home-category-section .category-cards-container .category-card a {
-    font-size: 1.8rem;
+  #home-category-section .category-cards-container a .category-card {
+    line-height: 9rem;
+    height: 100%;
+    width: 100%;
   }
 }
 .radio-sort {
@@ -485,15 +504,19 @@ footer p a {
   margin: 0;
 }
 .radio-sort .radio-sort-header button {
+  width: 1.4rem;
+  height: 1.4rem;
   background-color: none;
   background: none;
   border: none;
   cursor: pointer;
   padding: 0;
+  display: flex;
 }
 .radio-sort .radio-sort-header svg {
   height: 1.2rem;
   width: 1.2rem;
+  margin: auto;
 }
 .radio-sort form {
   position: relative;
@@ -588,6 +611,7 @@ footer p a {
   font-size: 0.8rem;
   margin-bottom: 1rem;
   display: block;
+  border-radius: 5px;
 }
 
 .single-ferry-card {
@@ -703,6 +727,7 @@ footer p a {
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   font-size: 0.8rem;
   margin-bottom: 1rem;
+  border-radius: 5px;
 }
 
 .single-terminal-card {
@@ -919,7 +944,6 @@ table td, table th {
   top: 5px;
   width: auto;
   z-index: 100000;
-  /* Above WP toolbar. */
 }
 
 .sr-only {
@@ -944,17 +968,16 @@ nav ul li a:focus {
   outline: 2px solid #003366;
   outline-offset: -0.25rem;
 }
-nav button:focus {
-  outline: 2px solid #FFFFFF;
-  outline-offset: 0.25rem;
+nav #nav-menu-button:focus {
+  background-color: #0079A5;
+  outline: none;
 }
 nav .search-section #search-button-container button:focus {
-  outline: 2px solid #003366;
+  outline: 3px solid #003366;
 }
 
-.category-card a:focus {
-  outline: 2px solid #003366;
-  outline-offset: 0.25rem;
+.category-cards-container a:focus {
+  outline: 3px solid #0079A5;
 }
 
 .sort-expand:focus {
@@ -963,13 +986,11 @@ nav .search-section #search-button-container button:focus {
 }
 
 #ferry-cards a:focus, #terminal-cards a:focus {
-  outline: 2px solid #003366;
-  outline-offset: 0.25rem;
+  outline: 3px solid #0079A5;
 }
 
 #button-section button:focus {
-  outline: 2px solid #003366;
-  outline-offset: 0.25rem;
+  outline: 3px solid #003366;
 }
 
 /*# sourceMappingURL=styles.css.map */

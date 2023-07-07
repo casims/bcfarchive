@@ -15,6 +15,18 @@ header {
         width: 100%;
         padding: 0;
     };
+    #nav-menu-button {
+        height: 3rem;
+        width: 3rem;
+        padding: 0;
+        margin: .49rem 0;
+        border-radius: 50%;
+        background-color: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        display: flex;
+    };
     button {
         height: 2rem;
         margin: 1rem 0;
@@ -51,6 +63,7 @@ header {
         svg {
             height: 2rem;
             width: 2rem;
+            margin: auto;
             path {
                 fill: $white;
             };

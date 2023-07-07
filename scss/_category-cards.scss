@@ -2,50 +2,52 @@
 
 #home-category-section {
     margin-top: 1rem;
-    .category-card {
+    a {
+        font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+        font-weight: 700;
+        font-style: italic;
+        font-size: 1.6rem;
+        color: $light-blue;
+        text-decoration: none;
+        vertical-align: middle;
         width: 100%;
         height: 8rem;
-        background-color: $light-grey;
-        border-radius: 15px;
         margin-bottom: 1rem;
-        line-height: 8rem;
-        position: relative;
-        background-size: contain;
-        background-position: right;
-        background-repeat: no-repeat;
-        &#ferry-cat-card {
-            background-image: url(../media/ferries-thumbnail.jpg);
-        };
-        &#terminal-cat-card {
-            background-image: url(../media/terminals-thumbnail.jpg);
-        };
-        a {
-            font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-            font-weight: 700;
-            font-style: italic;
-            font-size: 1.6rem;
-            color: $light-blue;
-            text-decoration: none;
-            vertical-align: middle;
-            display: inline-block;
+        border-radius: 15px;
+        transition: color 0.2s ease;
+        &:hover {
+            color: $dark-blue;
+        }
+        .category-card {
             width: 100%;
             height: 100%;
+            background-color: $light-grey;
+            border-radius: 15px;
             padding-left: 1rem;
-            transition: color 0.2s ease;
-            &:hover {
-                color: $dark-blue;
-            }
+            margin-bottom: 1rem;
+            line-height: 8rem;
+            display: inline-block;
+            position: relative;
+            background-size: contain;
+            background-position: right;
+            background-repeat: no-repeat;
+            &#ferry-cat-card {
+                background-image: url(../media/ferries-thumbnail.jpg);
+            };
+            &#terminal-cat-card {
+                background-image: url(../media/terminals-thumbnail.jpg);
+            };
         };
     };
 };
 
 @media (min-width: 450px) {
     #home-category-section {
-        .category-card {
-            height: 9rem;
-            line-height: 9rem;
-            a {
-                font-size: 1.8rem;
+        a {
+            font-size: 1.8rem;
+            .category-card {
+                height: 9rem;
+                line-height: 9rem;
             };
         };
     };
@@ -58,12 +60,14 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 1rem;
-            .category-card {
-                height: 8rem;
-                line-height: 8rem;
+            a {
+                font-size: 1.6rem;
                 width: 17.5rem;
-                a {
-                    font-size: 1.6rem;
+                height: 8rem;
+                .category-card {
+                    line-height: 8rem;
+                    width: 100%;
+                    height: 100%;
                 };
             };
         };
@@ -74,12 +78,14 @@
     #home-category-section {
         .category-cards-container {
             justify-content: center;
-            .category-card {
+            a {
+                font-size: 1.8rem;
                 height: 9rem;
-                line-height: 9rem;
                 width: 22rem;
-                a {
-                    font-size: 1.8rem;
+                .category-card {
+                    line-height: 9rem;
+                    height: 100%;
+                    width: 100%;
                 };
             };
         };

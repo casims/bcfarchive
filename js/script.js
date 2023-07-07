@@ -293,16 +293,16 @@ const siteController = {
             <section id="home-category-section">
                 <h2>Categories</h2>
                 <div class="category-cards-container">
-                    <div class="category-card" id="ferry-cat-card">
-                        <a href="#/ferries/">
-                            Ferries
-                        </a>
-                    </div>
-                    <div class="category-card" id="terminal-cat-card">
-                        <a href="#/terminals/">
+                    <a href="#/ferries/">
+                        <div class="category-card" id="ferry-cat-card">
+                                Ferries
+                        </div>
+                    </a>
+                    <a href="#/terminals/">
+                        <div class="category-card" id="terminal-cat-card">
                             Terminals
-                        </a>
-                    </div>
+                        </div>
+                    </a>
                 </div>
             </section>
             <section id="home-info-section">

@@ -28,7 +28,7 @@
     text-decoration: none;
     top: 5px;
     width: auto;
-    z-index: 100000; /* Above WP toolbar. */
+    z-index: 100000;
   }
 
 .sr-only {
@@ -58,24 +58,23 @@ nav {
             };
         };
     };
-    button:focus {
-        outline: 2px solid $white;
-        outline-offset: .25rem;
+    #nav-menu-button:focus {
+        background-color: $light-blue;
+        outline: none;
     };
     .search-section {
         #search-button-container {
             button:focus {
-                outline: 2px solid $dark-blue;
+                outline: 3px solid $dark-blue;
             };
         };
     };
 };
 
-.category-card {
+.category-cards-container {
     a:focus {
-        outline: 2px solid $dark-blue;
-        outline-offset: .25rem;
-    };
+        outline: 3px solid $light-blue;
+    }
 };
 
 .sort-expand:focus {
@@ -85,14 +84,12 @@ nav {
 
 #ferry-cards, #terminal-cards {
     a:focus {
-        outline: 2px solid $dark-blue;
-        outline-offset: .25rem;
+        outline: 3px solid $light-blue;
     };
 };
 
 #button-section {
     button:focus {
-        outline: 2px solid $dark-blue;
-        outline-offset: .25rem;
+        outline: 3px solid $dark-blue;
     };
 };
