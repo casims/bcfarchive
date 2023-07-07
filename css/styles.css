@@ -727,6 +727,7 @@ footer p a {
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   font-size: 0.8rem;
   margin-bottom: 1rem;
+  display: block;
   border-radius: 5px;
 }
 
