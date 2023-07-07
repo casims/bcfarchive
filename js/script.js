@@ -173,26 +173,26 @@ const siteController = {
                 <p>Information was gathered from the following sites:</p>
                 <ul>
                     <li>
-                        <p>Canadian Public Transit Discussion Board Wiki <br>[<a href="https://cptdb.ca/wiki/index.php/Main_Page">Link</a>]</p>
+                        <a href="https://cptdb.ca/wiki/index.php/Main_Page">Canadian Public Transit Discussion Board Wiki</a>
                     </li>
                     <li>
-                        <p>Wikipedia <br>[<a href="https://en.wikipedia.org/wiki/Main_Page">Link</a>]</p>
+                        <a href="https://en.wikipedia.org/wiki/Main_Page">Wikipedia</a>
                     </li>
                     <li>
-                        <p>BC Ferries Official Website <br>[<a href="https://www.bcferries.com/">Link</a>]</p>
+                        <a href="https://www.bcferries.com/">BC Ferries Official Website</a>
                     </li>
                 </ul>
                 <p>These sites will most likely prove to be better and more reliable sources of information.</p>
                 <h3>Images</h3>
                 <ul>
                     <li>
-                        <p>Image Source for background image (Image may appear cropped):<br> [<a href="https://commons.wikimedia.org/wiki/File:TsawwassenFerryTerminal.JPG">Link</a>]</p>
+                        <a href="https://commons.wikimedia.org/wiki/File:TsawwassenFerryTerminal.JPG">Image Source for background image (Image may appear cropped)</a>
                     </li>
                     <li>
-                        <p>Image Source for "Ferries" Category Thumbnail (Image was cropped):<br> [<a href="https://flickr.com/photos/8441189@N04/2591295036">Link</a>]</p>
+                        <a href="https://flickr.com/photos/8441189@N04/2591295036">Image Source for "Ferries" Category Thumbnail (Image was cropped)</a>
                     </li>
                     <li>
-                        <p>Image Source for "Terminals" Category Thumbnail (Image was cropped):<br> [<a href="https://www.flickr.com/photos/dph1110/2671969217/">Link</a>]</p>
+                        <a href="https://www.flickr.com/photos/dph1110/2671969217/">Image Source for "Terminals" Category Thumbnail (Image was cropped)</a>
                     </li>
                 </ul>
             </section>`;
