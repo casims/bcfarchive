@@ -713,6 +713,9 @@ const siteController = {
             <section id="ferry-cards">
         `;
         await this.captureFerriesSearchArray(searchQuery);
+        if (siteController.ferriesArray.length === 0) {
+            this.htmlBuffer += `<p>Sorry, no results were found.</p>`;
+        };
         this.cardCountLimit = 12;
         if (siteController.cardCountLimit > siteController.ferriesArray.length) {
             siteController.cardCountLimit = siteController.ferriesArray.length;
@@ -745,6 +748,9 @@ const siteController = {
             <section id="terminal-cards">
             `;
         await this.captureTerminalsSearchArray(searchQuery);
+        if (siteController.terminalsArray.length === 0) {
+            this.htmlBuffer += `<p>Sorry, no results were found.</p>`;
+        };
         this.cardCountLimit = 12;
         if (siteController.cardCountLimit > siteController.terminalsArray.length) {
             siteController.cardCountLimit = siteController.terminalsArray.length;
